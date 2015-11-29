@@ -1,12 +1,24 @@
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Algorytm extends Thread{
+	
+	/**
+	 * Populacja startowa - lista rozwiązań
+	 */
+	public List<Uszeregowanie> populacjaStartowa = new ArrayList<Uszeregowanie>();
+	/**
+	 * Populacja po rozszerzeniu
+	 */
+	public List<Uszeregowanie> populacjaKoncowa = new ArrayList<Uszeregowanie>();
 	
 	/**
 	 * Konstruktor algorytmu
 	 */
-	public Algorytm (){
-		
+	public Algorytm (){	
 	}
+	
 	
 	/**
 	 * Cała metoda algorytmu
@@ -29,7 +41,7 @@ public class Algorytm extends Thread{
 			
 		}
 		
-		//WYPISZ ROZWIAZANIE
+		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
 	}
 	
 	

@@ -5,6 +5,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * Problem 3
+	Job shop, liczba maszyn m=2, operacje typu non-preemptive, 
+	dla pierwszej maszyny od k=2 do n/2 okresów przestoju o losowym czasie rozpoczęcia i trwania, 
+	różne i losowe czasy gotowości dla wszystkich zadań
+	minimalizacja sumy czasów zakończenia wszystkich operacji, liczba zadań n.
+ * @author no-one
+ *
+ */
+
+
 public class Main extends Thread{
 
 	/**
@@ -76,6 +87,10 @@ public class Main extends Thread{
 	 * maksymalna długość przerwy
 	 */
 	public static int maxP=15;
+	/**
+	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
+	 */
+	public static int maxG=50;
 	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i ich danych
@@ -173,6 +188,10 @@ public class Main extends Thread{
 					break;
 				case "-maxP" :
 					maxP=Integer.parseInt(args[i+1]);
+					i++;
+					break;
+				case "-maxG" :
+					maxG=Integer.parseInt(args[i+1]);
 					i++;
 					break;
 			}
