@@ -15,8 +15,8 @@ public class Instancja implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public List<Zadanie> listaZadan = new ArrayList<Zadanie>();
-	public List<Przerwa> listaPrzerw = new ArrayList<Przerwa>();
+	public static List<Zadanie> listaZadan = new ArrayList<Zadanie>();
+	public static List<Przerwa> listaPrzerw = new ArrayList<Przerwa>();
 	//Używane przy losowaniue przerw
 	public static int dlugoscInstancji=0;
 	
@@ -32,14 +32,14 @@ public class Instancja implements Serializable{
 	
 	public void wypiszInstanje(){
 		System.out.println("ZADANIA:");
-		for (int i=0;i< this.listaZadan.size(); i++){
+		for (int i=0;i< listaZadan.size(); i++){
 			Zadanie z = listaZadan.get(i);
 			System.out.println("ID: "+z.id+" Czas G: "+z.czasGotowosci+"  Operacje: "+z.A.maszyna+"/"+z.A.czasTrwania+"  |  "+z.B.maszyna+"/"+z.B.czasTrwania  );
 		}
 		System.out.println("Dlugość: "+ dlugoscInstancji );
 		System.out.println("PRZERWY:");
-		for (int i=0; i < this.listaPrzerw.size() ; i++ ){
-			Przerwa p = this.listaPrzerw.get(i);
+		for (int i=0; i < listaPrzerw.size() ; i++ ){
+			Przerwa p = listaPrzerw.get(i);
 			System.out.println("ID: "+p.id+"  Czas rozpoczęcia: "+p.czasStartu+" Czas trwania: "+p.czasTrwania);
 		}
 		

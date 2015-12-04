@@ -38,7 +38,6 @@ public class Algorytm extends Thread{
 			//KRZYŻUJ
 			//MUTUJ I KRZYZUJ
 			//TURNIEJ
-			
 		}
 		
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
