@@ -5,23 +5,12 @@ import java.util.Random;
  * @author Kamil Piotrowski
  *
  */
-public class Podzadanie {
-	/**
-	 * Czas startu zadania
-	 */
-	public int czasStaru=-1;
-	/**
-	 * Czas konca zadania
-	 */
-	public int czasKonca=-1;
-	/**
-	 * Czas trwania zadania
-	 */
-	public int czasTrwania=0;
+public class Podzadanie extends Blok{
+	
 	/**
 	 * Maszyna na której jes wykonywane zadanie
 	 */
-	public int maszyna=0;
+	public final int maszyna;
 	/**
 	 * Czy zadanie zostało wykonane
 	 */

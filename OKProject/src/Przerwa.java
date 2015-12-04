@@ -1,23 +1,11 @@
 import java.util.Random;
 
-public class Przerwa {
+public class Przerwa extends Blok{
 
-	/**
-	 * Czas startu zadania
-	 */
-	public int czasStartu=-1;
-	/**
-	 * Czas konca zadania
-	 */
-	public int czasKonca=-1;
-	/**
-	 * Czas trwania zadania
-	 */
-	public int czasTrwania=0;
 	/**
 	 * ID
 	 */
-	public int id=0;
+	public final int id;
 	
 	public static int idGen=-1;
 	
@@ -25,7 +13,8 @@ public class Przerwa {
 		Random gen = new Random();
 		this.id=++Przerwa.idGen;
 		this.czasTrwania=gen.nextInt(Main.maxP-Main.minP)+Main.minP;
-		this.czasStartu=(int) (gen.nextInt(Instancja.dlugoscInstancji)*Main.procentPrzerw);
+		Instancja.dlugoscInstancji+=this.czasTrwania;
+		this.czasStartu=gen.nextInt(Instancja.dlugoscInstancji);
 		
 		while(true){
 			boolean OK=true;
@@ -39,7 +28,6 @@ public class Przerwa {
 				this.czasStartu+=this.czasTrwania/2;
 			}
 		}
-		
-		
+		this.czasKonca=this.czasStartu+this.czasTrwania;
 	}
 }

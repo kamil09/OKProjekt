@@ -70,7 +70,7 @@ public class Main extends Thread{
 	/**
 	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan
 	 */
-	public static double procentPrzerw=0.1;
+	public static double procentPrzerw=0.5;
 	/**
 	 * Minimalna długość zadania
 	 */
@@ -91,7 +91,6 @@ public class Main extends Thread{
 	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
 	 */
 	public static int maxG=50;
-	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i ich danych
 	 */
