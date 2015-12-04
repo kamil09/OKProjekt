@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 	dla pierwszej maszyny od k=2 do n/2 okresów przestoju o losowym czasie rozpoczęcia i trwania, 
 	różne i losowe czasy gotowości dla wszystkich zadań
 	minimalizacja sumy czasów zakończenia wszystkich operacji, liczba zadań n.
- * @author no-one
+ * @author Kamil Piotrowski
  *
  */
 
