@@ -66,6 +66,11 @@ public class Uszeregowanie {
 		//for(Blok b : maszyna_1) System.out.println(b.czasStartu);
 		//System.out.println(iloscoperacji);
 		this.wypiszUserzegowanie();
+		this.wypiszBledneUszeregowanieOperacji(inst);
+		System.out.println("BLAD!!!!!!!!!!!!!");
+		this.wypiszBledneUszeregowanieZadan(maszyna_1);
+		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		System.out.println("KONIEC BLEDU!!!!!!!!");
 	}
 	
 	void umiescNaLiscie(List<Blok> maszyna, Podzadanie p){
@@ -122,24 +127,24 @@ public class Uszeregowanie {
 							maszyna.add(i+1, p);
 							break;
 						}
-						//JESLI OPERACJA JEST GOTOWA, ALE ZADANIE PIERWSZE SIĘ NIE WYKONAŁO
-						if( (p.czasGotowosci<=maszyna.get(i).czasKonca) && (p.brat.czasKonca>maszyna.get(i).czasKonca) ){
-							miejsce=maszyna.get(i+1).czasStartu-p.brat.czasKonca;
-							//SPRAWDZAMY CZY OPERACJA 1 SKOŃCZY SIĘ W TYM PRZEDZIALE I SIĘ ZMIEŚCIMY
-							if(miejsce>=p.czasTrwania){
-								p.czasStartu=p.czasGotowosci;
-								p.czasKonca=p.czasStartu+p.czasTrwania;
-								maszyna.add(i+1,p);
-								break;
-							}
-						}
+//						//JESLI OPERACJA JEST GOTOWA, ALE ZADANIE PIERWSZE SIĘ NIE WYKONAŁO
+//						if( (p.czasGotowosci<=maszyna.get(i).czasKonca) && (p.brat.czasKonca>maszyna.get(i).czasKonca) ){
+//							miejsce=maszyna.get(i+1).czasStartu-p.brat.czasKonca;
+//							//SPRAWDZAMY CZY OPERACJA 1 SKOŃCZY SIĘ W TYM PRZEDZIALE I SIĘ ZMIEŚCIMY
+//							if(miejsce>=p.czasTrwania){
+//								p.czasStartu=p.czasGotowosci;
+//								p.czasKonca=p.czasStartu+p.czasTrwania;
+//								maszyna.add(i+1,p);
+//								break;
+//							}
+//						}
 						//MOZNA BY JESZCZE ROZWAŻYĆ ŻE NIE JEST GOTOWA ALE OP1 SIĘ WYKONAŁA LUB NIE WYKONAŁA
 					}
 				}
 				//JESTEŚMY NA KOŃCU, OPERACJA 1 NA PEWNO SIĘ WYKONAŁA!
 				else{
-					if( p.czasGotowosci<=maszyna.get(i).czasKonca ) p.czasStartu=maszyna.get(i).czasKonca;
-					else p.czasStartu=p.czasGotowosci;
+					if( p.czasGotowosci<=maszyna.get(i).czasKonca  && p.brat.czasKonca<=maszyna.get(i).czasKonca) p.czasStartu=maszyna.get(i).czasKonca;
+					else p.czasStartu=p.brat.czasKonca;
 					p.czasKonca=p.czasStartu+p.czasTrwania;
 					maszyna.add(p);
 					break;
@@ -205,5 +210,38 @@ public class Uszeregowanie {
 				+p.czasStartu+","
 				+p.czasTrwania+";\t");
 	}
-	
+	void wypiszBledneUszeregowanieOperacji(Instancja inst){
+		List<Zadanie> listaZadanDoSprawdzenia = inst.listaZadan;
+		for (int i = 0; i < listaZadanDoSprawdzenia.size() ; i++) {
+			if (listaZadanDoSprawdzenia.get(i).op2.czasStartu < listaZadanDoSprawdzenia.get(i).op1.czasKonca) {
+				wypiszOperacje(listaZadanDoSprawdzenia.get(i).op1);
+				System.out.printf(" ");
+				wypiszOperacje(listaZadanDoSprawdzenia.get(i).op2);
+				System.out.println("");
+			}
+		}
+	}
+
+	void wypiszBledneUszeregowanieZadan(List<Blok> maszyna){
+		if(maszyna.isEmpty()){
+			System.out.println("maszyna jest pusta");
+		}
+		for (int i = 0; i < maszyna.size()-1; i++) {
+			if(maszyna.get(i).czasKonca>maszyna.get(i+1).czasStartu){
+				if (maszyna.get(i) instanceof Przerwa){
+					wypiszPrzerwe((Przerwa) maszyna.get(i));
+				}
+				else if(maszyna.get(i) instanceof Podzadanie){
+					wypiszOperacje((Podzadanie) maszyna.get(i));
+				}
+				if (maszyna.get(i+1) instanceof Przerwa){
+					wypiszPrzerwe((Przerwa) maszyna.get(i+1));
+				}
+				else if(maszyna.get(i+1) instanceof Podzadanie){
+					wypiszOperacje((Podzadanie) maszyna.get(i+1));
+				}
+				System.out.println("");
+			}
+		}
+	}
 }

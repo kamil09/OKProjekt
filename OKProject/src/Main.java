@@ -1,9 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * Problem 3
@@ -98,9 +93,19 @@ public class Main extends Thread{
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
 	 */
 	public static Instancja instancja;
-	
-	
-	/**
+
+	public void czytajInstancje(){
+		try{
+			InputStream we = new ObjectInputStream(new FileInputStream(Main.serialFileName));
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+		/**
 	 * MAIN
 	 * @param args parametry programu
 	 * @throws IOException Wyjątek
