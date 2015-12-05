@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,23 +16,34 @@ public class Instancja implements Serializable{
 	/**
 	 * Lista zadań
 	 */
-	public static List<Zadanie> listaZadan = new ArrayList<Zadanie>();
+	public List<Zadanie> listaZadan = new ArrayList<Zadanie>();
 	/**
 	 * Lista przerw
 	 */
-	public static List<Przerwa> listaPrzerw = new ArrayList<Przerwa>();
+	public List<Przerwa> listaPrzerw = new ArrayList<Przerwa>();
 	//Używane przy losowaniu przerw
 	public static int dlugoscInstancji=0;
 	
 	public Instancja(){
 		for(int i=0 ; i< Main.iloscZadan ; i++) {
-			listaZadan.add(new Zadanie());
+			this.listaZadan.add(new Zadanie());
 			dlugoscInstancji+=listaZadan.get(i).op1.czasTrwania;
 		}
 		for(int i=0; i< (Main.procentPrzerw*Main.iloscZadan) ; i++ )
-			listaPrzerw.add(new Przerwa());
-		wypiszInstanje();
+			this.listaPrzerw.add(new Przerwa(listaPrzerw));
+		
+		Collections.sort(listaPrzerw);
+		Collections.sort(listaZadan);
+		
+		//wypiszInstanje();
 	}
+	
+	public Instancja(Instancja inst){
+		for(Przerwa p : inst.listaPrzerw) this.listaPrzerw.add( new Przerwa(p) );
+		for(Zadanie z : inst.listaZadan) this.listaZadan.add( new Zadanie(z) );	
+		
+	}
+	
 	
 	
 	
@@ -64,7 +76,7 @@ public class Instancja implements Serializable{
 		System.out.println("ZADANIA:");
 		for (int i=0;i< listaZadan.size(); i++){
 			Zadanie z = listaZadan.get(i);
-			System.out.println("ID: "+z.id+" Czas G: "+z.czasGotowosci+"  Operacje: "+z.op1.maszyna+"/"+z.op1.czasTrwania+"  |  "+z.op2.maszyna+"/"+z.op2.czasTrwania  );
+			System.out.println("ID: "+z.id+" Czas G: "+z.op1.czasGotowosci+"  Operacje: "+z.op1.maszyna+"/"+z.op1.czasTrwania+"  |  "+z.op2.maszyna+"/"+z.op2.czasTrwania  );
 		}
 		System.out.println("Dlugość: "+ dlugoscInstancji );
 		System.out.println("PRZERWY:");

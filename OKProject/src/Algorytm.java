@@ -26,7 +26,11 @@ public class Algorytm extends Thread{
 	public void run(){
 		final long startTime = System.currentTimeMillis();
 		
-		//Wygeneruj pierwszych kilka rozwiązan
+		//Wygeneruj populacje startową
+		for(int i=0;i<Main.populacjaStartowa;i++) {
+			Instancja instCp = new Instancja( Main.instancja );
+			this.populacjaStartowa.add(new Uszeregowanie(instCp) );
+		}
 		
 		while(true){
 			final long endTime = System.currentTimeMillis();
@@ -65,7 +69,7 @@ public class Algorytm extends Thread{
 						najlepszyVal=this.populacjaKoncowa.get(k).sumaCzasow;
 					}
 				}
-				this.populacjaKoncowa.add(this.populacjaKoncowa.get(najlepszy));
+				this.populacjaStartowa.add(this.populacjaKoncowa.get(najlepszy));
 			}
 		}
 		this.populacjaKoncowa.clear();

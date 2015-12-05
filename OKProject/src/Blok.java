@@ -18,4 +18,13 @@ public class Blok {
 	 */
 	public int czasTrwania;
 	
+	Blok(){
+	}
+	
+	Blok(int c, int k, int t ){
+		this.czasStartu=c;
+		this.czasKonca=k;
+		this.czasStartu=t;
+	}
+	
 }

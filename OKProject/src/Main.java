@@ -26,7 +26,7 @@ public class Main extends Thread{
 	public static int tryb=1;
 	
 	
-//USTAWIENIA ALGORYTMU WCZYTYWANE Z ARGUMENTOW
+//USTAWIENIA ALGORYTMU
 	/**
 	 * Startowa populacja np 50
 	 */
@@ -50,7 +50,7 @@ public class Main extends Thread{
 	/**
 	 * Czas po którym zatrzymujemy program w sekundach
 	 */
-	public static double czas=60;
+	public static double czas=10;
 	
 	/**
 	 * Plik zapisaną instancją
@@ -62,37 +62,40 @@ public class Main extends Thread{
 	 */
 	public static boolean wygenerowacInstancje=true; 
 	
+	
 //USTAWIENIA GENERATORA INSTANCJI
 	/**
 	 * Ilość zadań do wygenerowania w instacji
 	 */
 	public static int iloscZadan=50;
 	/**
-	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan
+	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan <1
 	 */
-	public static double procentPrzerw=0.5;
+	public static double procentPrzerw=0.2;
 	/**
 	 * Minimalna długość zadania
 	 */
-	public static int minZ=5;
+	public static int minZ=10;
 	/**
 	 * Maksymalna dłyugosć zadania
 	 */
-	public static int maxZ=15;
+	public static int maxZ=50;
 	/**
 	 * Minimalna długosć przerwy
 	 */
-	public static int minP=5;
+	public static int minP=10;
 	/**
 	 * maksymalna długość przerwy
 	 */
-	public static int maxP=15;
+	public static int maxP=50;
 	/**
 	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
 	 */
 	public static int maxG=50;
+	
+	
 	/**
-	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i ich danych
+	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
 	 */
 	public static Instancja instancja;
 	
