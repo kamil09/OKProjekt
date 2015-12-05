@@ -17,6 +17,10 @@ public class Blok {
 	 * Czas trwania zadania
 	 */
 	public int czasTrwania;
+	/**
+	 * id
+	 */
+	public int id;
 	
 	Blok(){
 	}

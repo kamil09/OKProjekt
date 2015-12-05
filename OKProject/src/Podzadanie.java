@@ -29,12 +29,13 @@ public class Podzadanie extends Blok{
 	 */
 	public int czasGotowosci=0;
 	
-	public Podzadanie(int ma, int num){
+	public Podzadanie(int ma, int num, int id){
 		Random generator = new Random();
 		this.maszyna=ma;
 		this.numerOperacji = num;
 		this.czasTrwania=generator.nextInt(Main.maxZ-Main.minZ)+Main.minZ;
 		this.wykonane=false;
+		this.id=id;
 	}
 
 	public Podzadanie(Podzadanie op) {
@@ -43,6 +44,7 @@ public class Podzadanie extends Blok{
 		this.czasTrwania=op.czasTrwania;
 		this.czasGotowosci=op.czasGotowosci;
 		this.wykonane=false;
+		this.id=op.id;
 	}
 
 }

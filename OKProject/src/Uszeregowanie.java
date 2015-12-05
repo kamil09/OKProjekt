@@ -151,25 +151,59 @@ public class Uszeregowanie {
 		p.wykonane=true;
 	}
 	
+	
 	void wypiszUserzegowanie(){
+		int idle=0;
 		System.out.print("M1: ");
 		for(int i =0 ;i< this.maszyna_1.size()-1 ; i++ ){
-			System.out.print(this.maszyna_1.get(i).czasTrwania+" ; ");
-			if(this.maszyna_1.get(i+1).czasStartu!=this.maszyna_1.get(i).czasKonca)
-				System.out.print("bez"+(this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca)+" ; ");
+			if(maszyna_1.get(i) instanceof Przerwa)
+				wypiszPrzerwe((Przerwa)this.maszyna_1.get(i));
+			if(maszyna_1.get(i) instanceof Podzadanie)
+				wypiszOperacje( (Podzadanie)this.maszyna_1.get(i) );
+			
+			if(this.maszyna_1.get(i+1).czasStartu!=this.maszyna_1.get(i).czasKonca){
+				idle++;
+				System.out.print("idle"+idle+"_"+"M1,"+this.maszyna_1.get(i).czasKonca+","+(this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca)+";\t");
+			}
 			
 		}
 		System.out.print(this.maszyna_1.get(this.maszyna_1.size()-1).czasTrwania);
+		if(this.maszyna_1.get(this.maszyna_1.size()-1) instanceof Podzadanie)
+			wypiszOperacje((Podzadanie)this.maszyna_1.get(this.maszyna_1.size()-1));
 		System.out.println(" ");
+		
+		
+		
+		
+		idle=0;
 		System.out.print("M2: ");
 		for(int i =0 ;i< this.maszyna_2.size()-1 ; i++ ){
-			System.out.print(this.maszyna_2.get(i).czasTrwania+" ; ");
-			if(this.maszyna_2.get(i+1).czasStartu!=this.maszyna_2.get(i).czasKonca)
-				System.out.print("bez"+(this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca)+" ; ");
-
+			if(maszyna_2.get(i) instanceof Przerwa)
+				wypiszPrzerwe((Przerwa)this.maszyna_2.get(i));
+			if(maszyna_2.get(i) instanceof Podzadanie)
+				wypiszOperacje((Podzadanie)this.maszyna_2.get(i));
+			if(this.maszyna_2.get(i+1).czasStartu!=this.maszyna_2.get(i).czasKonca){
+				idle++;
+				System.out.print("idle"+idle+"_"+"M2,"+this.maszyna_2.get(i).czasKonca+","+(this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca)+";\t");
+			}
 		}
-		System.out.print(this.maszyna_2.get(this.maszyna_2.size()-1).czasTrwania);
+		if(this.maszyna_2.get(this.maszyna_2.size()-1) instanceof Podzadanie)
+			wypiszOperacje((Podzadanie)this.maszyna_2.get(this.maszyna_2.size()-1));
+		
 		System.out.println(" ");
+	}
+	
+	void wypiszPrzerwe(Przerwa p){
+		System.out.print("maint" 
+				+p.id+"_M1,"
+				+p.czasStartu+","
+				+p.czasTrwania+";\t");
+	}
+	void wypiszOperacje(Podzadanie p){
+		System.out.print("o"+p.numerOperacji+"_" 
+				+p.id+","
+				+p.czasStartu+","
+				+p.czasTrwania+";\t");
 	}
 	
 }

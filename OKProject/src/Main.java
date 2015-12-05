@@ -152,11 +152,11 @@ public class Main extends Thread{
 					i++;
 					break;
 				case "-IM" :
-					iloscMutacji=Integer.parseInt(args[i+1]);
+					iloscMutacji=Double.parseDouble(args[i+1]);
 					i++;
 					break;
 				case "-IK" :
-					iloscKrzyzowania=Integer.parseInt(args[i+1]);
+					iloscKrzyzowania=Double.parseDouble(args[i+1]);
 					i++;
 					break;
 				case "-T" :
@@ -173,7 +173,7 @@ public class Main extends Thread{
 					i++;
 					break;
 				case "-PP" :
-					procentPrzerw=Integer.parseInt(args[i+1]);
+					procentPrzerw=Double.parseDouble(args[i+1]);
 					i++;
 					break;
 				case "-minZ" :

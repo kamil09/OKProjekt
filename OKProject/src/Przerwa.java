@@ -2,11 +2,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Przerwa extends Blok implements Comparable<Przerwa>{
-
-	/**
-	 * ID
-	 */
-	public final int id;
 	
 	public static int idGen=-1;
 	
