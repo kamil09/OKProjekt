@@ -1,3 +1,5 @@
+import javafx.scene.shape.Line;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,8 +14,7 @@ public class Uszeregowanie {
 	
 	public List<Blok> maszyna_1 = new ArrayList<Blok>();
 	public List<Blok> maszyna_2 = new ArrayList<Blok>();
-	
-	
+
 	/**
 	 * Kostruktor tworzy pierwsze losowe rozwiązanie
 	 * @param inst
@@ -67,10 +68,11 @@ public class Uszeregowanie {
 		//System.out.println(iloscoperacji);
 		this.wypiszUserzegowanie();
 		this.wypiszBledneUszeregowanieOperacji(inst);
-		System.out.println("BLAD!!!!!!!!!!!!!");
+//		System.out.println("BLAD!!!!!!!!!!!!!");
 		this.wypiszBledneUszeregowanieZadan(maszyna_1);
 		this.wypiszBledneUszeregowanieZadan(maszyna_2);
-		System.out.println("KONIEC BLEDU!!!!!!!!");
+		System.out.println("Maksymalny czas trwania uszeregowania: " + ewaluacjaMaszyn());
+//		System.out.println("KONIEC BLEDU!!!!!!!!");
 	}
 	
 	void umiescNaLiscie(List<Blok> maszyna, Podzadanie p){
@@ -243,5 +245,20 @@ public class Uszeregowanie {
 				System.out.println("");
 			}
 		}
+	}
+
+	int czasTrwaniaUszeregowania(List<Blok> maszyna){
+		int sumaCzasowKoncowych=0;
+		for (int i = 0; i < maszyna.size(); i++) {
+			if(maszyna.get(i) instanceof Podzadanie){
+				sumaCzasowKoncowych+=maszyna.get(i).czasKonca;
+			}
+		}
+		return sumaCzasowKoncowych;
+	}
+	int ewaluacjaMaszyn(){
+		int czasMaszyny1 = czasTrwaniaUszeregowania(maszyna_1);
+		int czasMaszyny2 = czasTrwaniaUszeregowania(maszyna_2);
+		return Math.max(czasMaszyny1,czasMaszyny2);
 	}
 }
