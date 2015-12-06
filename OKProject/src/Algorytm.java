@@ -31,20 +31,39 @@ public class Algorytm extends Thread{
 			Instancja instCp = new Instancja( Main.instancja );
 			this.populacjaStartowa.add(new Uszeregowanie(instCp) );
 		}
+		for(Uszeregowanie u : this.populacjaStartowa) u.ewaluacjaMaszyn();
+		wybierzNajlepsze().wypiszUserzegowanie();
 		
 		while(true){
 			final long endTime = System.currentTimeMillis();
 			//WARUNEK PRZERWANIA
 			if( (endTime-startTime)/1000>Main.czas ) break;
+			this.populacjaKoncowa.addAll(this.populacjaStartowa);
+			
+			//*****************TEST TURNIEJ*******************************
+				for(int i=0 ; i< Main.populacjaEwolucji- this.populacjaStartowa.size(); i++)
+					this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
+			//********************WYWALIĆ PÓXNIEJ**************************
 			
 			//Rozszerz do odpowiedniego rozmiaru:
-			//MUTUJ
-			//KRZYŻUJ
-			//MUTUJ I KRZYZUJ
+			for(int i=0; i< Main.iloscZadan*Main.iloscMutacji; i++){
+				//MUTACJE
+			}
+			for(int i=0; i< Main.iloscZadan*Main.iloscKrzyzowania; i++){
+				//KRZYŻOWANIE
+			}
+			for(int i=0; i< Main.populacjaEwolucji-this.populacjaKoncowa.size() ; i++){
+				//MUTACJA I KRZYZOWANIE
+			}
+			//WYZNACZENIE WARTOŚCI OPTYMALIZOWANEJ
+			for(Uszeregowanie u : this.populacjaKoncowa) u.ewaluacjaMaszyn();
+			//ROZPOCZECIE TURNIEJU
 			this.turniej();
+			
 		}
 		
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
+		wybierzNajlepsze().wypiszUserzegowanie();
 	}
 	
 	/**
@@ -74,6 +93,23 @@ public class Algorytm extends Thread{
 		}
 		this.populacjaKoncowa.clear();
 	}
+	
+	/**
+	 * Algorytm wybierania najoptymalniejszego rozwiązania z polulacji Startowej (po TURNIEJU)
+	 */
+	Uszeregowanie wybierzNajlepsze(){
+		int index=0;
+		int maxVal=0;
+		maxVal=this.populacjaStartowa.get(0).sumaCzasow;
+		for(int i=1; i< this.populacjaStartowa.size() ;i++){
+			if(this.populacjaStartowa.get(i).sumaCzasow<maxVal ){
+				index=i;
+				maxVal=this.populacjaStartowa.get(i).sumaCzasow;
+			}
+		}
+		return this.populacjaStartowa.get(index);
+	}
+	
 	
 	
 
