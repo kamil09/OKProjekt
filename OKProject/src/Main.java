@@ -50,7 +50,7 @@ public class Main extends Thread{
 	/**
 	 * Czas po którym zatrzymujemy program w sekundach
 	 */
-	public static double czas=5;
+	public static double czas=10;
 	
 	/**
 	 * Plik zapisaną instancją
@@ -75,7 +75,7 @@ public class Main extends Thread{
 	/**
 	 * Minimalna długość zadania
 	 */
-	public static int minZ=10;
+	public static int minZ=1;
 	/**
 	 * Maksymalna dłyugosć zadania
 	 */
@@ -83,7 +83,7 @@ public class Main extends Thread{
 	/**
 	 * Minimalna długosć przerwy
 	 */
-	public static int minP=10;
+	public static int minP=1;
 	/**
 	 * maksymalna długość przerwy
 	 */
@@ -91,7 +91,7 @@ public class Main extends Thread{
 	/**
 	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
 	 */
-	public static int maxG=50;
+	public static int maxG=500;
 	
 	
 	/**
@@ -102,6 +102,9 @@ public class Main extends Thread{
 	 * Najlepsze rozwiązanie z wylosowanych wieprwszych uszeregowań (przed całym algorytmem)
 	 */
 	public static int pierwszeRozwiazanie=-1;
+
+
+	public static String numerWczytanejInstancji="1";
 	
 	/**
 	 * MAIN
@@ -169,6 +172,10 @@ public class Main extends Thread{
 				case "-SF" :
 					serialFileName=args[i+1];
 					wygenerowacInstancje=false;
+					i++;
+					break;
+				case "-NI" :
+					numerWczytanejInstancji=args[i+1];
 					i++;
 					break;
 				case "-IZ" :

@@ -66,6 +66,16 @@ public class Algorytm extends Thread{
 		
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
 		wybierzNajlepsze().wypiszUserzegowanie();
+		
+		/**
+		 * TEST KOPIOWANIA USZEREGOWANIA WYPADŁ OK
+		 */
+//		Uszeregowanie testU = new Uszeregowanie(wybierzNajlepsze());
+//		testU.ewaluacjaMaszyn();
+//		testU.wypiszBledneUszeregowanieOperacji(testU.instancjaUszeregowania);
+//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_1);
+//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_2);
+//		testU.wypiszUserzegowanie();
 	}
 	
 	/**

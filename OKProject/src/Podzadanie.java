@@ -40,10 +40,12 @@ public class Podzadanie extends Blok{
 
 	public Podzadanie(Podzadanie op) {
 		this.maszyna=op.maszyna;
+		this.czasStartu=op.czasStartu;
 		this.numerOperacji=op.numerOperacji;
 		this.czasTrwania=op.czasTrwania;
 		this.czasGotowosci=op.czasGotowosci;
-		this.wykonane=false;
+		this.wykonane=op.wykonane;
+		this.czasKonca=op.czasKonca;
 		this.id=op.id;
 	}
 

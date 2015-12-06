@@ -3,7 +3,7 @@
  * @author no-one
  *
  */
-public class Blok {
+public class Blok implements Comparable<Blok>{
 
 	/**
 	 * Czas startu zadania
@@ -29,6 +29,11 @@ public class Blok {
 		this.czasStartu=c;
 		this.czasKonca=k;
 		this.czasStartu=t;
+	}
+
+	@Override
+	public int compareTo(Blok o) {
+		return this.czasStartu-o.czasStartu;
 	}
 	
 }

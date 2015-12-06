@@ -41,7 +41,6 @@ public class Instancja implements Serializable{
 	public Instancja(Instancja inst){
 		for(Przerwa p : inst.listaPrzerw) this.listaPrzerw.add( new Przerwa(p) );
 		for(Zadanie z : inst.listaZadan) this.listaZadan.add( new Zadanie(z) );	
-		
 	}
 	
 	

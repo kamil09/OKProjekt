@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Random;
 
-public class Przerwa extends Blok implements Comparable<Przerwa>{
+public class Przerwa extends Blok{
 	
 	public static int idGen=-1;
 	
@@ -32,10 +32,5 @@ public class Przerwa extends Blok implements Comparable<Przerwa>{
 		this.czasStartu=p.czasStartu;
 		this.czasKonca=p.czasKonca;
 		this.czasTrwania=p.czasTrwania;
-	}
-
-	@Override
-	public int compareTo(Przerwa o) {
-		return this.czasStartu-o.czasStartu;
 	}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,6 +13,7 @@ public class Uszeregowanie {
 	
 	public List<Blok> maszyna_1 = new ArrayList<Blok>();
 	public List<Blok> maszyna_2 = new ArrayList<Blok>();
+	public Instancja instancjaUszeregowania;
 
 	/**
 	 * Kostruktor tworzy pierwsze losowe rozwiązanie
@@ -19,12 +21,32 @@ public class Uszeregowanie {
 	 */
 	public Uszeregowanie(Instancja inst){
 		this.zbudujUszeregowanie( inst );
+		this.instancjaUszeregowania=inst;
 	}
 	
 	/**
-	 * Domyślny konstruktor
+	 * Konstruktor kopiujący uszeregowanie
 	 */
-	public Uszeregowanie(){}
+	public Uszeregowanie(Uszeregowanie u){
+		//Kopia instancji
+		this.instancjaUszeregowania = new Instancja( u.instancjaUszeregowania );
+		this.maszyna_1.add(new Blok(0,0,0));
+		this.maszyna_2.add(new Blok(0,0,0));
+		for(Przerwa p : this.instancjaUszeregowania.listaPrzerw ) this.maszyna_1.add(p);
+		for(Zadanie z : this.instancjaUszeregowania.listaZadan ){
+			if(z.op1.maszyna == 0){
+				this.maszyna_1.add(z.op1);
+				this.maszyna_2.add(z.op2);
+			}
+			else{
+				this.maszyna_1.add(z.op2);
+				this.maszyna_2.add(z.op1);
+			}
+		}
+		Collections.sort(this.maszyna_1);
+		Collections.sort(this.maszyna_2);
+		
+	}
 	
 	
 	void zbudujUszeregowanie(Instancja inst){
@@ -41,7 +63,6 @@ public class Uszeregowanie {
 			if(z.op1.maszyna == 0) maszyna_1_TEMP.add(z.op1);
 			if(z.op1.maszyna == 1) maszyna_2_TEMP.add(z.op1);
 		}
-		
 		while( (!maszyna_1_TEMP.isEmpty()) || (!maszyna_2_TEMP.isEmpty()) ){
 			if(!maszyna_1_TEMP.isEmpty()){
 				int wylosowany = gen.nextInt(maszyna_1_TEMP.size());
@@ -60,7 +81,8 @@ public class Uszeregowanie {
 					maszyna_1_TEMP.add(p.brat);
 				}
 				maszyna_2_TEMP.remove(p);
-			}
+				}
+			
 		}
 		//for(Blok b : maszyna_1) System.out.println(b.czasStartu);
 		//System.out.println(iloscoperacji);
@@ -155,6 +177,7 @@ public class Uszeregowanie {
 		/**************************************************************
 		 * DOPISAĆ WYPISYWANIE NAZWY I CZASU PIERWSZEGO 
 		 */
+		System.out.println("**** "+Main.numerWczytanejInstancji+" ****");
 		System.out.println(this.sumaCzasow+","+Main.pierwszeRozwiazanie+";");
 		
 		System.out.print("M1: ");
@@ -174,7 +197,7 @@ public class Uszeregowanie {
 			}
 			
 		}
-		System.out.print(this.maszyna_1.get(this.maszyna_1.size()-1).czasTrwania);
+		//System.out.print(this.maszyna_1.get(this.maszyna_1.size()-1).czasTrwania);
 		if(this.maszyna_1.get(this.maszyna_1.size()-1) instanceof Podzadanie)
 			wypiszOperacje((Podzadanie)this.maszyna_1.get(this.maszyna_1.size()-1));
 		System.out.println(" ");
