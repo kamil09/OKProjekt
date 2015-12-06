@@ -50,7 +50,7 @@ public class Main extends Thread{
 	/**
 	 * Czas po którym zatrzymujemy program w sekundach
 	 */
-	public static double czas=10;
+	public static double czas=5;
 	
 	/**
 	 * Plik zapisaną instancją
@@ -98,7 +98,10 @@ public class Main extends Thread{
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
 	 */
 	public static Instancja instancja;
-	
+	/**
+	 * Najlepsze rozwiązanie z wylosowanych wieprwszych uszeregowań (przed całym algorytmem)
+	 */
+	public static int pierwszeRozwiazanie=-1;
 	
 	/**
 	 * MAIN

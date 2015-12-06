@@ -155,7 +155,7 @@ public class Uszeregowanie {
 		/**************************************************************
 		 * DOPISAĆ WYPISYWANIE NAZWY I CZASU PIERWSZEGO 
 		 */
-		System.out.println(this.sumaCzasow+","+";");
+		System.out.println(this.sumaCzasow+","+Main.pierwszeRozwiazanie+";");
 		
 		System.out.print("M1: ");
 		for(int i =0 ;i< this.maszyna_1.size()-1 ; i++ ){

@@ -32,28 +32,30 @@ public class Algorytm extends Thread{
 			this.populacjaStartowa.add(new Uszeregowanie(instCp) );
 		}
 		for(Uszeregowanie u : this.populacjaStartowa) u.ewaluacjaMaszyn();
-		wybierzNajlepsze().wypiszUserzegowanie();
+		Main.pierwszeRozwiazanie=wybierzNajlepsze().sumaCzasow;
+		//wybierzNajlepsze().wypiszUserzegowanie();
 		
 		while(true){
 			final long endTime = System.currentTimeMillis();
 			//WARUNEK PRZERWANIA
 			if( (endTime-startTime)/1000>Main.czas ) break;
 			this.populacjaKoncowa.addAll(this.populacjaStartowa);
-			
-			//*****************TEST TURNIEJ*******************************
-				for(int i=0 ; i< Main.populacjaEwolucji- this.populacjaStartowa.size(); i++)
-					this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
-			//********************WYWALIĆ PÓXNIEJ**************************
-			
 			//Rozszerz do odpowiedniego rozmiaru:
-			for(int i=0; i< Main.iloscZadan*Main.iloscMutacji; i++){
+			for(int i=0; i< (Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscMutacji; i++){
 				//MUTACJE
+				//TEST********************************
+				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
 			}
-			for(int i=0; i< Main.iloscZadan*Main.iloscKrzyzowania; i++){
+			for(int i=0; i<(Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscKrzyzowania; i++){
 				//KRZYŻOWANIE
+				//TEST********************************
+				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
 			}
-			for(int i=0; i< Main.populacjaEwolucji-this.populacjaKoncowa.size() ; i++){
+			int size=Main.populacjaEwolucji-this.populacjaKoncowa.size();
+			for(int i=0; i < size ; i++){
 				//MUTACJA I KRZYZOWANIE
+				//TEST********************************
+				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
 			}
 			//WYZNACZENIE WARTOŚCI OPTYMALIZOWANEJ
 			for(Uszeregowanie u : this.populacjaKoncowa) u.ewaluacjaMaszyn();
@@ -72,13 +74,13 @@ public class Algorytm extends Thread{
 	public void turniej(){
 		this.populacjaStartowa.clear();
 		if(!this.populacjaKoncowa.isEmpty()){
-			int size = (int) Math.ceil(Main.populacjaEwolucji/Main.populacjaStartowa);
-			for(int first=0; first< Main.populacjaEwolucji; first+=size ){
+			int size = (int) Math.ceil(this.populacjaKoncowa.size()/Main.populacjaStartowa);
+			for(int first=0; first< this.populacjaKoncowa.size(); first+=size ){
 				int last=first+size-1;
 				int najlepszy=-1;
 				int najlepszyVal=-1;
 				
-				if(last>=Main.populacjaEwolucji) last=Main.populacjaEwolucji-1;
+				if(last>=this.populacjaKoncowa.size()) last=this.populacjaKoncowa.size()-1;
 				najlepszy=first;
 				najlepszyVal=this.populacjaKoncowa.get(first).sumaCzasow;
 				
