@@ -71,7 +71,7 @@ public class Main extends Thread{
 	/**
 	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan <1
 	 */
-	public static double procentPrzerw=0.5;
+	public static double procentPrzerw=0.2;
 	/**
 	 * Minimalna długość zadania
 	 */
@@ -92,7 +92,11 @@ public class Main extends Thread{
 	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
 	 */
 	public static int maxG=500;
-	
+	/**
+	 * Początkowa siła mutacji
+	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
+	 */
+	public static double silaMutacji=0.3;
 	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
@@ -102,8 +106,7 @@ public class Main extends Thread{
 	 * Najlepsze rozwiązanie z wylosowanych wieprwszych uszeregowań (przed całym algorytmem)
 	 */
 	public static int pierwszeRozwiazanie=-1;
-
-
+	
 	public static String numerWczytanejInstancji="1";
 	
 	/**

@@ -167,6 +167,21 @@ public class Uszeregowanie {
 		p.wykonane=true;
 	}
 	
+	/**
+	 * Dokonuje pełnej mutacji czyli kilku pojedyńczych mutacji
+	 */
+	public void pelnaMutacja() {
+		for(int i=0; i<Math.ceil(Main.silaMutacji*Main.iloscZadan) ; i++ ){
+			this.mutuj();
+		}
+	}
+	/**
+	 * Dokonuje pojedyńczej mutacji na rozwiązaniu
+	 */
+	void mutuj(){
+		
+	}
+	
 	
 	void wypiszUserzegowanie(){
 		int idle_1=0; int idle_1_SUM=0;

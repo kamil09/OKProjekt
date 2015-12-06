@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Algorytm extends Thread{
 	
@@ -25,6 +26,7 @@ public class Algorytm extends Thread{
 	 */
 	public void run(){
 		final long startTime = System.currentTimeMillis();
+		Random gen = new Random();
 		
 		//Wygeneruj populacje startową
 		for(int i=0;i<Main.populacjaStartowa;i++) {
@@ -34,17 +36,23 @@ public class Algorytm extends Thread{
 		for(Uszeregowanie u : this.populacjaStartowa) u.ewaluacjaMaszyn();
 		Main.pierwszeRozwiazanie=wybierzNajlepsze().sumaCzasow;
 		//wybierzNajlepsze().wypiszUserzegowanie();
-		
+		int czasZminyMutacji=1;
 		while(true){
 			final long endTime = System.currentTimeMillis();
 			//WARUNEK PRZERWANIA
 			if( (endTime-startTime)/1000>Main.czas ) break;
+			if( (endTime-startTime)/1000> czasZminyMutacji ){
+				czasZminyMutacji++;
+				Main.silaMutacji/=1.5;
+			}
+			
 			this.populacjaKoncowa.addAll(this.populacjaStartowa);
 			//Rozszerz do odpowiedniego rozmiaru:
 			for(int i=0; i< (Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscMutacji; i++){
 				//MUTACJE
-				//TEST********************************
-				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
+				Uszeregowanie noU = new Uszeregowanie(this.populacjaStartowa.get( gen.nextInt(this.populacjaStartowa.size()) ) );
+				noU.pelnaMutacja();
+				this.populacjaKoncowa.add(noU);
 			}
 			for(int i=0; i<(Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscKrzyzowania; i++){
 				//KRZYŻOWANIE
