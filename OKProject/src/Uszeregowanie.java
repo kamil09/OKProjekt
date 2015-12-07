@@ -178,7 +178,7 @@ public class Uszeregowanie {
 	}
 	/**
 	 * Dokonuje pojedyńczej mutacji na rozwiązaniu
-	 * PRZESUWAMY OPERACJĘ O -5 w LEWO, A PÓŹNIEJ NA TEJ PODSTAWIE ODBUDOWUJEMY DRUGĄ MASZYNE
+	 * PRZESUWAMY OPERACJĘ O X w LEWO, A PÓŹNIEJ NA TEJ PODSTAWIE ODBUDOWUJEMY DRUGĄ MASZYNE
 	 */
 	void mutuj(List<Blok> maszyna){
 		int PRZESUNIECIE=(int) (-1*(Math.ceil(Main.silaMutacji*Main.iloscZadan/2)+1));
@@ -246,14 +246,14 @@ public class Uszeregowanie {
 		
 		//ODBUDOWA DRUGICH OPERACJI
 		this.zamienDrugieOperacje();
+		this.uzupelnijPrzerwy(this.maszyna_1);
+		this.uzupelnijPrzerwy(this.maszyna_2);
 	
 		//System.out.println("END");
 		
 		//System.out.println("Start");
 		//System.out.println(":out");
 		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
-		this.uzupelnijPrzerwy(this.maszyna_1);
-		this.uzupelnijPrzerwy(this.maszyna_2);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
 		this.wypiszBledneUszeregowanieZadan(maszyna_2);
 		//System.out.println("END");
@@ -266,19 +266,28 @@ public class Uszeregowanie {
 		Instancja i = this.instancjaUszeregowania;
 		for(Zadanie z : i.listaZadan){
 			if(z.op1.czasKonca>z.op2.czasStartu){
+				int diff=z.op1.czasKonca-z.op2.czasStartu;
 				if(z.op2.maszyna==0){
 					int index=this.maszyna_1.indexOf(z.op2);
-					maszyna_1.remove(index);
-					maszyna_1.add(z.op2);
-					index=this.maszyna_1.indexOf(z.op2);
-					z.op2.czasStartu=maszyna_1.get(index-1).czasKonca;
+					if( ( (index<this.maszyna_1.size()-1 ) && (z.op2.czasKonca+diff)<=this.maszyna_1.get(index+1).czasStartu) )
+						z.op2.czasStartu+=diff;
+					else{
+						maszyna_1.remove(index);
+						maszyna_1.add(z.op2);
+						index=this.maszyna_1.indexOf(z.op2);
+						z.op2.czasStartu=maszyna_1.get(index-1).czasKonca;
+					}
 				}
 				if(z.op2.maszyna==1){
 					int index=this.maszyna_2.indexOf(z.op2);
-					maszyna_2.remove(index);
-					maszyna_2.add(z.op2);
-					index=this.maszyna_2.indexOf(z.op2);
-					z.op2.czasStartu=maszyna_2.get(index-1).czasKonca;
+					if( ( (index<this.maszyna_2.size()-1 ) && (z.op2.czasKonca+diff)<=this.maszyna_2.get(index+1).czasStartu) )
+						z.op2.czasStartu+=diff;
+					else{
+						maszyna_2.remove(index);
+						maszyna_2.add(z.op2);
+						index=this.maszyna_2.indexOf(z.op2);
+						z.op2.czasStartu=maszyna_2.get(index-1).czasKonca;
+					}
 				}
 				if(z.op1.czasKonca > z.op2.czasStartu) z.op2.czasStartu=z.op1.czasKonca;
 				z.op2.czasKonca=z.op2.czasStartu+z.op2.czasTrwania;
@@ -292,7 +301,7 @@ public class Uszeregowanie {
 	 */
 	void krzyzowanie(Uszeregowanie u ){
 		
-		
+		//TUTAJ DOKONUJEMY ZMIAN NA USZEREGOWANIU THIS. u pozostaje bez zmian
 		
 		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);

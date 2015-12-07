@@ -35,7 +35,7 @@ public class Algorytm extends Thread{
 		}
 		for(Uszeregowanie u : this.populacjaStartowa) u.ewaluacjaMaszyn();
 		Main.pierwszeRozwiazanie=wybierzNajlepsze().sumaCzasow;
-		//wybierzNajlepsze().wypiszUserzegowanie();
+		wybierzNajlepsze().wypiszUserzegowanie();
 		int czasZminyMutacji=1;
 		while(true){
 			final long endTime = System.currentTimeMillis();

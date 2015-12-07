@@ -50,7 +50,7 @@ public class Main extends Thread{
 	/**
 	 * Czas po którym zatrzymujemy program w sekundach
 	 */
-	public static double czas=10;
+	public static double czas=15;
 	
 	/**
 	 * Plik zapisaną instancją
@@ -96,7 +96,7 @@ public class Main extends Thread{
 	 * Początkowa siła mutacji
 	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
 	 */
-	public static double silaMutacji=0.3;
+	public static double silaMutacji=0.5;
 	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
