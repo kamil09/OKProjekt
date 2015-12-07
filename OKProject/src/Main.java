@@ -126,6 +126,7 @@ public class Main extends Thread{
 				we.close();
 			}
 			Algorytm algorytm=new Algorytm();
+			System.out.println("START");
 			algorytm.start();
 		}
 		else{

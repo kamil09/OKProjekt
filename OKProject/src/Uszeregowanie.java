@@ -172,14 +172,134 @@ public class Uszeregowanie {
 	 */
 	public void pelnaMutacja() {
 		for(int i=0; i<Math.ceil(Main.silaMutacji*Main.iloscZadan) ; i++ ){
-			this.mutuj();
+			this.mutuj(this.maszyna_1);
+			this.mutuj(this.maszyna_2);
 		}
 	}
 	/**
 	 * Dokonuje pojedyńczej mutacji na rozwiązaniu
+	 * PRZESUWAMY OPERACJĘ O -5 w LEWO, A PÓŹNIEJ NA TEJ PODSTAWIE ODBUDOWUJEMY DRUGĄ MASZYNE
 	 */
-	void mutuj(){
+	void mutuj(List<Blok> maszyna){
+		int PRZESUNIECIE=-5;
+		Random gen = new Random();
+		int wylosowany_1=-1;
+		//MUTACJA PIERWSZEJ MASZYNY
+		while(true){
+			wylosowany_1 = gen.nextInt(maszyna.size());
+			if(maszyna.get(wylosowany_1) instanceof Podzadanie ) break;
+		}
+		Podzadanie p_1 = (Podzadanie) maszyna.get(wylosowany_1);
+		//PRZESUNIECIE ZADANIA
+		maszyna.remove(p_1);
+		wylosowany_1+=PRZESUNIECIE;
+		if(wylosowany_1 > maszyna.size()-1 ) wylosowany_1=wylosowany_1-PRZESUNIECIE;
+		if(wylosowany_1 < 1 ) wylosowany_1=1;
+		maszyna.add(wylosowany_1, p_1);
+		p_1.czasStartu = maszyna.get(wylosowany_1-1).czasKonca;
+		p_1.czasKonca = p_1.czasStartu+p_1.czasTrwania;
+		//System.out.println(wylosowany_1);
+		for(int i=wylosowany_1 ; i < maszyna.size()-1 ; ++i ){		
+			if( maszyna.get(i) instanceof Przerwa) continue;
+			if( (maszyna.get(i).czasStartu >= maszyna.get(i-1).czasKonca) 
+			&&(!(maszyna.get(i+1) instanceof Przerwa ) )) continue;
+			Blok thisZ=maszyna.get(i);
+			Blok prevZ=maszyna.get(i-1);
+			if( maszyna.get(i+1) instanceof Przerwa ){
+				Blok przerwa = maszyna.get(i+1);
+				int diff = prevZ.czasKonca-thisZ.czasStartu;
+				thisZ.czasStartu+=diff;
+				thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+				
+				if(thisZ.czasKonca>przerwa.czasStartu){
+					//maszyna_1.remove(i);
+					//maszyna_1.add(i+1, thisZ);
+					thisZ.czasStartu=przerwa.czasKonca;
+					thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+					//System.out.println("SWAP"+przerwa.czasKonca);
+					Collections.swap(maszyna, i, i+1);
+					i-=2; if(i==-1) i=0;
+				}
+			}
+			else{
+				int diff = prevZ.czasKonca-thisZ.czasStartu;
+				thisZ.czasStartu+=diff;
+				thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+			}
+		}
+		int lastIndex = maszyna.size()-1;
+		int diff = maszyna.get(lastIndex-1).czasKonca-maszyna.get(lastIndex).czasStartu;
+		if(diff>0){
+			maszyna.get(lastIndex).czasStartu+=diff;
+			maszyna.get(lastIndex).czasKonca=maszyna.get(lastIndex).czasStartu+maszyna.get(lastIndex).czasTrwania;
+		}
+		//ODBUDOWA DRUGICH OPERACJI
+		Instancja i = this.instancjaUszeregowania;
+		for(Zadanie z : i.listaZadan){
+			if(z.op1.czasKonca>z.op2.czasStartu){
+				if(z.op2.maszyna==0){
+					int index=this.maszyna_1.indexOf(z.op2);
+					maszyna_1.remove(index);
+					maszyna_1.add(z.op2);
+					index=this.maszyna_1.indexOf(z.op2);
+					z.op2.czasStartu=maszyna_1.get(index-1).czasKonca;
+				}
+				if(z.op2.maszyna==1){
+					int index=this.maszyna_2.indexOf(z.op2);
+					maszyna_2.remove(index);
+					maszyna_2.add(z.op2);
+					index=this.maszyna_2.indexOf(z.op2);
+					z.op2.czasStartu=maszyna_2.get(index-1).czasKonca;
+				}
+				if(z.op1.czasKonca > z.op2.czasStartu) z.op2.czasStartu=z.op1.czasKonca;
+				z.op2.czasKonca=z.op2.czasStartu+z.op2.czasTrwania;
+			}
+		}
 		
+		//System.out.println("END");
+		
+		//System.out.println("Start");
+		//System.out.println(":out");
+		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+		this.uzupelnijPrzerwy(this.maszyna_1);
+		this.uzupelnijPrzerwy(this.maszyna_2);
+		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
+		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		//System.out.println("END");
+	}
+	
+	/**
+	 * Metoda ta przegląda maszynę i sprawdza czy któreś zadanie nie może być zrobione chwile wcześniej (występuje przerwa w której maszyna nic nie robi)
+	 * @param maszyna
+	 */
+	void uzupelnijPrzerwy(List<Blok> maszyna){
+		for(int i =1 ; i<maszyna.size() ; i++){
+			if(maszyna.get(i) instanceof Podzadanie ){
+				Podzadanie thisZ = (Podzadanie) maszyna.get(i);
+				Blok prevZ = maszyna.get(i-1);
+				int diff=thisZ.czasStartu-prevZ.czasKonca;
+				if(diff>0){
+					//JEŻELI PIERWSZA OPERACJA
+					if( thisZ.numerOperacji==1) {
+						if (thisZ.czasGotowosci<=thisZ.czasStartu-diff) thisZ.czasStartu-=diff;
+						else{
+							diff=thisZ.czasStartu-thisZ.czasGotowosci;
+							if(diff>0) thisZ.czasStartu-=diff;
+						}
+						thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+					}
+					//JEŻELI DRUGA OPERACJA
+					else{
+						if( thisZ.brat.czasKonca<=thisZ.czasStartu-diff) thisZ.czasStartu-=diff;
+						else{
+							diff=thisZ.czasStartu-thisZ.brat.czasKonca;
+							if(diff>0) thisZ.czasStartu-=diff;
+						}
+						thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+					}
+				}
+			}
+		}
 	}
 	
 	

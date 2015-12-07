@@ -57,13 +57,13 @@ public class Algorytm extends Thread{
 			for(int i=0; i<(Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscKrzyzowania; i++){
 				//KRZYŻOWANIE
 				//TEST********************************
-				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
+				//this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
 			}
 			int size=Main.populacjaEwolucji-this.populacjaKoncowa.size();
 			for(int i=0; i < size ; i++){
 				//MUTACJA I KRZYZOWANIE
 				//TEST********************************
-				this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
+				//this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
 			}
 			//WYZNACZENIE WARTOŚCI OPTYMALIZOWANEJ
 			for(Uszeregowanie u : this.populacjaKoncowa) u.ewaluacjaMaszyn();
@@ -75,9 +75,11 @@ public class Algorytm extends Thread{
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
 		wybierzNajlepsze().wypiszUserzegowanie();
 		
+		
 		/**
 		 * TEST KOPIOWANIA USZEREGOWANIA WYPADŁ OK
 		 */
+//		wybierzNajlepsze().pelnaMutacja();
 //		Uszeregowanie testU = new Uszeregowanie(wybierzNajlepsze());
 //		testU.ewaluacjaMaszyn();
 //		testU.wypiszBledneUszeregowanieOperacji(testU.instancjaUszeregowania);
