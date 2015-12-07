@@ -202,8 +202,32 @@ public class Uszeregowanie {
 		if( (p_1.numerOperacji==2) && (p_1.brat.czasKonca>p_1.czasStartu ) ) p_1.czasStartu = p_1.brat.czasKonca;
 		p_1.czasKonca = p_1.czasStartu+p_1.czasTrwania;
 		
-		//System.out.println(wylosowany_1);
-		for(int i=wylosowany_1 ; i < maszyna.size()-1 ; ++i ){		
+		this.naprawZadania(maszyna, wylosowany_1);
+		
+		
+		//ODBUDOWA DRUGICH OPERACJI
+		this.uzupelnijPrzerwy(maszyna);
+		this.zamienDrugieOperacje();
+		this.uzupelnijPrzerwy(this.maszyna_1);
+		this.uzupelnijPrzerwy(this.maszyna_2);
+	
+		//System.out.println("END");
+		
+		//System.out.println("Start");
+		//System.out.println(":out");
+		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
+		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		//System.out.println("END");
+	}
+	
+	/**
+	 * Metoda która naprawia zachodzące na siebie zadania (przesuwa zadanie, jesli napotkamy przerwe to wykonujemy SWAP(przerwa , zadanie) ) 
+	 * @param maszyna
+	 * @param start
+	 */
+	public void naprawZadania(List<Blok> maszyna, int start){
+		for(int i=start ; i < maszyna.size()-1 ; ++i ){		
 			if( maszyna.get(i) instanceof Przerwa) continue;
 			if( (maszyna.get(i).czasStartu >= maszyna.get(i-1).czasKonca) 
 			&&(!(maszyna.get(i+1) instanceof Przerwa ) )) continue;
@@ -228,7 +252,6 @@ public class Uszeregowanie {
 					Collections.swap(maszyna, i, i+1);
 					i-=2; if(i==-1) i=0;
 				}
-				
 			}
 			else{
 				int diff = prevZ.czasKonca-thisZ.czasStartu;
@@ -243,21 +266,8 @@ public class Uszeregowanie {
 			maszyna.get(lastIndex).czasStartu+=diff;
 			maszyna.get(lastIndex).czasKonca=maszyna.get(lastIndex).czasStartu+maszyna.get(lastIndex).czasTrwania;
 		}
-		
-		//ODBUDOWA DRUGICH OPERACJI
-		this.zamienDrugieOperacje();
-		this.uzupelnijPrzerwy(this.maszyna_1);
-		this.uzupelnijPrzerwy(this.maszyna_2);
-	
-		//System.out.println("END");
-		
-		//System.out.println("Start");
-		//System.out.println(":out");
-		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
-		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
-		this.wypiszBledneUszeregowanieZadan(maszyna_2);
-		//System.out.println("END");
 	}
+	
 	/**
 	 * Bardzo ważna metoda uzywana przy mutacji
 	 * Naprawia operacje drugie, które znalazły się przed pierwszymi na drodze mutacji
@@ -300,12 +310,92 @@ public class Uszeregowanie {
 	 * @param u uszeregowanie z którym krzyzujemy
 	 */
 	void krzyzowanie(Uszeregowanie u ){
-		
 		//TUTAJ DOKONUJEMY ZMIAN NA USZEREGOWANIU THIS. u pozostaje bez zmian
+		int srodek_1 = 0;
+		int srodek_2 = 0;
+		List<Blok> temp_1 = new ArrayList<Blok>();
+		List<Blok> temp_2 = new ArrayList<Blok>();
+		int i=0;
+		//WYZNACZANIE SRODKÓW
+		for(i=0; i<this.maszyna_1.size() ; i++ ){
+			if(this.maszyna_1.get(i) instanceof Podzadanie ) srodek_1++;
+			if(srodek_1 > (Main.iloscZadan/2)-1 ) break;
+		}
+		srodek_1=i;
+		for(i=0; i<this.maszyna_2.size() ; i++ ){
+			if(this.maszyna_2.get(i) instanceof Podzadanie ) srodek_2++;
+			if(srodek_2 > (Main.iloscZadan/2)-1 ) break;
+		}
+		srodek_2=i;
+		//UCINANIE MASZYN
+		for(int k=srodek_1+1; k<this.maszyna_1.size() ; k++ ){
+			if(this.maszyna_1.get(k) instanceof Podzadanie ) {
+				temp_1.add(this.maszyna_1.get(k));
+				maszyna_1.remove(k);
+				--k;
+			}
+		}
+		for(int k=srodek_2+1; k<this.maszyna_2.size() ; k++ ){
+			if(this.maszyna_2.get(k) instanceof Podzadanie ) {
+				temp_2.add(this.maszyna_2.get(k));
+				maszyna_2.remove(k);
+				--k;
+			}
+		}
+		//DOPISYWANIE DO MASZYNY 1
+		while(!temp_1.isEmpty() ){
+			for(i=0;i<u.maszyna_1.size(); i++){
+				Blok b = u.maszyna_1.get(i);
+				if(b instanceof Podzadanie){
+					int index=blockOnList(temp_1, b);
+					if(index>-1){
+						Podzadanie wybrany = (Podzadanie) temp_1.get(index);
+						maszyna_1.add(++srodek_1, wybrany);
+						temp_1.remove(index);
+						index=srodek_1-1;
+						wybrany.czasStartu=this.maszyna_1.get(index-1).czasKonca;
+						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
+						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
+						wybrany.czasKonca=wybrany.czasStartu+wybrany.czasTrwania;
+					}
+				}
+			}
+		}
+		naprawZadania(this.maszyna_1, Main.iloscZadan/2);
+		//DOPISYWANIE DO MASZYNY 2
+		while(!temp_2.isEmpty() ){
+			for(i=0;i<u.maszyna_2.size(); i++){
+				Blok b = u.maszyna_2.get(i);
+				if(b instanceof Podzadanie){
+					int index=blockOnList(temp_2, b);
+					if(index>-1){
+						Podzadanie wybrany = (Podzadanie) temp_2.get(index);
+						maszyna_2.add(++srodek_2, wybrany);
+						temp_2.remove(index);
+						index=srodek_2-1;
+						wybrany.czasStartu=this.maszyna_2.get(index-1).czasKonca;
+						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
+						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
+						wybrany.czasKonca=wybrany.czasStartu+wybrany.czasTrwania;
+					}
+				}
+			}
+		}
+		naprawZadania(this.maszyna_2, Main.iloscZadan/2);
+		
+		zamienDrugieOperacje();
 		
 		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
-		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		this.wypiszBledneUszeregowanieZadan(this.maszyna_2);
+	}
+	
+	int blockOnList(List<Blok> l,Blok b ){
+		for(int i=0;i<l.size();i++){
+			if(l.get(i).id == b.id ) return i;
+		}		
+		return -1;
+		
 	}
 	
 	/**
@@ -348,10 +438,8 @@ public class Uszeregowanie {
 		int idle_2=0; int idle_2_SUM=0;
 		int maint_1=0; int maint_1_SUM=0;
 		int maint_2=0; int maint_2_SUM=0;
+		int liczbaZadan=0;
 		
-		/**************************************************************
-		 * DOPISAĆ WYPISYWANIE NAZWY I CZASU PIERWSZEGO 
-		 */
 		System.out.println("**** "+Main.numerWczytanejInstancji+" ****");
 		System.out.println(this.sumaCzasow+","+Main.pierwszeRozwiazanie+";");
 		
@@ -362,21 +450,23 @@ public class Uszeregowanie {
 				maint_1++;
 				maint_1_SUM+=this.maszyna_1.get(i).czasTrwania;
 			}
-			if(maszyna_1.get(i) instanceof Podzadanie)
+			if(maszyna_1.get(i) instanceof Podzadanie){
 				wypiszOperacje( (Podzadanie)this.maszyna_1.get(i) );
+				liczbaZadan++;
+			}
 			
 			if(this.maszyna_1.get(i+1).czasStartu!=this.maszyna_1.get(i).czasKonca){
 				idle_1++;
 				idle_1_SUM+=this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca;
 				System.out.print("idle"+idle_1+"_"+"M1,"+this.maszyna_1.get(i).czasKonca+","+(this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca)+";\t");
 			}
-			
+			if(liczbaZadan>=Main.iloscZadan) break;
 		}
 		//System.out.print(this.maszyna_1.get(this.maszyna_1.size()-1).czasTrwania);
 		if(this.maszyna_1.get(this.maszyna_1.size()-1) instanceof Podzadanie)
 			wypiszOperacje((Podzadanie)this.maszyna_1.get(this.maszyna_1.size()-1));
 		System.out.println(" ");
-		
+		liczbaZadan=0;
 		System.out.print("M2: ");
 		for(int i =0 ;i< this.maszyna_2.size()-1 ; i++ ){
 			if(maszyna_2.get(i) instanceof Przerwa){
@@ -390,7 +480,9 @@ public class Uszeregowanie {
 				idle_2++;
 				idle_2_SUM+=this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca;
 				System.out.print("idle"+idle_2+"_"+"M2,"+this.maszyna_2.get(i).czasKonca+","+(this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca)+";\t");
+				liczbaZadan++;
 			}
+			if(liczbaZadan>=Main.iloscZadan) break;
 		}
 		if(this.maszyna_2.get(this.maszyna_2.size()-1) instanceof Podzadanie)
 			wypiszOperacje((Podzadanie)this.maszyna_2.get(this.maszyna_2.size()-1));

@@ -78,6 +78,15 @@ public class Algorytm extends Thread{
 		wybierzNajlepsze().wypiszUserzegowanie();
 		
 		
+//		Uszeregowanie testU = new Uszeregowanie(wybierzNajlepsze());
+//		testU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
+//		testU.ewaluacjaMaszyn();
+//		testU.wypiszBledneUszeregowanieOperacji(testU.instancjaUszeregowania);
+//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_1);
+//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_2);
+//		testU.wypiszUserzegowanie();
+		
+		
 		/**
 		 * TEST KOPIOWANIA USZEREGOWANIA WYPADŁ OK
 		 */
