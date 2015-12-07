@@ -88,7 +88,7 @@ public class Uszeregowanie {
 		//System.out.println(iloscoperacji);
 		this.ewaluacjaMaszyn();
 		//this.wypiszUserzegowanie();
-		//this.wypiszBledneUszeregowanieOperacji(inst);
+		this.wypiszBledneUszeregowanieOperacji(inst);
 		//System.out.println("BLAD!!!!!!!!!!!!!");
 		//this.wypiszBledneUszeregowanieZadan(maszyna_1);
 		//this.wypiszBledneUszeregowanieZadan(maszyna_2);
@@ -181,7 +181,7 @@ public class Uszeregowanie {
 	 * PRZESUWAMY OPERACJĘ O -5 w LEWO, A PÓŹNIEJ NA TEJ PODSTAWIE ODBUDOWUJEMY DRUGĄ MASZYNE
 	 */
 	void mutuj(List<Blok> maszyna){
-		int PRZESUNIECIE=-5;
+		int PRZESUNIECIE=(int) (-1*(Math.ceil(Main.silaMutacji*Main.iloscZadan/2)+1));
 		Random gen = new Random();
 		int wylosowany_1=-1;
 		//MUTACJA PIERWSZEJ MASZYNY
@@ -196,33 +196,43 @@ public class Uszeregowanie {
 		if(wylosowany_1 > maszyna.size()-1 ) wylosowany_1=wylosowany_1-PRZESUNIECIE;
 		if(wylosowany_1 < 1 ) wylosowany_1=1;
 		maszyna.add(wylosowany_1, p_1);
+		
 		p_1.czasStartu = maszyna.get(wylosowany_1-1).czasKonca;
+		if(p_1.czasStartu<p_1.czasGotowosci) p_1.czasStartu=p_1.czasGotowosci;
+		if( (p_1.numerOperacji==2) && (p_1.brat.czasKonca>p_1.czasStartu ) ) p_1.czasStartu = p_1.brat.czasKonca;
 		p_1.czasKonca = p_1.czasStartu+p_1.czasTrwania;
+		
 		//System.out.println(wylosowany_1);
 		for(int i=wylosowany_1 ; i < maszyna.size()-1 ; ++i ){		
 			if( maszyna.get(i) instanceof Przerwa) continue;
 			if( (maszyna.get(i).czasStartu >= maszyna.get(i-1).czasKonca) 
 			&&(!(maszyna.get(i+1) instanceof Przerwa ) )) continue;
+			
 			Blok thisZ=maszyna.get(i);
 			Blok prevZ=maszyna.get(i-1);
 			if( maszyna.get(i+1) instanceof Przerwa ){
 				Blok przerwa = maszyna.get(i+1);
 				int diff = prevZ.czasKonca-thisZ.czasStartu;
 				thisZ.czasStartu+=diff;
+				if(thisZ.czasStartu < ((Podzadanie)thisZ).czasGotowosci ) thisZ.czasStartu=((Podzadanie)thisZ).czasGotowosci;
 				thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+				
 				
 				if(thisZ.czasKonca>przerwa.czasStartu){
 					//maszyna_1.remove(i);
 					//maszyna_1.add(i+1, thisZ);
 					thisZ.czasStartu=przerwa.czasKonca;
+					if(thisZ.czasStartu < ((Podzadanie)thisZ).czasGotowosci ) thisZ.czasStartu=((Podzadanie)thisZ).czasGotowosci;
 					thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
 					//System.out.println("SWAP"+przerwa.czasKonca);
 					Collections.swap(maszyna, i, i+1);
 					i-=2; if(i==-1) i=0;
 				}
+				
 			}
 			else{
 				int diff = prevZ.czasKonca-thisZ.czasStartu;
+				if(diff<0) continue;
 				thisZ.czasStartu+=diff;
 				thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
 			}
@@ -233,6 +243,7 @@ public class Uszeregowanie {
 			maszyna.get(lastIndex).czasStartu+=diff;
 			maszyna.get(lastIndex).czasKonca=maszyna.get(lastIndex).czasStartu+maszyna.get(lastIndex).czasTrwania;
 		}
+		
 		//ODBUDOWA DRUGICH OPERACJI
 		Instancja i = this.instancjaUszeregowania;
 		for(Zadanie z : i.listaZadan){
@@ -404,6 +415,10 @@ public class Uszeregowanie {
 				System.out.printf(" ");
 				wypiszOperacje(listaZadanDoSprawdzenia.get(i).op2);
 				System.out.println("");
+			}
+			if (listaZadanDoSprawdzenia.get(i).op1.czasStartu < listaZadanDoSprawdzenia.get(i).op1.czasGotowosci){
+				wypiszOperacje(listaZadanDoSprawdzenia.get(i).op1);
+				System.out.println(" ");
 			}
 		}
 	}
