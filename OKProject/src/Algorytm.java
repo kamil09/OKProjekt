@@ -56,14 +56,16 @@ public class Algorytm extends Thread{
 			}
 			for(int i=0; i<(Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscKrzyzowania; i++){
 				//KRZYŻOWANIE
-				//TEST********************************
-				//this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
-			}
+				Uszeregowanie noU = new Uszeregowanie(this.populacjaStartowa.get( gen.nextInt(this.populacjaStartowa.size()) ) );
+				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
+				this.populacjaKoncowa.add(noU);			}
 			int size=Main.populacjaEwolucji-this.populacjaKoncowa.size();
 			for(int i=0; i < size ; i++){
 				//MUTACJA I KRZYZOWANIE
-				//TEST********************************
-				//this.populacjaKoncowa.add(new Uszeregowanie (new Instancja( Main.instancja )) );
+				Uszeregowanie noU = new Uszeregowanie(this.populacjaStartowa.get( gen.nextInt(this.populacjaStartowa.size()) ) );
+				noU.pelnaMutacja();
+				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
+				this.populacjaKoncowa.add(noU);
 			}
 			//WYZNACZENIE WARTOŚCI OPTYMALIZOWANEJ
 			for(Uszeregowanie u : this.populacjaKoncowa) u.ewaluacjaMaszyn();

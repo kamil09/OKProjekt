@@ -245,6 +245,24 @@ public class Uszeregowanie {
 		}
 		
 		//ODBUDOWA DRUGICH OPERACJI
+		this.zamienDrugieOperacje();
+	
+		//System.out.println("END");
+		
+		//System.out.println("Start");
+		//System.out.println(":out");
+		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+		this.uzupelnijPrzerwy(this.maszyna_1);
+		this.uzupelnijPrzerwy(this.maszyna_2);
+		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
+		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		//System.out.println("END");
+	}
+	/**
+	 * Bardzo ważna metoda uzywana przy mutacji
+	 * Naprawia operacje drugie, które znalazły się przed pierwszymi na drodze mutacji
+	 */
+	public void zamienDrugieOperacje(){
 		Instancja i = this.instancjaUszeregowania;
 		for(Zadanie z : i.listaZadan){
 			if(z.op1.czasKonca>z.op2.czasStartu){
@@ -266,17 +284,19 @@ public class Uszeregowanie {
 				z.op2.czasKonca=z.op2.czasStartu+z.op2.czasTrwania;
 			}
 		}
+	}
+	
+	/**
+	 * Krzyzowanie zworzy JEDENO nowe uszeregowanie. Można by tworzyć 2, ale lepiej jest wywołać krzyżowanie 2 razy, poniewać złożonosć ta sama, a mniej kodu.
+	 * @param u uszeregowanie z którym krzyzujemy
+	 */
+	void krzyzowanie(Uszeregowanie u ){
 		
-		//System.out.println("END");
 		
-		//System.out.println("Start");
-		//System.out.println(":out");
+		
 		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
-		this.uzupelnijPrzerwy(this.maszyna_1);
-		this.uzupelnijPrzerwy(this.maszyna_2);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
 		this.wypiszBledneUszeregowanieZadan(maszyna_2);
-		//System.out.println("END");
 	}
 	
 	/**
