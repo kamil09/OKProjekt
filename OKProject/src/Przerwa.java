@@ -21,7 +21,8 @@ public class Przerwa extends Blok{
 			}
 			if(OK) break;
 			else{
-				this.czasStartu+=this.czasTrwania/2;
+//				this.czasStartu+=(this.czasTrwania/2)+1;
+				this.czasStartu+=this.czasTrwania+1;
 			}
 		}
 		this.czasKonca=this.czasStartu+this.czasTrwania;
