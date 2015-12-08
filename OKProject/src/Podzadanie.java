@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -5,8 +6,12 @@ import java.util.Random;
  * @author Kamil Piotrowski
  *
  */
-public class Podzadanie extends Blok{
+public class Podzadanie extends Blok implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Maszyna na której jes wykonywane zadanie
 	 */

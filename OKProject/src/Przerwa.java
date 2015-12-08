@@ -1,8 +1,13 @@
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class Przerwa extends Blok{
+public class Przerwa extends Blok implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int idGen=-1;
 	
 	public Przerwa(List<Przerwa> listaPrzerw){

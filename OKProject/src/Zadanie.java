@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -5,8 +6,12 @@ import java.util.Random;
  * @author Kamil Piotrowski
  *
  */
-public class Zadanie implements Comparable<Zadanie>{
+public class Zadanie implements Comparable<Zadanie>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int IDgen=-1;
 	/**
 	 * każde zadanie składa się z 2 części.

@@ -1,10 +1,16 @@
+import java.io.Serializable;
+
 /**
  * Klasa po której dziedziczy podzadanie i przerwa
  * @author no-one
  *
  */
-public class Blok implements Comparable<Blok>{
+public class Blok implements Comparable<Blok>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Czas startu zadania
 	 */
