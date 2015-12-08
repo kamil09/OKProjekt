@@ -282,10 +282,23 @@ public class Uszeregowanie {
 					if( ( (index<this.maszyna_1.size()-1 ) && (z.op2.czasKonca+diff)<=this.maszyna_1.get(index+1).czasStartu) )
 						z.op2.czasStartu+=diff;
 					else{
-						maszyna_1.remove(index);
-						maszyna_1.add(z.op2);
-						index=this.maszyna_1.indexOf(z.op2);
-						z.op2.czasStartu=maszyna_1.get(index-1).czasKonca;
+						boolean addToEnd=true;
+						for(int k = index+1; k<this.maszyna_1.size()-1 ; k++){
+							if( (maszyna_1.get(k+1).czasStartu - maszyna_1.get(k).czasKonca >= z.op2.czasTrwania)
+							&& (z.op2.brat.czasKonca<=maszyna_1.get(k).czasKonca ) ){
+								z.op2.czasStartu=maszyna_1.get(k).czasKonca;
+								maszyna_1.remove(index);
+								maszyna_1.add(k, z.op2);
+								addToEnd=false;
+								break;
+							}
+						}
+						if(addToEnd){
+							maszyna_1.remove(index);
+							maszyna_1.add(z.op2);
+							index=this.maszyna_1.indexOf(z.op2);
+							z.op2.czasStartu=maszyna_1.get(index-1).czasKonca;
+						}
 					}
 				}
 				if(z.op2.maszyna==1){
@@ -293,10 +306,23 @@ public class Uszeregowanie {
 					if( ( (index<this.maszyna_2.size()-1 ) && (z.op2.czasKonca+diff)<=this.maszyna_2.get(index+1).czasStartu) )
 						z.op2.czasStartu+=diff;
 					else{
-						maszyna_2.remove(index);
-						maszyna_2.add(z.op2);
-						index=this.maszyna_2.indexOf(z.op2);
-						z.op2.czasStartu=maszyna_2.get(index-1).czasKonca;
+						boolean addToEnd=true;
+						for(int k = index+1; k<this.maszyna_2.size()-1 ; k++){
+							if( (maszyna_2.get(k+1).czasStartu - maszyna_2.get(k).czasKonca >= z.op2.czasTrwania)
+							&& (z.op2.brat.czasKonca<=maszyna_2.get(k).czasKonca ) ){
+								z.op2.czasStartu=maszyna_2.get(k).czasKonca;
+								maszyna_2.remove(index);
+								maszyna_2.add(k, z.op2);
+								addToEnd=false;
+								break;
+							}
+						}
+						if(addToEnd){
+							maszyna_2.remove(index);
+							maszyna_2.add(z.op2);
+							index=this.maszyna_2.indexOf(z.op2);
+							z.op2.czasStartu=maszyna_2.get(index-1).czasKonca;
+						}
 					}
 				}
 				if(z.op1.czasKonca > z.op2.czasStartu) z.op2.czasStartu=z.op1.czasKonca;

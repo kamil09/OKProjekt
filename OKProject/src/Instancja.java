@@ -29,10 +29,10 @@ public class Instancja implements Serializable{
 			this.listaZadan.add(new Zadanie());
 			dlugoscInstancji+=listaZadan.get(i).op1.czasTrwania;
 		}
-		System.out.println("tworzenie przerw");
-		for(int i=0; i< (Main.procentPrzerw*Main.iloscZadan) ; i++ )
+		//System.out.println("tworzenie przerw");
+		for(int i=0; i< (Main.procentPrzerw*Main.iloscZadan)+2 ; i++ )
 			this.listaPrzerw.add(new Przerwa(listaPrzerw));
-		System.out.println("koniec tworzenia przerw");
+		//System.out.println("koniec tworzenia przerw");
 		Collections.sort(listaPrzerw);
 		Collections.sort(listaZadan);
 		

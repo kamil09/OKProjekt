@@ -34,7 +34,7 @@ public class Main extends Thread{
 	/**
 	 * Populacja do której rozszerzamy, przynajmniej 3,4 razy większa od startowej
 	 */
-	public static int populacjaEwolucji=200;
+	public static int populacjaEwolucji=300;
 	/**
 	 * Procent mutacji
 	 */
@@ -71,7 +71,7 @@ public class Main extends Thread{
 	/**
 	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan <1
 	 */
-	public static double procentPrzerw=0.4;
+	public static double procentPrzerw=0.2;
 	/**
 	 * Minimalna długość zadania
 	 */
@@ -96,7 +96,7 @@ public class Main extends Thread{
 	 * Początkowa siła mutacji
 	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
 	 */
-	public static double silaMutacji=0.3;
+	public static double silaMutacji=0.5;
 	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
