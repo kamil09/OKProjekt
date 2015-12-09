@@ -95,6 +95,8 @@ public class Main extends Thread{
 	/**
 	 * Początkowa siła mutacji
 	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
+	 * Mutacja działa na zasadzie przesunięcia w lewo, od jej siły zależy także wielkość przesunięcia.
+	 * silaMutacji/=1.5 co 1 sek.
 	 */
 	public static double silaMutacji=0.5;
 	
@@ -126,7 +128,7 @@ public class Main extends Thread{
 				we.close();
 			}
 			Algorytm algorytm=new Algorytm();
-			System.out.println("START");
+			//System.out.println("START");
 			algorytm.start();
 		}
 		else{
