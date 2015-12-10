@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Algorytm extends Thread{
+public class Algorytm{
 	
 	/**
 	 * Populacja startowa - lista rozwiązań

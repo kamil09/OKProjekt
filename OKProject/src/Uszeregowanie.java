@@ -51,7 +51,6 @@ public class Uszeregowanie implements Serializable{
 		}
 		Collections.sort(this.maszyna_1);
 		Collections.sort(this.maszyna_2);
-		
 	}
 	
 	
@@ -221,9 +220,13 @@ public class Uszeregowanie implements Serializable{
 		
 		//System.out.println("Start");
 		//System.out.println(":out");
-		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+		
+		
+		/*this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
 		this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		*/
+		
 		//System.out.println("END");
 	}
 	
@@ -417,9 +420,10 @@ public class Uszeregowanie implements Serializable{
 		
 		zamienDrugieOperacje();
 		
-		this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+		/*this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
 		this.wypiszBledneUszeregowanieZadan(this.maszyna_2);
+		*/
 	}
 	
 	int blockOnList(List<Blok> l,Blok b ){

@@ -70,6 +70,7 @@ public class Main extends Thread{
 	public static int iloscZadan=50;
 	/**
 	 * Ilosć przerw do wygenerowania instancji jako procent ilości zadan <1
+	 * +2 (jesli procentPrzerw == 0 ) to mamy 2 przerwy
 	 */
 	public static double procentPrzerw=0.2;
 	/**
@@ -129,7 +130,7 @@ public class Main extends Thread{
 			}
 			Algorytm algorytm=new Algorytm();
 			//System.out.println("START");
-			algorytm.start();
+			algorytm.run();
 		}
 		else{
 			instancja=new Instancja();
@@ -141,7 +142,7 @@ public class Main extends Thread{
 	}
 	
 	/**
-	 * Ustawia odpowiednie wartości z argumentów
+	 * Ustawia odpowiednie wartości z argumentóww
 	 * @param args ardumenty podane do programu
 	 */
 	public static void wczytajWartosci(String[] args){
