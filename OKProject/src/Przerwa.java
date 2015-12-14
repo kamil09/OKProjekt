@@ -26,7 +26,6 @@ public class Przerwa extends Blok implements Serializable{
 			}
 			if(OK) break;
 			else{
-//				this.czasStartu+=(this.czasTrwania/2)+1;
 				this.czasStartu+=this.czasTrwania+1;
 			}
 		}

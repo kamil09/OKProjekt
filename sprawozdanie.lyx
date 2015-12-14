@@ -24,11 +24,11 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 11
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -43,6 +43,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 3.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -86,6 +90,70 @@ Generator losowego rozwiązania
 
 \begin_layout Subsection
 Mutacja
+\end_layout
+
+\begin_layout Standard
+Mutacja jest metodą której celem jest dokonanie pewniej losowej zmiany w
+ uszeregowaniu.
+ Kluczową cechą
+\begin_inset space ~
+\end_inset
+
+mutacji jest jej siła 
+\begin_inset Formula $S$
+\end_inset
+
+, która determinuje jak bardzo rozwiązanie jest modyfikowane.
+ Pełna mutacja w której z rozwiązania macierzystego otrzymujemy potomka
+ opiera się na kilku pojedynczych mutacjach wykonywanych na każdej maszynie
+ w ilości 
+\begin_inset Formula $K$
+\end_inset
+
+, opisanej wzorem (1).
+ 
+\begin_inset Formula 
+\begin{equation}
+K=\left\lceil N*S\right\rceil 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L=(-1)*\left[\left\lceil \frac{N*S}{2}\right\rceil +1\right]
+\end{equation}
+
+\end_inset
+
+Zmiana u uszeregowaniu której dokonuje pojedyńcza mutacja opera się na przesunię
+ciu losowego elementu o 
+\begin_inset Formula $L$
+\end_inset
+
+ (2) pozycji w lewo.
+ Gdy index elementu jest mniejszy od wartości przesunięcia element jest
+ umieszczany na pierwszym miejscu w uszeregowaniu.
+ Po wykonaniu przesunięcia następuje naprawa uszeregowań na każdej z maszyn,
+ która opiera się na sprawdzeniu, czy zadania nie nachodzą na siebie oraz
+ są wykonywane w odpowiednim czasie (czas gotowości lub dla operacji nr
+ 2 czas zakończenia operacji nr 1).
+ Naprawa opera się
+\begin_inset space ~
+\end_inset
+
+głównie na przesunięciu problematycznych operacji w prawo.
+ Gdy wymagane jest przesunięcie danej operacji, które jest jednak niemożliwe
+ ze względu na przerwę
+\begin_inset space ~
+\end_inset
+
+konserwującą znajdującą się na nią następuje zamiana przerwy z daną operacją
+ i kontunuacja algorytmu naprawy.
 \end_layout
 
 \begin_layout Subsection

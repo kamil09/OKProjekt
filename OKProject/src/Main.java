@@ -26,7 +26,11 @@ public class Main extends Thread{
 	public static int tryb=1;
 	
 	
-//USTAWIENIA ALGORYTMU
+//*********************USTAWIENIA ALGORYTMU************************************8
+	/**
+	 * Czas po którym zatrzymujemy program w sekundach
+	 */
+	public static double czas=5;
 	/**
 	 * Startowa populacja np 50
 	 */
@@ -48,22 +52,14 @@ public class Main extends Thread{
 	 * 40% MUTACJA , 45% KRZYZOWANIE => 15% MUTACJA i KRZYZOWANIE  
 	 */
 	/**
-	 * Czas po którym zatrzymujemy program w sekundach
+	 * Początkowa siła mutacji
+	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
+	 * Mutacja działa na zasadzie przesunięcia w lewo, od jej siły zależy także wielkość przesunięcia.
+	 * silaMutacji/=1.5 co 1 sek.
 	 */
-	public static double czas=5;
+	public static double silaMutacji=0.2;
 	
-	/**
-	 * Plik zapisaną instancją
-	 */
-	public static String serialFileName;
-	/**
-	 * Czy wygenerować instancja
-	 * Domyślnie true, jeśli podano plik zmieniamy na false
-	 */
-	public static boolean wygenerowacInstancje=true; 
-	
-	
-//USTAWIENIA GENERATORA INSTANCJI
+//*********************USTAWIENIA GENERATORA INSTANCJI**************************************
 	/**
 	 * Ilość zadań do wygenerowania w instacji
 	 */
@@ -93,13 +89,8 @@ public class Main extends Thread{
 	 * maksymalny czas po którym zadanie uzyskuje stan gotowości (może się wykonywać)
 	 */
 	public static int maxG=100;
-	/**
-	 * Początkowa siła mutacji
-	 * Siła mutacj decyduje o ilości pojedynczych mutacji na uszeregowaniu np sila=0.2 , N=50 => najmocniejsza mutacja to 10 pojedynczych 
-	 * Mutacja działa na zasadzie przesunięcia w lewo, od jej siły zależy także wielkość przesunięcia.
-	 * silaMutacji/=1.5 co 1 sek.
-	 */
-	public static double silaMutacji=0.5;
+	
+	//*****************************INNE PARAMETRY***************************************
 	
 	/**
 	 * Wygenerowana lub wczytana instancja problrmu czyli zapis wszystkich zadań, i przerw
@@ -109,8 +100,28 @@ public class Main extends Thread{
 	 * Najlepsze rozwiązanie z wylosowanych wieprwszych uszeregowań (przed całym algorytmem)
 	 */
 	public static int pierwszeRozwiazanie=-1;
-	
+	/**
+	 * Nagłówek w pliku wynikowym
+	 */
 	public static String numerWczytanejInstancji="1";
+	/**
+	 * Plik z zapisaną instancją
+	 */
+	public static String serialFileName;
+	/**
+	 * Czy wygenerować instancja
+	 * Domyślnie true, jeśli podano plik zmieniamy na false
+	 */
+	public static boolean wygenerowacInstancje=true; 
+	/**
+	 * Czy sprawdzamy poprawność uszeregowań
+	 */
+	public static boolean weryfikacja=false;
+	/**
+	 * 0 - wypisuje tylko wynik
+	 * 1 - wypisuje całe rozwiązanie
+	 */
+	public static int wyjscie=0;
 	
 	/**
 	 * MAIN
@@ -127,6 +138,8 @@ public class Main extends Thread{
 				ObjectInputStream we = new ObjectInputStream(new FileInputStream(serialFileName));
 				instancja = (Instancja)we.readObject();
 				we.close();
+				String[] par = Main.serialFileName.split(".");
+				Main.numerWczytanejInstancji=par[0];
 			}
 			Algorytm algorytm=new Algorytm();
 			//System.out.println("START");

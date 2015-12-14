@@ -74,29 +74,11 @@ public class Algorytm{
 		}
 		
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
-		//wybierzNajlepsze().wypiszUserzegowanie();
-		System.out.print(wybierzNajlepsze().sumaCzasow);
+		if(Main.wyjscie == 1)
+			wybierzNajlepsze().wypiszUserzegowanie();
+		if(Main.wyjscie == 0)
+			System.out.print(wybierzNajlepsze().sumaCzasow);
 		
-		
-//		Uszeregowanie testU = new Uszeregowanie(wybierzNajlepsze());
-//		testU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
-//		testU.ewaluacjaMaszyn();
-//		testU.wypiszBledneUszeregowanieOperacji(testU.instancjaUszeregowania);
-//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_1);
-//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_2);
-//		testU.wypiszUserzegowanie();
-		
-		
-		/**
-		 * TEST KOPIOWANIA USZEREGOWANIA WYPADŁ OK
-		 */
-//		wybierzNajlepsze().pelnaMutacja();
-//		Uszeregowanie testU = new Uszeregowanie(wybierzNajlepsze());
-//		testU.ewaluacjaMaszyn();
-//		testU.wypiszBledneUszeregowanieOperacji(testU.instancjaUszeregowania);
-//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_1);
-//		testU.wypiszBledneUszeregowanieZadan(testU.maszyna_2);
-//		testU.wypiszUserzegowanie();
 	}
 	
 	/**

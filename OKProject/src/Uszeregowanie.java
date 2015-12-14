@@ -89,16 +89,12 @@ public class Uszeregowanie implements Serializable{
 				}
 			
 		}
-		//for(Blok b : maszyna_1) System.out.println(b.czasStartu);
-		//System.out.println(iloscoperacji);
 		this.ewaluacjaMaszyn();
-		//this.wypiszUserzegowanie();
 		this.wypiszBledneUszeregowanieOperacji(inst);
-		//System.out.println("BLAD!!!!!!!!!!!!!");
-		//this.wypiszBledneUszeregowanieZadan(maszyna_1);
-		//this.wypiszBledneUszeregowanieZadan(maszyna_2);
-		//System.out.println("Maksymalny czas trwania uszeregowania: " + ewaluacjaMaszyn());
-		//System.out.println("KONIEC BLEDU!!!!!!!!");
+		if(Main.weryfikacja){
+			this.wypiszBledneUszeregowanieZadan(maszyna_1);
+			this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		}
 	}
 	
 	void umiescNaLiscie(List<Blok> maszyna, Podzadanie p){
@@ -208,26 +204,17 @@ public class Uszeregowanie implements Serializable{
 		p_1.czasKonca = p_1.czasStartu+p_1.czasTrwania;
 		
 		this.naprawZadania(maszyna, wylosowany_1);
-		
-		
 		//ODBUDOWA DRUGICH OPERACJI
 		this.uzupelnijPrzerwy(maszyna);
 		this.zamienDrugieOperacje();
 		this.uzupelnijPrzerwy(this.maszyna_1);
 		this.uzupelnijPrzerwy(this.maszyna_2);
-	
-		//System.out.println("END");
 		
-		//System.out.println("Start");
-		//System.out.println(":out");
-		
-		
-		/*this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
-		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
-		this.wypiszBledneUszeregowanieZadan(maszyna_2);
-		*/
-		
-		//System.out.println("END");
+		if(Main.weryfikacja){
+			this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+			this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
+			this.wypiszBledneUszeregowanieZadan(maszyna_2);
+		}
 	}
 	
 	/**
@@ -420,12 +407,20 @@ public class Uszeregowanie implements Serializable{
 		
 		zamienDrugieOperacje();
 		
-		/*this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
-		this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
-		this.wypiszBledneUszeregowanieZadan(this.maszyna_2);
-		*/
+		if(Main.weryfikacja){
+			this.wypiszBledneUszeregowanieOperacji(this.instancjaUszeregowania);
+			this.wypiszBledneUszeregowanieZadan(this.maszyna_1);
+			this.wypiszBledneUszeregowanieZadan(this.maszyna_2);
+		}
+		
 	}
 	
+	/**
+	 * Zwraca index bloku na liście
+	 * @param l lista
+	 * @param b obiekt do wyszukania
+	 * @return index
+	 */
 	int blockOnList(List<Blok> l,Blok b ){
 		for(int i=0;i<l.size();i++){
 			if(l.get(i).id == b.id ) return i;

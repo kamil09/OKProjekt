@@ -45,30 +45,6 @@ public class Instancja implements Serializable{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * METODA TESTOWA NIE UŻYWANA W ALGORYTMIE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 */
