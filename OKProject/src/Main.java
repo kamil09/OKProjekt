@@ -138,8 +138,9 @@ public class Main extends Thread{
 				ObjectInputStream we = new ObjectInputStream(new FileInputStream(serialFileName));
 				instancja = (Instancja)we.readObject();
 				we.close();
-				String[] par = Main.serialFileName.split(".");
-				Main.numerWczytanejInstancji=par[0];
+				String[] par = Main.serialFileName.split("[.]");
+				if( par[0] != null )
+					Main.numerWczytanejInstancji=par[0];
 			}
 			Algorytm algorytm=new Algorytm();
 			//System.out.println("START");
