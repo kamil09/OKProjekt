@@ -57,7 +57,7 @@ public class Main extends Thread{
 	 * Mutacja działa na zasadzie przesunięcia w lewo, od jej siły zależy także wielkość przesunięcia.
 	 * silaMutacji/=1.5 co 1 sek.
 	 */
-	public static double silaMutacji=0.2;
+	public static double silaMutacji=0.5;
 	
 //*********************USTAWIENIA GENERATORA INSTANCJI**************************************
 	/**
@@ -183,6 +183,10 @@ public class Main extends Thread{
 					break;
 				case "-IK" :
 					iloscKrzyzowania=Double.parseDouble(args[i+1]);
+					i++;
+					break;
+				case "-SM" :
+					silaMutacji=Double.parseDouble(args[i+1]);
 					i++;
 					break;
 				case "-T" :
