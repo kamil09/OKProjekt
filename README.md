@@ -1,5 +1,13 @@
 # OKProjekt
-Projekt z optymalizacji kombinatorycznej.
+Projekt z optymalizacji kombinatorycznej- algorytm genetyczny w szeregowaniu zadań.
+
+Dane:
+	job-shop
+	zadania nieprzerywalne
+	operacja nr 1 przed operacją nr 2
+	Liczba maszyn : 2
+	optymalizacja sumy czasów zakończenia operacji
+	
 
 OPIS PARAMETRÓW:
 
