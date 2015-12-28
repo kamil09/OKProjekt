@@ -374,7 +374,7 @@ public class Uszeregowanie implements Serializable{
 						Podzadanie wybrany = (Podzadanie) temp_1.get(index);
 						maszyna_1.add(++srodek_1, wybrany);
 						temp_1.remove(index);
-						index=srodek_1-1;
+						index=srodek_1;
 						wybrany.czasStartu=this.maszyna_1.get(index-1).czasKonca;
 						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
 						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
@@ -394,7 +394,7 @@ public class Uszeregowanie implements Serializable{
 						Podzadanie wybrany = (Podzadanie) temp_2.get(index);
 						maszyna_2.add(++srodek_2, wybrany);
 						temp_2.remove(index);
-						index=srodek_2-1;
+						index=srodek_2;
 						wybrany.czasStartu=this.maszyna_2.get(index-1).czasKonca;
 						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
 						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
@@ -556,8 +556,6 @@ public class Uszeregowanie implements Serializable{
 		this.sumaCzasow=Math.max(czasMaszyny1,czasMaszyny2);
 		return this.sumaCzasow;
 	}
-	
-	
 	//METODY TESTUJĄCE POPRAWNOŚĆ USZEREGOWANIA - OP1 PRZED OP2 Oraz czasy rozpoczęcia / zakończenia
 	void wypiszBledneUszeregowanieOperacji(Instancja inst){
 		List<Zadanie> listaZadanDoSprawdzenia = inst.listaZadan;
