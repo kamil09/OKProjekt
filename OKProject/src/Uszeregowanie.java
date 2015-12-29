@@ -365,6 +365,7 @@ public class Uszeregowanie implements Serializable{
 				--k;
 			}
 		}
+		int diff=0;
 		//DOPISYWANIE DO MASZYNY 1
 		while(!temp_1.isEmpty() ){
 			for(i=0;i<u.maszyna_1.size(); i++){
@@ -373,6 +374,14 @@ public class Uszeregowanie implements Serializable{
 					int index=blockOnList(temp_1, b);
 					if(index>-1){
 						Podzadanie wybrany = (Podzadanie) temp_1.get(index);
+						if( srodek_1 < (maszyna_1.size()-1) ){
+							diff=maszyna_1.get(srodek_1+1).czasStartu-maszyna_1.get(srodek_1).czasKonca;
+							while( diff < wybrany.czasTrwania ){
+								++srodek_1;
+								if(srodek_1 >= maszyna_1.size()-1 ) break;
+								diff=maszyna_1.get(srodek_1+1).czasStartu-maszyna_1.get(srodek_1).czasKonca;
+							}
+						}
 						maszyna_1.add(++srodek_1, wybrany);
 						temp_1.remove(index);
 						index=srodek_1;
@@ -393,6 +402,14 @@ public class Uszeregowanie implements Serializable{
 					int index=blockOnList(temp_2, b);
 					if(index>-1){
 						Podzadanie wybrany = (Podzadanie) temp_2.get(index);
+						if(srodek_2 < (maszyna_2.size()-1) ){
+							diff=maszyna_2.get(srodek_2+1).czasStartu-maszyna_2.get(srodek_2).czasKonca;
+							while( diff < wybrany.czasTrwania ){
+								++srodek_2;
+								if(srodek_2 >= maszyna_2.size()-1 ) break;
+								diff=maszyna_2.get(srodek_2+1).czasStartu-maszyna_2.get(srodek_2).czasKonca;
+							}
+						}
 						maszyna_2.add(++srodek_2, wybrany);
 						temp_2.remove(index);
 						index=srodek_2;

@@ -116,7 +116,7 @@ public class Main extends Thread{
 	/**
 	 * Czy sprawdzamy poprawność uszeregowań
 	 */
-	public static boolean weryfikacja=false;
+	public static boolean weryfikacja=true;
 	/**
 	 * 0 - wypisuje tylko wynik
 	 * 1 - wypisuje całe rozwiązanie
