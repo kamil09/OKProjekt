@@ -233,10 +233,11 @@ public class Uszeregowanie implements Serializable{
 			if( maszyna.get(i+1) instanceof Przerwa ){
 				Blok przerwa = maszyna.get(i+1);
 				int diff = prevZ.czasKonca-thisZ.czasStartu;
-				thisZ.czasStartu+=diff;
-				if(thisZ.czasStartu < ((Podzadanie)thisZ).czasGotowosci ) thisZ.czasStartu=((Podzadanie)thisZ).czasGotowosci;
-				thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
-				
+				if(diff>0){
+					thisZ.czasStartu+=diff;
+					if(thisZ.czasStartu < ((Podzadanie)thisZ).czasGotowosci ) thisZ.czasStartu=((Podzadanie)thisZ).czasGotowosci;
+					thisZ.czasKonca=thisZ.czasStartu+thisZ.czasTrwania;
+				}
 				
 				if(thisZ.czasKonca>przerwa.czasStartu){
 					//maszyna_1.remove(i);
