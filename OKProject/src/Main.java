@@ -30,7 +30,11 @@ public class Main extends Thread{
 	/**
 	 * Czas po którym zatrzymujemy program w sekundach
 	 */
-	public static double czas=5;
+	public static double czas=8;
+	/**
+	 * Ilość iteracji w programie
+	 */
+	public static int iteracje=0;
 	/**
 	 * Startowa populacja np 50
 	 */
@@ -116,7 +120,7 @@ public class Main extends Thread{
 	/**
 	 * Czy sprawdzamy poprawność uszeregowań
 	 */
-	public static boolean weryfikacja=true;
+	public static boolean weryfikacja=false;
 	/**
 	 * 0 - wypisuje tylko wynik
 	 * 1 - wypisuje całe rozwiązanie
@@ -231,10 +235,11 @@ public class Main extends Thread{
 					maxG=Integer.parseInt(args[i+1]);
 					i++;
 					break;
-			}
-			
+				case "-IT"	:
+					iteracje=Integer.parseInt(args[i+1]);
+					i++;
+					break;
+			}	
 		}
-		
 	}
-
 }

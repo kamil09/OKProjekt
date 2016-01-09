@@ -331,8 +331,9 @@ public class Uszeregowanie implements Serializable{
 	/**
 	 * Krzyzowanie zworzy JEDENO nowe uszeregowanie. Można by tworzyć 2, ale lepiej jest wywołać krzyżowanie 2 razy, poniewać złożonosć ta sama, a mniej kodu.
 	 * @param u uszeregowanie z którym krzyzujemy
+	 * @param tryb - 0-zamiana pierwszej połowy ; 1-zamiana 2 połowy
 	 */
-	void krzyzowanie(Uszeregowanie u ){
+	void krzyzowanie(Uszeregowanie u, int tryb ){
 		//TUTAJ DOKONUJEMY ZMIAN NA USZEREGOWANIU THIS. u pozostaje bez zmian
 		int srodek_1 = 0;
 		int srodek_2 = 0;
@@ -351,22 +352,47 @@ public class Uszeregowanie implements Serializable{
 		}
 		srodek_2=i;
 		//UCINANIE MASZYN
-		for(int k=srodek_1+1; k<this.maszyna_1.size() ; k++ ){
-			if(this.maszyna_1.get(k) instanceof Podzadanie ) {
-				temp_1.add(this.maszyna_1.get(k));
-				maszyna_1.remove(k);
-				--k;
+		if(tryb==1){
+			for(int k=srodek_1+1; k<this.maszyna_1.size() ; k++ ){
+				if(this.maszyna_1.get(k) instanceof Podzadanie ) {
+					temp_1.add(this.maszyna_1.get(k));
+					maszyna_1.remove(k);
+					--k;
+				}
+			}
+			for(int k=srodek_2+1; k<this.maszyna_2.size() ; k++ ){
+				if(this.maszyna_2.get(k) instanceof Podzadanie ) {
+					temp_2.add(this.maszyna_2.get(k));
+					maszyna_2.remove(k);
+					--k;
+				}
 			}
 		}
-		for(int k=srodek_2+1; k<this.maszyna_2.size() ; k++ ){
-			if(this.maszyna_2.get(k) instanceof Podzadanie ) {
-				temp_2.add(this.maszyna_2.get(k));
-				maszyna_2.remove(k);
-				--k;
+		else{
+			List<Blok> remove = new ArrayList<Blok>();
+			for(int k=1; k<srodek_1+1 ; k++ ){
+				if(this.maszyna_1.get(k) instanceof Podzadanie ) {
+					temp_1.add(this.maszyna_1.get(k));
+					remove.add(this.maszyna_1.get(k));
+				}
 			}
+			for(Blok b : remove)
+				this.maszyna_1.remove(b);
+			
+			remove.clear();
+			for(int k=1; k<srodek_2+1 ; k++ ){
+				if(this.maszyna_2.get(k) instanceof Podzadanie ) {
+					temp_2.add(this.maszyna_2.get(k));
+					remove.add(this.maszyna_2.get(k));
+				}
+			}
+			for(Blok b : remove)
+				this.maszyna_2.remove(b);
 		}
 		int diff=0;
 		//DOPISYWANIE DO MASZYNY 1
+		int wstawIdx=srodek_1;
+		if(tryb==0) wstawIdx=1;
 		while(!temp_1.isEmpty() ){
 			for(i=0;i<u.maszyna_1.size(); i++){
 				Blok b = u.maszyna_1.get(i);
@@ -374,17 +400,17 @@ public class Uszeregowanie implements Serializable{
 					int index=blockOnList(temp_1, b);
 					if(index>-1){
 						Podzadanie wybrany = (Podzadanie) temp_1.get(index);
-						if( srodek_1 < (maszyna_1.size()-1) ){
-							diff=maszyna_1.get(srodek_1+1).czasStartu-maszyna_1.get(srodek_1).czasKonca;
+						if( (wstawIdx < (maszyna_1.size()-1))  && (wstawIdx < srodek_1 ) ){
+							diff=maszyna_1.get(wstawIdx+1).czasStartu-maszyna_1.get(wstawIdx).czasKonca;
 							while( diff < wybrany.czasTrwania ){
-								++srodek_1;
-								if(srodek_1 >= maszyna_1.size()-1 ) break;
-								diff=maszyna_1.get(srodek_1+1).czasStartu-maszyna_1.get(srodek_1).czasKonca;
+								++wstawIdx;
+								if(wstawIdx >= maszyna_1.size()-1 ) break;
+								diff=maszyna_1.get(wstawIdx+1).czasStartu-maszyna_1.get(wstawIdx).czasKonca;
 							}
 						}
-						maszyna_1.add(++srodek_1, wybrany);
+						maszyna_1.add(++wstawIdx, wybrany);
 						temp_1.remove(index);
-						index=srodek_1;
+						index=wstawIdx;
 						wybrany.czasStartu=this.maszyna_1.get(index-1).czasKonca;
 						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
 						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
@@ -393,8 +419,10 @@ public class Uszeregowanie implements Serializable{
 				}
 			}
 		}
-		naprawZadania(this.maszyna_1, Main.iloscZadan/2);
+		naprawZadania(this.maszyna_1, 1);
 		//DOPISYWANIE DO MASZYNY 2
+		wstawIdx=srodek_2;
+		if(tryb==0) wstawIdx=1;
 		while(!temp_2.isEmpty() ){
 			for(i=0;i<u.maszyna_2.size(); i++){
 				Blok b = u.maszyna_2.get(i);
@@ -402,17 +430,17 @@ public class Uszeregowanie implements Serializable{
 					int index=blockOnList(temp_2, b);
 					if(index>-1){
 						Podzadanie wybrany = (Podzadanie) temp_2.get(index);
-						if(srodek_2 < (maszyna_2.size()-1) ){
-							diff=maszyna_2.get(srodek_2+1).czasStartu-maszyna_2.get(srodek_2).czasKonca;
+						if( (wstawIdx < (maszyna_2.size()-1)) && (wstawIdx < srodek_2 ) ){
+							diff=maszyna_2.get(wstawIdx+1).czasStartu-maszyna_2.get(wstawIdx).czasKonca;
 							while( diff < wybrany.czasTrwania ){
-								++srodek_2;
-								if(srodek_2 >= maszyna_2.size()-1 ) break;
-								diff=maszyna_2.get(srodek_2+1).czasStartu-maszyna_2.get(srodek_2).czasKonca;
+								++wstawIdx;
+								if(wstawIdx >= maszyna_2.size()-1 ) break;
+								diff=maszyna_2.get(wstawIdx+1).czasStartu-maszyna_2.get(wstawIdx).czasKonca;
 							}
 						}
-						maszyna_2.add(++srodek_2, wybrany);
+						maszyna_2.add(++wstawIdx, wybrany);
 						temp_2.remove(index);
-						index=srodek_2;
+						index=wstawIdx;
 						wybrany.czasStartu=this.maszyna_2.get(index-1).czasKonca;
 						if( (wybrany.numerOperacji==1) && (wybrany.czasStartu<wybrany.czasGotowosci)) wybrany.czasStartu=wybrany.czasGotowosci;
 						if( (wybrany.numerOperacji==2) && (wybrany.czasStartu<wybrany.brat.czasKonca)) wybrany.czasStartu=wybrany.brat.czasKonca;
@@ -421,7 +449,7 @@ public class Uszeregowanie implements Serializable{
 				}
 			}
 		}
-		naprawZadania(this.maszyna_2, Main.iloscZadan/2);
+		naprawZadania(this.maszyna_2, 1);
 		
 		zamienDrugieOperacje();
 		

@@ -57,14 +57,16 @@ public class Algorytm{
 			for(int i=0; i<(Main.populacjaEwolucji-Main.populacjaStartowa)*Main.iloscKrzyzowania; i++){
 				//KRZYŻOWANIE
 				Uszeregowanie noU = new Uszeregowanie(this.populacjaStartowa.get( gen.nextInt(this.populacjaStartowa.size()) ) );
-				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
+				int tryb=i%2;
+				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())),tryb);
 				this.populacjaKoncowa.add(noU);			}
 			int size=Main.populacjaEwolucji-this.populacjaKoncowa.size();
 			for(int i=0; i < size ; i++){
 				//MUTACJA I KRZYZOWANIE
 				Uszeregowanie noU = new Uszeregowanie(this.populacjaStartowa.get( gen.nextInt(this.populacjaStartowa.size()) ) );
 				noU.pelnaMutacja();
-				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())) );
+				int tryb=i%2;
+				noU.krzyzowanie(this.populacjaStartowa.get(gen.nextInt(this.populacjaStartowa.size())),tryb);
 				this.populacjaKoncowa.add(noU);
 			}
 			//WYZNACZENIE WARTOŚCI OPTYMALIZOWANEJ
