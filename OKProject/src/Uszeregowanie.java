@@ -392,7 +392,7 @@ public class Uszeregowanie implements Serializable{
 		int diff=0;
 		//DOPISYWANIE DO MASZYNY 1
 		int wstawIdx=srodek_1;
-		if(tryb==0) wstawIdx=1;
+		if(tryb==0) wstawIdx=0;
 		while(!temp_1.isEmpty() ){
 			for(i=0;i<u.maszyna_1.size(); i++){
 				Blok b = u.maszyna_1.get(i);
@@ -422,7 +422,7 @@ public class Uszeregowanie implements Serializable{
 		naprawZadania(this.maszyna_1, 1);
 		//DOPISYWANIE DO MASZYNY 2
 		wstawIdx=srodek_2;
-		if(tryb==0) wstawIdx=1;
+		if(tryb==0) wstawIdx=0;
 		while(!temp_2.isEmpty() ){
 			for(i=0;i<u.maszyna_2.size(); i++){
 				Blok b = u.maszyna_2.get(i);
