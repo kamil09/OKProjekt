@@ -1366,6 +1366,19 @@ reference "wykres3_4"
 \end_inset
 
 .
+ Podobnie jak w rodziele 3.3 wystepuje tutaj zalezność liniowa, którą możemy
+ opisać wzorem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{4}=388*PP+24682
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
