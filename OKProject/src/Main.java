@@ -111,7 +111,7 @@ public class Main extends Thread{
 	/**
 	 * Plik z zapisaną instancją
 	 */
-	public static String serialFileName;
+	public static String serialFileName="out.txt";
 	/**
 	 * Czy wygenerować instancja
 	 * Domyślnie true, jeśli podano plik zmieniamy na false
@@ -154,6 +154,7 @@ public class Main extends Thread{
 			instancja=new Instancja();
 			ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream(serialFileName));
 			wy.writeObject(instancja);
+			instancja.wypiszInstanje();
 			wy.close();
 		}
 		
