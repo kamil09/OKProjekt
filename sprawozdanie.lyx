@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -55,11 +64,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 228045028 "Lewin" 
 \end_header
 
 \begin_body
@@ -76,36 +86,191 @@ Kamil Piotrowski 122491, Michał Lewiński 122505
 10.01.2015r.
 \end_layout
 
-\begin_layout Abstract
-
-\size normal
-Niniejsze sprawozdanie dotyczy problemu nr 3 (job shop, liczba maszyn m=2,
- operacje typu non-preemptive, dla pierwszej maszyny od k=2 do n/2 okresów
- przestoju o losowym czasie rozpoczęcia i trwania, różne i losowe czasy
- gotowości dla wszystkich zadań minimalizacja sumy czasów zakończenia wszystkich
- operacji, liczba zadań n.).
- Pierwszy rozdział zawiera teoreryczny opis działania i implementacji naszego
- algorytmu.
- W drugim rozdziale znajdują się testy dotyczące strojenia heurystyki, pa
- podstawie których wybierzeby najoptymalniejsze ustawienia.
- W 3 rozdziale znajdują się testy instancji.
- 
-\end_layout
-
 \begin_layout Section
 Wstęp
+\end_layout
+
+\begin_layout Standard
+Niniejsze sprawozdanie dotyczy problemu nr 3 związanego z szeregowaniem
+ zadań (job shop, liczba maszyn m=2, operacje typu non-preemptive, dla pierwszej
+ maszyny od k=2 do n/2 okresów przestoju o losowym czasie rozpoczęcia i
+ trwania, różne i losowe czasy gotowości dla wszystkich zadań, minimalizacja
+ sumy czasów zakończenia wszystkich operacji, liczba zadań n).
+ Do wykonania tego problemu wykorzystany został algorytm genetyczny, który
+ wykorzystuje mutacje i krzyżowania przy tworzeniu nowych populacji.
+ Sprawozdanie składa się z czterech rozdziałów: pierwszy rozdział zawiera
+ teoreryczny opis działania i implementacji naszego algorytmu.
+ W drugim rozdziale znajdują się testy dotyczące strojenia heurystyki, na
+ podstawie, których zostaną wybrane najoptymalniejsze ustawienia.
+ W trzecim rozdziale znajdują się testy instancji.
+ W ostatnim czwartym rozdziale zamieszczone zostały wnioski i podsumowanie
+ przeprowadzonych badań.
+ 
 \end_layout
 
 \begin_layout Subsection
 Schemat algorytmu
 \end_layout
 
+\begin_layout Standard
+Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
+ mutacji i krzyżowaniu.
+ W początkowej fazie działania, program generuje instancję problemu na podstawie
+ wartości poszczególnych parametrów, która mogą zostać także zdefiniowane
+ przez użytkownika.
+ Tworzona jest początkowa populacja, której rozmiar jest zdefiniowany na
+ początku algorytmu (domyślnie 50).
+ Następnie populacja zostaje rozszerzona za pomocą mutacji, krzyżowania
+ oraz łączonej mutacji z krzyżowaniem.
+ Ilość poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
+ także jest określana przez odpowiednie parametry procentowe, które w sumie
+ muszą utworzyć populację końcową (domyślnie ilość poszczególnych operacji
+ jest równa, a rozmiar końcowej populacji domyślnie wynosi 200).
+ Uzyskana w ten sposób populacja poddawana jest selekcji za pomocą turnieju,
+ w którym eliminowane są gorsze uszeregowania, tak aby rozmiar zredukowanej
+ populacji wyniósł tyle samo co początkowej.
+ Powyższe przekształcenia są wykonywane tak długo aż nie zostaną spełnione
+ kryteria zakończenia algorytmu, w tym przypadku jest to czas działania
+ całego algorytmu.
+ Cały proces algorytmu został przedstawiony na schemacie przedstawionym
+ poniżej.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Lewin/Desktop/schematAlgorytmu2.PNG
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Generator instancji
 \end_layout
 
+\begin_layout Standard
+Generator instancji tworzy losowe rozwiązania tak aby uzyskać początkową
+ populacje o określonym rozmiarze.
+ Poszczególne rozwiązania powstają na podstawie ilości zadań 
+\begin_inset Formula $n$
+\end_inset
+
+ oraz przerw 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Liczba przerw wyznaczana jest na podstawie wzroru(), gdzie 
+\begin_inset Formula $n$
+\end_inset
+
+ to liczba zadań, natomiast 
+\begin_inset Formula $procentP$
+\end_inset
+
+ oznacza stosunek ilości przerw do zadań.
+
+\change_inserted 228045028 1452606598
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452607266
+Zadanie składa się z dwóch podzadań.
+ Każde podzadanie zawiera na jakiej maszynie ma ono zostać wykonane; czy
+ zostało już dodane do uszeregowania; czas, od którego podzadanie może zacząć
+ się wykonywać; które podzadanie jest z nim w parzę oraz czy musi zostać
+ wykonane jako pierwsze lub drugie w kolejności.
+\end_layout
+
+\begin_layout Standard
+Po utworzeniu listy zadań i przerw dochodzi do ich posortowania.
+ Lista zadań sortowana jest na podstawie czasu gotowości zadania, natomiast
+ lista przerw na podstawie czasu rozpoczęcia.
+ 
+\begin_inset Formula 
+\[
+p=procentP*n+2
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Generator losowego rozwiązania
+\end_layout
+
+\begin_layout Standard
+Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
+ i przerw utworzonych wcześniej przez generator instancji.
+ Rozwiązanie oparte jest na uszeregowaniu dwóch maszyn.
+ Uszeregowanie pojedyńczej maszyny to lista składająca się z bloków, które
+ posiadają czas startu 
+\begin_inset Formula $Ts$
+\end_inset
+
+, czas końca 
+\begin_inset Formula $Tk$
+\end_inset
+
+ i czas trwania 
+\begin_inset Formula $Tt$
+\end_inset
+
+.
+ Każdy poszczególny blok może być zadaniem lub przerwą.
+
+\change_deleted 228045028 1452605073
+ 
+\change_unchanged
+Każde uszeregowanie rozpoczyna się od bloku pomocniczego, którego czasy
+ 
+\begin_inset Formula $Ts$
+\end_inset
+
+, 
+\begin_inset Formula $Tk$
+\end_inset
+
+ i 
+\begin_inset Formula $Tt$
+\end_inset
+
+ wynosi 0
+\change_inserted 228045028 1452606482
+.
+ Ten początkowy blok ma pomóc przy dodawaniu kolejnych przerw i zadań, gdyż
+ 
+\change_deleted 228045028 1452604655
+,
+\change_inserted 228045028 1452606227
+nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -241,8 +406,8 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -393,7 +558,7 @@ maksymalny czas trwania przerwy konserwującej
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 opis parametrów instancji
@@ -503,15 +668,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -669,7 +834,7 @@ wartość
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.1
@@ -713,7 +878,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres zależności funkcji celu od czasu trwania operacji.
@@ -751,7 +916,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 funkcje opisujące minimalną i maksymalną wartość funkcji celu w zalezności
@@ -828,15 +993,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -993,7 +1158,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.2
@@ -1034,7 +1199,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od ilości zadań N
@@ -1049,10 +1214,6 @@ name "wykres3_2"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1111,15 +1272,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1276,7 +1437,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.3
@@ -1324,7 +1485,7 @@ name "wykres_3.3"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od czasu gotowości zadania
@@ -1332,10 +1493,6 @@ zależność funkcji celu od czasu gotowości zadania
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1392,15 +1549,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1557,7 +1714,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.4
@@ -1572,10 +1729,6 @@ name "param3.4"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1602,7 +1755,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od ilości przerw konserwujących
@@ -1617,10 +1770,6 @@ name "wykres3_4"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1676,15 +1825,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1841,7 +1990,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.5
@@ -1872,6 +2021,11 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename wykresy/wykres3_5.png
 	width 70page%
@@ -1881,8 +2035,13 @@ status open
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zalezność funkcji celu od długości przerw konserwujących
@@ -1897,10 +2056,6 @@ name "wykres3.5"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1960,7 +2115,7 @@ reference "eq:3.6_1"
 \end_inset
 
  było wyznaczane dla 
-\begin_inset Formula $PP=20,\: maxG=100$
+\begin_inset Formula $PP=20,\:maxG=100$
 \end_inset
 
 .
@@ -2008,20 +2163,20 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="13">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3575,7 +3730,7 @@ N
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 porównanie wartości zwróconej przez program z wyliczoną na podstawie wzoru.
@@ -3583,10 +3738,6 @@ porównanie wartości zwróconej przez program z wyliczoną na podstawie wzoru.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
