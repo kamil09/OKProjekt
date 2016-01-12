@@ -49,16 +49,16 @@ public class Instancja implements Serializable{
 	 * METODA TESTOWA NIE UŻYWANA W ALGORYTMIE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 */
 	public void wypiszInstanje(){
-		System.out.println("ZADANIA:");
+		System.out.println("**** "+Main.numerWczytanejInstancji+" ****");
+		System.out.println(listaZadan.size());
 		for (int i=0;i< listaZadan.size(); i++){
 			Zadanie z = listaZadan.get(i);
-			System.out.println("ID: "+z.id+" Czas G: "+z.op1.czasGotowosci+"  Operacje: "+z.op1.maszyna+"/"+z.op1.czasTrwania+"  |  "+z.op2.maszyna+"/"+z.op2.czasTrwania  );
+			System.out.println(z.op1.czasTrwania+"; "+z.op2.czasTrwania+"; "+ (z.op1.maszyna+1) +"; "+(z.op2.maszyna+1)+"; "+ z.op1.czasGotowosci);
 		}
-		System.out.println("Dlugość: "+ dlugoscInstancji );
-		System.out.println("PRZERWY:");
+		System.out.println(listaPrzerw.size());
 		for (int i=0; i < listaPrzerw.size() ; i++ ){
 			Przerwa p = listaPrzerw.get(i);
-			System.out.println("ID: "+p.id+"  Czas rozpoczęcia: "+p.czasStartu+"   Czas konca:  "+ p.czasKonca+ " Czas trwania: "+p.czasTrwania);
+			System.out.println(p.id+"; 1; "+p.czasTrwania+"; "+p.czasStartu);
 		}
 		
 	}
