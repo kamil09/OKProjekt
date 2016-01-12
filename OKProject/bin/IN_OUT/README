@@ -1,6 +1,0 @@
-Katalog z plikami wyściowymi i wejściowymi
-3 rodzaje plików:
-
-*.in	- plik wejściowy, format tekstowy
-*.ser	- plik wejściowy, format serializacji (używany do wczystywania do programu)
-*.out	- plik wyjściowy

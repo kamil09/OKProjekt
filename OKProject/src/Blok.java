@@ -34,7 +34,7 @@ public class Blok implements Comparable<Blok>, Serializable{
 	Blok(int c, int k, int t ){
 		this.czasStartu=c;
 		this.czasKonca=k;
-		this.czasStartu=t;
+		this.czasTrwania=t;
 	}
 
 	@Override

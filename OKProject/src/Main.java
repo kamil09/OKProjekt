@@ -170,7 +170,7 @@ public class Main extends Thread{
 				case "-TR0" :
 					serialFileName=args[i+1];
 					tryb=0;
-					System.out.println(serialFileName);
+					//System.out.println(serialFileName);
 					i++;
 					break;
 				case "-TR1" :
