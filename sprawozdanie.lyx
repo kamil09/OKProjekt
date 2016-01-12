@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language british
+\language polish
 \language_package default
 \inputencoding default
 \fontencoding global
@@ -60,7 +60,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language polish
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -147,7 +147,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/Users/Lewin/Desktop/schematAlgorytmu2.PNG
+	filename wykresy/schematAlgorytmu2.PNG
 
 \end_inset
 
@@ -196,12 +196,18 @@ Generator instancji tworzy losowe rozwiązania tak aby uzyskać początkową
 
 \begin_layout Standard
 
-\change_inserted 228045028 1452607266
+\change_inserted 228045028 1452637191
 Zadanie składa się z dwóch podzadań.
  Każde podzadanie zawiera na jakiej maszynie ma ono zostać wykonane; czy
  zostało już dodane do uszeregowania; czas, od którego podzadanie może zacząć
  się wykonywać; które podzadanie jest z nim w parzę oraz czy musi zostać
  wykonane jako pierwsze lub drugie w kolejności.
+ Przerwy znajdują się wyłącznie na pierwszej maszynie i ich czas rozpoczęcia
+ nie może
+\change_unchanged
+ ulec
+\change_inserted 228045028 1452637197
+ zmianie.
 \end_layout
 
 \begin_layout Standard
@@ -266,9 +272,41 @@ Każde uszeregowanie rozpoczyna się od bloku pomocniczego, którego czasy
  
 \change_deleted 228045028 1452604655
 ,
-\change_inserted 228045028 1452606227
+\change_inserted 228045028 1452640646
 nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
- 
+ Na początku tworzenia rozwiązania dodawane są wszystkie przerwy do pierwszej
+ maszyny, gdyż ich czas początkowy nie może ulec zmianie.
+ Następnie dla maszyny pierwszej i drugiej wylosowane są podzadania, które
+ muszą zostać wykonane jako pierwsze lub podzadanie pierwsze już zostało
+ dodane do rozwiązania.
+ W momencie dodawania do uszeregowania sprawdzone zostaje, czy w lukach
+ między blokami może zmieścić się podzadanie 
+\begin_inset Formula $Ts_{n+1}-Tk_{n}\geq Tt_{k}$
+\end_inset
+
+, gdzie 
+\begin_inset Formula $k$
+\end_inset
+
+ to dodawane zadanie.
+ Jeżeli podzadanie było pierwsze to sprawdzone zostaje ponadto, czy czas
+ gotowości będzie równy lub mniejszy niż 
+\begin_inset Formula $Tk_{n}$
+\end_inset
+
+.
+ Jeżeli nie, to sprawdzone zostaje czy podzadanie będzie gotowe w powstałej
+ luce i wciąż będzie się mieścić.
+ Natomiast jeżeli podzadanie ma zostać wykonane jako drugie to musi zostać
+ sprawdzone, czy 
+\begin_inset Formula $Tk$
+\end_inset
+
+ pierwszego podzadania jest mniejsze bądź równe 
+\begin_inset Formula $Ts$
+\end_inset
+
+ dodawanego podzadania.
 \change_unchanged
 
 \end_layout
@@ -278,8 +316,15 @@ Mutacja
 \end_layout
 
 \begin_layout Standard
-Mutacja jest metodą której celem jest dokonanie pewniej losowej zmiany w
- uszeregowaniu.
+Mutacja jest metodą
+\change_inserted 228045028 1452640702
+,
+\change_unchanged
+ której celem jest dokonanie pewn
+\change_deleted 228045028 1452640692
+i
+\change_unchanged
+ej losowej zmiany w uszeregowaniu.
  Kluczową cechą
 \begin_inset space ~
 \end_inset
@@ -289,9 +334,12 @@ mutacji jest jej siła
 \end_inset
 
 , która determinuje jak bardzo rozwiązanie jest modyfikowane.
- Pełna mutacja w której z rozwiązania macierzystego otrzymujemy potomka
- opiera się na kilku pojedynczych mutacjach wykonywanych na każdej maszynie
- w ilości 
+ Pełna mutacja
+\change_inserted 228045028 1452641285
+,
+\change_unchanged
+ w której z rozwiązania macierzystego otrzymujemy potomka opiera się na
+ kilku pojedynczych mutacjach wykonywanych na każdej maszynie w ilości 
 \begin_inset Formula $K$
 \end_inset
 
@@ -327,8 +375,16 @@ L=(-1)*\left[\left\lceil \frac{N*S}{2}\right\rceil +1\right]\label{eq:przesuniec
 
 \end_inset
 
-Zmiana u uszeregowaniu której dokonuje pojedyńcza mutacja opera się na przesunię
-ciu losowego elementu o 
+Zmiana 
+\change_deleted 228045028 1452641338
+u
+\change_unchanged
+ uszeregowaniu
+\change_inserted 228045028 1452641331
+,
+\change_unchanged
+ której dokonuje pojedyńcza mutacja opera się na przesunięciu losowego elementu
+ o 
 \begin_inset Formula $L$
 \end_inset
 
@@ -340,17 +396,67 @@ reference "eq:przesuniecieMutacji"
 \end_inset
 
 ) pozycji w lewo.
- Gdy index elementu jest mniejszy od wartości przesunięcia element jest
+ Gdy index elementu jest mniejszy od wartości przesunięcia element
+\change_inserted 228045028 1452641399
+,
+\change_unchanged
+ jest
+\change_inserted 228045028 1452641405
+ on
+\change_unchanged
  umieszczany na pierwszym miejscu w uszeregowaniu.
  Po wykonaniu przesunięcia następuje naprawa uszeregowań na każdej z maszyn,
  która opiera się na sprawdzeniu, czy zadania nie nachodzą na siebie oraz
- są wykonywane w odpowiednim czasie (czas gotowości lub dla operacji nr
- 2 czas zakończenia operacji nr 1).
- Naprawa opera się
+ są wykonywane w odpowiednim czasie (
+\change_inserted 228045028 1452641460
+ dla pierwszej operacji jest to 
+\change_unchanged
+czas gotowości 
+\change_deleted 228045028 1452641464
+lub
+\change_inserted 228045028 1452641466
+natomiast
+\change_unchanged
+ dla operacji 
+\change_deleted 228045028 1452641470
+nr 2
+\change_inserted 228045028 1452641472
+drugiej
+\change_unchanged
+ 
+\change_deleted 228045028 1452641489
+czas zakończenia
+\change_inserted 228045028 1452641492
+
+\begin_inset Formula $Tk$
+\end_inset
+
+
+\change_unchanged
+ operacji 
+\change_deleted 228045028 1452641478
+nr 1
+\change_inserted 228045028 1452641479
+pierwszej
+\change_unchanged
+).
+ Naprawa op
+\change_inserted 228045028 1452641519
+i
+\change_unchanged
+era się
 \begin_inset space ~
 \end_inset
 
 głównie na przesunięciu problematycznych operacji w prawo.
+
+\change_inserted 228045028 1452641954
+ Gdy przesuwana operacja nachodzi na przerwę konserwującą to miejsce operacji
+ zostaje zamienione z przerwą i algorytm naprawy jest kontynuowany.
+ Algorytm trwa tak długo aż wszystkie operacje znajdą się w odpowiednich
+ miejscach.
+
+\change_deleted 228045028 1452641817
  Gdy wymagane jest przesunięcie danej operacji, które jest jednak niemożliwe
  ze względu na przerwę
 \begin_inset space ~
@@ -358,14 +464,42 @@ głównie na przesunięciu problematycznych operacji w prawo.
 
 konserwującą znajdującą się na nią następuje zamiana przerwy z daną operacją
  i kontunuacja algorytmu naprawy.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
 Krzyżowanie
+\change_inserted 228045028 1452641867
+
 \end_layout
 
 \begin_layout Subsection
 Selekcja
+\change_inserted 228045028 1452641982
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452642485
+Selekcja końcowej populacji opiera się na turnieju, w którym liczba porównywanyc
+h rozwiązań wynosi 
+\begin_inset Formula $\frac{populacja\,końcowa}{populacja\,początkowa}$
+\end_inset
+
+.
+ Selekcja wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie
+ tyle samo co rozmiar populacji początkowej.
+ Taki sposób selekcji ma wadę, gdyż mogą zostać utracone 
+\begin_inset Quotes pld
+\end_inset
+
+lepsze
+\begin_inset Quotes prd
+\end_inset
+
+rozwiązania w momencie, gdy rozwiązania ułożone są rosnąco.
 \end_layout
 
 \begin_layout Section
