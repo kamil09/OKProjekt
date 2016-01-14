@@ -13,7 +13,7 @@ public class Podzadanie extends Blok implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * Maszyna na której jes wykonywane zadanie
+	 * Maszyna na której jest wykonywane zadanie
 	 */
 	public final int maszyna;
 	/**
