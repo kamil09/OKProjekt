@@ -604,7 +604,7 @@ Krzyżowanie
 
 \begin_layout Standard
 
-\change_inserted 228045028 1452679534
+\change_inserted 228045028 1452782592
 Krzyżowanie jest to metoda, której celem jest modyfikacja istniejących rozwiązań
  na podstawie innych uszeregowań.
  W pierwszej fazie, maszyny są dzielone na dwie równe połowy na podstawie
@@ -619,6 +619,9 @@ ej dodawane są po koleji, aż uszeregowanie będzie całkowicie uzupełnione.
  uszeregowania.
  Sprawdzone zostaje, czy operacje nie nachodzą na siebie i czy podzadanie
  pierwsze wykoanało się przed rozpoczęciem podzadania drugiego.
+ Krzyżowanie nie korzysta z żadnych dodatkowych parametrów ze względu na
+ to, że punkt dzielenia krzyżowania jest tylko po środku całego uszeregowania.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -1375,12 +1378,17 @@ Test wartości funkcji celu od czasu przed strojeniem
 
 \begin_layout Standard
 
-\change_inserted 228045028 1452781498
-Test miał za zadanie sprawdzić, jak wartość funkcji celu wpływa na działanie
- algorytmu.
- Z otrzymanych wyników można wywnioskować, że czas wynoszący jest wystarczający
- aby uzyskać dobrze zoptymalizowane uszeregowania.
- 
+\change_inserted 228045028 1452782909
+Test miał za zadanie sprawdzić, jak optymalizowane są uszeregowania po danym
+ czasie.
+ Z otrzymanych wyników można wywnioskować, że czas optymalizacja uszeregowań
+ stabilizuje się po 
+\begin_inset Formula $8s$
+\end_inset
+
+ działania algorytmu.
+ Test ten pozwolił wyznaczyć wartość czasu, która będzie wykorzystywana
+ w następnych testach, ponieważ większa nie ma wpływu na rozwiązanie.
 \end_layout
 
 \begin_layout Standard
@@ -1632,10 +1640,70 @@ tabela użytych parametrów dla testu 2.1
 
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 228045028 1452781660
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452781715
+\begin_inset Graphics
+	filename wykresy/wykres2_1.png
+	width 70page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452781878
+wykres dla testu wartości funkcji celu od czasu przed strojeniem
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 
-\change_inserted 228045028 1452779255
+\change_inserted 228045028 1452782215
 Test siły mutacji
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452783070
+Celem tego testu było sprawdzenie jak siła mutacji wpływa na szybkość optymalizo
+wania rozwiązania przez algorytm.
+ Występuje tutaj bardzo ciekawa zależność.
+ Mutacja o dużej sile poczatkowo optymalizowuje rozwiązanie wolniej ze względu
+ na dużą liczbę zmian w nim dokonywanych.
+ Po pewnym czasie gdy siła mutacji jest zmniejszana na wykresie widzimy
+ większy spadek krzywej.
+ Bardzo słaba mutacja ma natomiast tendencję do wpadanie w minimum lokalne
+ ze względu na małą liczbę zmian dokonywanych w uszeregowaniu.
+ Na podstawie tego testu wyznaczliśmy optymalną siłę mutacji na 
+\begin_inset Formula $0,15$
+\end_inset
+
+, która będzie wykorzystywana w następnych testach.
 \end_layout
 
 \begin_layout Standard
@@ -1859,10 +1927,60 @@ tabela użytych parametrów dla testu 2.2
 
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 228045028 1452781748
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452781781
+\begin_inset Graphics
+	filename wykresy/wykres2_2.png
+	width 70page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452781870
+wykres dla testu siły mutacji
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 
-\change_inserted 228045028 1452779257
+\change_inserted 228045028 1452783077
 Test wielkości populacji początkowej i końcowej
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452783247
+Test ten miał za zadanie oszacować jak wartość funkcji celu zależy od wielkości
+ popualcji początkowej i końcowej.
+ Należy tutaj dodać, że jeżeli kończymy program na podstawie czasu, zwiększenie
+ wielkości populacji będzie skukować zmiejszeniem iteracji algorytmu.
+ Optymalnym rozwiązaniem okazało się populacja początkowa równa 250 oraz
+ końcowa 750.
+ Z wykresu możemy także wywnioskować, że najgorsze wyniki otrzymujemy zaczynając
+ od małej populacji początkowej lub bardzo dużej populacji końcowej.
 \end_layout
 
 \begin_layout Standard
@@ -2086,9 +2204,46 @@ tabela użytych parametrów dla testu 2.3
 
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 228045028 1452781789
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452781827
+\begin_inset Graphics
+	filename wykresy/wykres2_3.png
+	width 70page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452781866
+wykres dla testu wielkości populacji początkowej i końcowej
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 
-\change_inserted 228045028 1452776673
+\change_inserted 228045028 1452783290
 Test liczby mutacji i krzyżowań
 \end_layout
 
@@ -2313,10 +2468,61 @@ tabela użytych parametrów dla testu 2.4
 
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 228045028 1452781842
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452781842
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452781861
+wykres dla testu liczby mutacji i krzyżowań
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 
-\change_inserted 228045028 1452779265
+\change_inserted 228045028 1452783298
 Test wartości funkcji celu od czasu po strojeniu
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452783536
+Ten test miał wykazać jak bardzo zmiana parametrów wpłynęła na uzyskiwane
+ wyniki z początkowego testu.
+ Na wykresie widać, że poprawa wartości funkcji celu wyniosła aż 
+\begin_inset Formula $3\%$
+\end_inset
+
+.
+ Z wykresu możemy także wyczytać, że algorytm osiągnoł optimum po 
+\begin_inset Formula $5s$
+\end_inset
+
+ (przed strojeniem czas wynosił 
+\begin_inset Formula $8s$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -2539,6 +2745,43 @@ tabela użytych parametrów dla testu 2.5
 
 
 \change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452781914
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452781951
+\begin_inset Graphics
+	filename wykresy/wykres2_5.png
+	width 70page%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452781932
+Wykres dla testu wartości funkcji celu od czasu po strojeniu
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
