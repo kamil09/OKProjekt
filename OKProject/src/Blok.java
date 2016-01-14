@@ -2,11 +2,12 @@ import java.io.Serializable;
 
 /**
  * Klasa po której dziedziczy podzadanie i przerwa
- * @author no-one
+ * @author Kamil Piotrowski ; Michał Lewiński
  *
  */
 public class Blok implements Comparable<Blok>, Serializable{
 
+	
 	/**
 	 * 
 	 */

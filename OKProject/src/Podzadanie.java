@@ -3,7 +3,7 @@ import java.util.Random;
 
 /**
  * Jedno z 2 operacji należących do zadania
- * @author Kamil Piotrowski
+ * @author Kamil Piotrowski ; Michał Lewiński
  *
  */
 public class Podzadanie extends Blok implements Serializable{

@@ -3,7 +3,7 @@ import java.util.Random;
 
 /**
  * Zadanie
- * @author Kamil Piotrowski
+ * @author Kamil Piotrowski ; Michał Lewiński
  *
  */
 public class Zadanie implements Comparable<Zadanie>, Serializable{

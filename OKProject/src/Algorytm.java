@@ -79,9 +79,10 @@ public class Algorytm{
 		}
 		
 		//WYBIERZ NAJLEPSZE ROZWIAZANIE I WYPISZ ROZWIAZANIE
+		
 		if(Main.wyjscie == 1)
 			wybierzNajlepsze().wypiszUserzegowanie();
-		if(Main.wyjscie == 0)
+		if((Main.wyjscie == 0) && (Main.zapisDoPliki == 0 ))
 			System.out.print(wybierzNajlepsze().sumaCzasow);
 		if(Main.zapisDoPliki == 1){
 			PrintWriter outOut = new PrintWriter("przyklad.out");

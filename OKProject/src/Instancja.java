@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Instancja jest zbiorem zadań oraz przerw
- * @author Kamil Piotrowski
+ * @author Kamil Piotrowski ; Michał Lewiński
  *
  */
 public class Instancja implements Serializable{

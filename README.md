@@ -41,10 +41,10 @@ OPIS PARAMETRÓW:
 	-maxP	N	:	maksymalna długość przerwy (def. 50)
 	-maxG	N	:	maksymalny czas gotowości zadania (def. 100)
 
-Program w trybie TR0 generuje instancje w formie binarnej do pliku oraz w formie tekstowej na ekran. W celu jej wczytania do programu naży po przełączniku "-SF" podać ścieżkę do pliku binarnego z instancją. Uzycie przełącznika -ALL powoduje wypisanie całego rozwiązania na ekran.
+	Program w trybie TR0 generuje instancje w formie binarnej do pliku oraz w formie tekstowej na ekran. W celu jej wczytania do programu naży po przełączniku "-SF" podać ścieżkę do pliku binarnego z instancją. Uzycie przełącznika -ALL powoduje wypisanie całego rozwiązania na ekran.
 
-W celu ułatwienia prezentacji programu na zajęciach dodaliśmy możliwość zapisu do pliku instancji i całego rozwiązania bez użycia konsoli. 
-W tym celu nalezy zmienić wartość zmiennej "zapisDoPliki" (Main programu) na wartość 1. Zostaną utworzone pliki przykład.in (instancja) oraz przyklad.out (wynik);
+	W celu ułatwienia prezentacji programu na zajęciach dodaliśmy możliwość zapisu do pliku instancji i całego rozwiązania bez użycia konsoli. 
+W tym celu nalezy zmienić wartość zmiennej "zapisDoPliki" (Main programu) na wartość 1. Zostaną utworzone pliki przykład.in (instancja) oraz przyklad.out (wynik); Utworzona paczka JAR ma domyśnie ustawioną tą wartość, wystarczy uruchomić i poczekać 8s na utworzenie plików.
 
 PRZYKŁADY:
-W folderze IN_OUT znajduje się 1000 przykładowo wygenerowanych instancji (numer.in) wraz z rozwiązaniami (nimer.out). Pliki o najmniejszych numerach są najwygodniejsze do analizy, ponieważ wraz ze wzrostem numeru rośnie ilość zadań, czas ich trwania, gotowości oraz ilość przerw.
+	W folderze IN_OUT znajduje się 1000 przykładowo wygenerowanych instancji (numer.in) wraz z rozwiązaniami (nimer.out). Pliki o najmniejszych numerach są najwygodniejsze do analizy, ponieważ wraz ze wzrostem numeru rośnie ilość zadań, czas ich trwania, gotowości oraz ilość przerw.

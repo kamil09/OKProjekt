@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 	dla pierwszej maszyny od k=2 do n/2 okresów przestoju o losowym czasie rozpoczęcia i trwania, 
 	różne i losowe czasy gotowości dla wszystkich zadań
 	minimalizacja sumy czasów zakończenia wszystkich operacji, liczba zadań n.
- * @author Kamil Piotrowski
+ * @author Kamil Piotrowski ; Michał Lewiński
  *
  */
 
@@ -130,7 +130,7 @@ public class Main extends Thread{
 	 * Czy zapisać do pliku, nieużywane  w tesowaniu
 	 * Tylko w celu pokazowym.
 	 */
-	public static int zapisDoPliki=0;
+	public static int zapisDoPliki=1;
 	
 	/**
 	 * MAIN
