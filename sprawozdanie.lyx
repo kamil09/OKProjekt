@@ -7,7 +7,7 @@
 \maintain_unincluded_children false
 \language polish
 \language_package default
-\inputencoding default
+\inputencoding utf8
 \fontencoding global
 \font_roman default
 \font_sans default
@@ -91,13 +91,72 @@ Wstęp
 \end_layout
 
 \begin_layout Standard
-Niniejsze sprawozdanie dotyczy problemu nr 3 związanego z szeregowaniem
- zadań (job shop, liczba maszyn m=2, operacje typu non-preemptive, dla pierwszej
- maszyny od k=2 do n/2 okresów przestoju o losowym czasie rozpoczęcia i
- trwania, różne i losowe czasy gotowości dla wszystkich zadań, minimalizacja
- sumy czasów zakończenia wszystkich operacji, liczba zadań n).
+Niniejsze sprawozdanie dotyczy problemu nr 
+\change_deleted 228045028 1452643441
+3
+\change_inserted 228045028 1452643441
+
+\begin_inset Formula $3$
+\end_inset
+
+
+\change_unchanged
+ związanego z szeregowaniem zadań (job shop, liczba maszyn 
+\change_deleted 228045028 1452643459
+m=2
+\change_inserted 228045028 1452643459
+
+\begin_inset Formula $m=2$
+\end_inset
+
+
+\change_unchanged
+, operacje typu non-preemptive, dla pierwszej maszyny od 
+\change_deleted 228045028 1452643450
+k=2
+\change_inserted 228045028 1452643450
+
+\begin_inset Formula $k=2$
+\end_inset
+
+
+\change_unchanged
+ do 
+\change_deleted 228045028 1452643455
+n/2
+\change_inserted 228045028 1452643455
+
+\begin_inset Formula $n/2$
+\end_inset
+
+
+\change_unchanged
+ okresów przestoju o losowym czasie rozpoczęcia i trwania, różne i losowe
+ czasy gotowości dla wszystkich zadań, minimalizacja sumy czasów zakończenia
+ wszystkich operacji, liczba zadań 
+\change_deleted 228045028 1452643470
+n
+\change_inserted 228045028 1452643470
+
+\begin_inset Formula $n$
+\end_inset
+
+
+\change_unchanged
+).
  Do wykonania tego problemu wykorzystany został algorytm genetyczny, który
- wykorzystuje mutacje i krzyżowania przy tworzeniu nowych populacji.
+ wykorzystuje mutacje i krzyżowania przy 
+\change_deleted 228045028 1452775988
+tworzeniu nowych
+\change_inserted 228045028 1452775991
+rozszerzaniu
+\change_unchanged
+ populacji.
+
+\change_inserted 228045028 1452776028
+ Wartość funkcji celu określana jest jako suma czasów zakończenia operacji.
+
+\change_unchanged
  Sprawozdanie składa się z czterech rozdziałów: pierwszy rozdział zawiera
  teoreryczny opis działania i implementacji naszego algorytmu.
  W drugim rozdziale znajdują się testy dotyczące strojenia heurystyki, na
@@ -119,13 +178,53 @@ Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
  wartości poszczególnych parametrów, która mogą zostać także zdefiniowane
  przez użytkownika.
  Tworzona jest początkowa populacja, której rozmiar jest zdefiniowany na
- początku algorytmu (domyślnie 50).
+ początku algorytmu (domyślnie 
+\change_deleted 228045028 1452643480
+50
+\change_inserted 228045028 1452643480
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+).
  Następnie populacja zostaje rozszerzona za pomocą mutacji, krzyżowania
  oraz łączonej mutacji z krzyżowaniem.
- Ilość poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
+ 
+\change_deleted 228045028 1452771423
+Ilość
+\change_inserted 228045028 1452771423
+liczba
+\change_unchanged
+ poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
  także jest określana przez odpowiednie parametry procentowe, które w sumie
- muszą utworzyć populację końcową (domyślnie ilość poszczególnych operacji
- jest równa, a rozmiar końcowej populacji domyślnie wynosi 200).
+ muszą utworzyć populację końcową
+\change_inserted 228045028 1452781057
+ 
+\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,ewolucji=1$
+\end_inset
+
+
+\change_unchanged
+ (domyślnie 
+\change_deleted 228045028 1452771424
+ilość
+\change_inserted 228045028 1452771425
+liczba
+\change_unchanged
+ poszczególnych operacji jest równa, a rozmiar końcowej populacji domyślnie
+ wynosi 
+\change_deleted 228045028 1452643485
+200
+\change_inserted 228045028 1452643485
+
+\begin_inset Formula $200$
+\end_inset
+
+
+\change_unchanged
+).
  Uzyskana w ten sposób populacja poddawana jest selekcji za pomocą turnieju,
  w którym eliminowane są gorsze uszeregowania, tak aby rozmiar zredukowanej
  populacji wyniósł tyle samo co początkowej.
@@ -134,23 +233,27 @@ Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
  całego algorytmu.
  Cały proces algorytmu został przedstawiony na schemacie przedstawionym
  poniżej.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename wykresy/schematAlgorytmu2.PNG
+	width 52page%
 
 \end_inset
 
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452680111
+Uproszczony schemat algorytmu
+\change_unchanged
 
 \end_layout
 
@@ -180,7 +283,22 @@ Generator instancji tworzy losowe rozwiązania tak aby uzyskać początkową
 \end_inset
 
 .
- Liczba przerw wyznaczana jest na podstawie wzroru(), gdzie 
+ Liczba przerw wyznaczana jest na podstawie wzoru
+\change_inserted 228045028 1452676151
+ 
+\change_unchanged
+(
+\change_inserted 228045028 1452676160
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:iloscPrzerw"
+
+\end_inset
+
+
+\change_unchanged
+), gdzie 
 \begin_inset Formula $n$
 \end_inset
 
@@ -216,9 +334,9 @@ Po utworzeniu listy zadań i przerw dochodzi do ich posortowania.
  lista przerw na podstawie czasu rozpoczęcia.
  
 \begin_inset Formula 
-\[
-p=procentP*n+2
-\]
+\begin{equation}
+p=procentP*n+2\label{eq:iloscPrzerw}
+\end{equation}
 
 \end_inset
 
@@ -330,7 +448,7 @@ ej losowej zmiany w uszeregowaniu.
 \end_inset
 
 mutacji jest jej siła 
-\begin_inset Formula $S$
+\begin_inset Formula $SM$
 \end_inset
 
 , która determinuje jak bardzo rozwiązanie jest modyfikowane.
@@ -351,15 +469,25 @@ reference "eq:iloscMutacji"
 \end_inset
 
 ).
- Siła mutacji ulega redukcji co 1 sekundę działania algorytmu 
-\begin_inset Formula $S=S/1,5$
+ Siła mutacji ulega redukcji co 
+\change_deleted 228045028 1452643499
+1
+\change_inserted 228045028 1452643499
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+ sekundę działania algorytmu 
+\begin_inset Formula $SM=SM/1,5$
 \end_inset
 
 .
  
 \begin_inset Formula 
 \begin{equation}
-K=\left\lceil N*S\right\rceil \label{eq:iloscMutacji}
+K=\left\lceil N*SM\right\rceil \label{eq:iloscMutacji}
 \end{equation}
 
 \end_inset
@@ -370,7 +498,7 @@ K=\left\lceil N*S\right\rceil \label{eq:iloscMutacji}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-L=(-1)*\left[\left\lceil \frac{N*S}{2}\right\rceil +1\right]\label{eq:przesuniecieMutacji}
+L=(-1)*\left[\left\lceil \frac{N*SM}{2}\right\rceil +1\right]\label{eq:przesuniecieMutacji}
 \end{equation}
 
 \end_inset
@@ -409,7 +537,7 @@ reference "eq:przesuniecieMutacji"
  która opiera się na sprawdzeniu, czy zadania nie nachodzą na siebie oraz
  są wykonywane w odpowiednim czasie (
 \change_inserted 228045028 1452641460
- dla pierwszej operacji jest to 
+dla pierwszej operacji jest to 
 \change_unchanged
 czas gotowości 
 \change_deleted 228045028 1452641464
@@ -426,8 +554,8 @@ drugiej
  
 \change_deleted 228045028 1452641489
 czas zakończenia
-\change_inserted 228045028 1452641492
-
+\change_inserted 228045028 1452677774
+czas 
 \begin_inset Formula $Tk$
 \end_inset
 
@@ -470,8 +598,27 @@ konserwującą znajdującą się na nią następuje zamiana przerwy z daną oper
 
 \begin_layout Subsection
 Krzyżowanie
-\change_inserted 228045028 1452641867
+\change_inserted 228045028 1452675416
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452679534
+Krzyżowanie jest to metoda, której celem jest modyfikacja istniejących rozwiązań
+ na podstawie innych uszeregowań.
+ W pierwszej fazie, maszyny są dzielone na dwie równe połowy na podstawie
+ liczby podzadań.
+ Jedna połowa uszeregowania pozostaje niezmieniona, natomiast druga trafia
+ do listy tymczasowej.
+ Na podstawie ułożenia podzadań w innym rozwiązaniu, operacje w liście tymczasow
+ej dodawane są po koleji, aż uszeregowanie będzie całkowicie uzupełnione.
+ Podczas krzyżowania, połowa dzielonych rozwiązania pozostawia pierwszą
+ połowę nie zmienioną, natomiast reszta drugą połowę.
+ Podobnie jak w mutacji, po wykonaniu krzyżowania następuje naprawienie
+ uszeregowania.
+ Sprawdzone zostaje, czy operacje nie nachodzą na siebie i czy podzadanie
+ pierwsze wykoanało się przed rozpoczęciem podzadania drugiego.
 \end_layout
 
 \begin_layout Subsection
@@ -482,15 +629,25 @@ Selekcja
 
 \begin_layout Standard
 
-\change_inserted 228045028 1452642485
+\change_inserted 228045028 1452643570
 Selekcja końcowej populacji opiera się na turnieju, w którym liczba porównywanyc
 h rozwiązań wynosi 
-\begin_inset Formula $\frac{populacja\,końcowa}{populacja\,początkowa}$
+\change_unchanged
+
+\begin_inset Formula $\frac{populacja\:końcowa}{populacja\:początkowa}$
 \end_inset
 
+
+\change_inserted 228045028 1452776198
 .
- Selekcja wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie
- tyle samo co rozmiar populacji początkowej.
+\change_deleted 228045028 1452776197
+.
+
+\change_inserted 228045028 1452776205
+ Selekcja
+\change_unchanged
+ wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie tyle
+ samo co rozmiar populacji początkowej.
  Taki sposób selekcji ma wadę, gdyż mogą zostać utracone 
 \begin_inset Quotes pld
 \end_inset
@@ -499,27 +656,42 @@ lepsze
 \begin_inset Quotes prd
 \end_inset
 
-rozwiązania w momencie, gdy rozwiązania ułożone są rosnąco.
+ rozwiązania w momencie, gdy rozwiązania ułożone są rosnąco.
+ Zawsze po wykonaniu selekcji, porzucane jest rozwiązanie 
+\begin_inset Quotes pld
+\end_inset
+
+najgorsze
+\begin_inset Quotes prd
+\end_inset
+
+.
+
+\change_inserted 228045028 1452775811
+ Zdecydowaliśmy się na turniej ze względu na małą szansę wpadnięcia na początku
+ w optymalne rozwiązanie niż w przypadku wzięcia wszystkich najlepszych
+ rozwiązań.
 \end_layout
 
 \begin_layout Section
 Testy algorytmu
-\end_layout
+\change_inserted 228045028 1452776691
 
-\begin_layout Section
-Testy instancji problemu
 \end_layout
 
 \begin_layout Standard
-Rozdział ten jest przeznaczony na testy dotyczące różnych typów instancji.
- Ustawienia algorytmu które zostaną użyte do przeprowadzenia testów pochodzą
- z poprzedniego rozdziału i są
-\begin_inset space ~
+
+\change_inserted 228045028 1452781244
+W celu poprawy działania algorytmu, przeprowadziliśmy testy, które miały
+ umożliwić nam znalezienie odpowiednich wartości parametrów.
+ Aby zwiększyć prawidłowość otrzymanych wyników, wartości zostały obliczone
+ za pomocą średniej z 
+\begin_inset Formula $200$
 \end_inset
 
-najbardziej optymalnymi dla naszego algorytmu.
- W dalszej części będziemy używać skrótów opisujących parametry instancji
- przedstawionych w tabeli 
+ instancji.
+ Testy przeprowadzaliśmy na tych samych ustawieniach generatora instancji,
+ które zostały przedstawione w tabeli instancji 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tabela 3 start"
@@ -527,9 +699,20 @@ reference "tabela 3 start"
 \end_inset
 
 .
+ Parametry, których wielkości były optymalizowane, zostały przedstawione
+ w tabeli 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tabelaParametrow"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 228045028 1452778557
 \begin_inset Float table
 wide false
 sideways false
@@ -538,6 +721,8 @@ status open
 \begin_layout Plain Layout
 \paragraph_spacing onehalf
 \align center
+
+\change_inserted 228045028 1452778557
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -548,6 +733,8 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 minZ
 \end_layout
 
@@ -557,6 +744,8 @@ minZ
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 minimalny czas trwania poejdyńczej operacji
 \end_layout
 
@@ -568,6 +757,8 @@ minimalny czas trwania poejdyńczej operacji
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maxZ
 \end_layout
 
@@ -577,6 +768,8 @@ maxZ
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maksymalny czas trwania pojenyńczej operacji
 \end_layout
 
@@ -588,6 +781,8 @@ maksymalny czas trwania pojenyńczej operacji
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 N
 \end_layout
 
@@ -597,7 +792,9 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-ilość zadań ilość zadań
+
+\change_inserted 228045028 1452778557
+liczba zadań
 \end_layout
 
 \end_inset
@@ -608,6 +805,8 @@ ilość zadań ilość zadań
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maxG
 \end_layout
 
@@ -617,6 +816,8 @@ maxG
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maksymalny czas gotowości dla zadania
 \end_layout
 
@@ -628,6 +829,8 @@ maksymalny czas gotowości dla zadania
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 PP
 \end_layout
 
@@ -637,7 +840,9 @@ PP
 \begin_inset Text
 
 \begin_layout Plain Layout
-ilość przerw konserwujących [(% z N)+2]
+
+\change_inserted 228045028 1452778557
+liczba przerw konserwujących [(% z N)+2]
 \end_layout
 
 \end_inset
@@ -648,6 +853,8 @@ ilość przerw konserwujących [(% z N)+2]
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 minP
 \end_layout
 
@@ -657,6 +864,8 @@ minP
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 minimalny czas trwania przerwy konserwującej
 \end_layout
 
@@ -668,6 +877,8 @@ minimalny czas trwania przerwy konserwującej
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maxP
 \end_layout
 
@@ -677,6 +888,8 @@ maxP
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778557
 maksymalny czas trwania przerwy konserwującej
 \end_layout
 
@@ -692,9 +905,13 @@ maksymalny czas trwania przerwy konserwującej
 
 \begin_layout Plain Layout
 \paragraph_spacing single
+
+\change_inserted 228045028 1452778590
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\change_inserted 228045028 1452778610
 opis parametrów instancji
 \end_layout
 
@@ -708,6 +925,706 @@ name "tabela 3 start"
 \end_inset
 
 
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing onehalf
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+czas działania algorytmu
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+siła mutacji
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+liczba popualcji początkowej
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+liczba populacji końcowej
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+liczba mutacji
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+liczba krzyżowania
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\change_inserted 228045028 1452778238
+\begin_inset CommandInset label
+LatexCommand label
+name "tabelaParametrow"
+
+\end_inset
+
+
+\change_unchanged
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778522
+o
+\change_deleted 228045028 1452778521
+O
+\change_unchanged
+pis parametrów wykorzystanych w testach
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted 228045028 1452778651
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452778651
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\paragraph_spacing onehalf
+\align center
+
+\change_inserted 228045028 1452778651
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="8">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+parametr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+minZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+maxZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+maxG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+PP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+minP
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+maxP
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+wartość
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779094
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779097
+\begin_inset Formula $50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779099
+\begin_inset Formula $50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779101
+\begin_inset Formula $100$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779107
+\begin_inset Formula $0,2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779109
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779111
+\begin_inset Formula $50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778651
+ustawienia generatora instancji dla strojenia
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 228045028 1452781253
+Test wartości funkcji celu od czasu przed strojeniem
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452781498
+Test miał za zadanie sprawdzić, jak wartość funkcji celu wpływa na działanie
+ algorytmu.
+ Z otrzymanych wyników można wywnioskować, że czas wynoszący jest wystarczający
+ aby uzyskać dobrze zoptymalizowane uszeregowania.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452777847
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452778771
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778782
+parametr
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778803
+SM
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778814
+PS
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778817
+PE
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778824
+IM
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778826
+IK
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778827
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778785
+wartość
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779202
+\begin_inset Formula $0,5$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779205
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779208
+\begin_inset Formula $300$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779210
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779213
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778855
+\begin_inset Formula $0-20s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452778722
+tabela użytych parametrów dla testu 2.1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -716,13 +1633,970 @@ name "tabela 3 start"
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 228045028 1452779255
+Test siły mutacji
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452779255
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452779255
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+parametr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+SM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+PE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+IM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+IK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+wartość
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $0,1-0,5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $300$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779255
+\begin_inset Formula $0-10s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452780924
+tabela użytych parametrów dla testu 2.2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 228045028 1452779257
+Test wielkości populacji początkowej i końcowej
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452779258
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452779258
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+parametr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+SM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+PE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+IM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+IK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+wartość
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+\begin_inset Formula $0,15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779319
+\begin_inset Formula $50-300$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+\begin_inset Formula $[3-8]*PS$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+\begin_inset Formula $0,33$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779258
+\begin_inset Formula $8s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452780926
+tabela użytych parametrów dla testu 2.3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 228045028 1452776673
+Test liczby mutacji i krzyżowań
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452779260
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452779260
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+parametr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+SM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+PE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+IM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+IK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+wartość
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+\begin_inset Formula $0,15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+\begin_inset Formula $250$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+\begin_inset Formula $750$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+\begin_inset Formula $0-[100-IK]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779401
+\begin_inset Formula $0-0,9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779260
+\begin_inset Formula $8s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452780930
+tabela użytych parametrów dla testu 2.4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 228045028 1452779265
+Test wartości funkcji celu od czasu po strojeniu
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452779265
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 228045028 1452779265
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+parametr
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+SM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+PS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+PE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+IM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+IK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+wartość
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $0,15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $250$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $750$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $0,1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $0,3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452779265
+\begin_inset Formula $0-20s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 228045028 1452780933
+tabela użytych parametrów dla testu 2.5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
+Testy instancji problemu
+\end_layout
+
+\begin_layout Standard
+Rozdział ten jest przeznaczony na testy dotyczące różnych typów instancji.
+ Ustawienia algorytmu
+\change_inserted 228045028 1452679922
+,
+\change_unchanged
+ które zostaną użyte do przeprowadzenia testów pochodzą z poprzedniego rozdziału
+ i są one najbardziej optymalne dla naszego algorytmu.
+ W dalszej części będziemy używać skrótów opisujących parametry instancji
+ przedstawionych w tabeli 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tabela 3 start"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Czas trwania operacji 
 \end_layout
 
 \begin_layout Standard
-Celem testy jest wyznaczenie zależności funkcji celu od długości trwania
+Celem testu jest wyznaczenie zależności funkcji celu od długości trwania
  operacji.
- Długość ta opisywana jest przez 2 wartości: minZ oraz maxZ.
+ Długość ta opisywana jest przez dwie
+\change_deleted 228045028 1452680291
+2
+\change_unchanged
+ wartości: 
+\change_deleted 228045028 1452680288
+minZ
+\change_inserted 228045028 1452680288
+
+\begin_inset Formula $minZ$
+\end_inset
+
+
+\change_unchanged
+ oraz 
+\change_deleted 228045028 1452680284
+maxZ
+\change_inserted 228045028 1452680284
+
+\begin_inset Formula $maxZ$
+\end_inset
+
+
+\change_unchanged
+.
  Wszystkie parametry instancji zostały przedstawione w tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -748,12 +2622,16 @@ reference "wykres3_11"
 
 .
  Możemy zauważyć, że występuje tutaj zależność liniowa.
- Prowadząc prostą przez punkty dla których 
+ Prowadząc prostą przez punkty
+\change_inserted 228045028 1452680326
+,
+\change_unchanged
+ dla których 
 \begin_inset Formula $minZ=maxZ$
 \end_inset
 
  możemy wyznaczyć funkcję opisującą maksymaną wartość funkcji celu w danym
- przedziale wartośc.
+ przedziale wartości.
  Na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -762,11 +2640,25 @@ reference "wykres3_12"
 \end_inset
 
  przedstawiono funkcje liniowe opisujące minimalną i maksymalną wartość
- funkcji celu w zależności od parametru maxZ.
- Łatwo także zauważyć, że wartości funkcji celu w przedziale 
-\begin_inset Formula $minZ=<1;maxZ>$
+ funkcji celu w zależności od parametru 
+\change_deleted 228045028 1452680354
+maxZ
+\change_inserted 228045028 1452680354
+
+\begin_inset Formula $maxZ$
 \end_inset
 
+
+\change_unchanged
+.
+ Łatwo także zauważyć, że wartości funkcji celu w przedziale 
+\begin_inset Formula $minZ=<1\,;\,maxZ>$
+\end_inset
+
+
+\change_inserted 228045028 1452680386
+ 
+\change_unchanged
 zmienia się liniowo.
  Na podstawie tych obserwacji jesteśmy w stanie wyznaczyć wzór opisujący
  badaną zależność:
@@ -793,6 +2685,7 @@ y_{2}=1440*X+6042\,\qquad y_{1}=523*X+5202
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1054,7 +2947,17 @@ status open
 
 \begin_layout Plain Layout
 funkcje opisujące minimalną i maksymalną wartość funkcji celu w zalezności
- od maxZ.
+ od 
+\change_deleted 228045028 1452680507
+maxZ
+\change_inserted 228045028 1452680507
+
+\begin_inset Formula $maxZ$
+\end_inset
+
+
+\change_unchanged
+.
 \end_layout
 
 \end_inset
@@ -1075,11 +2978,23 @@ name "wykres3_12"
 \end_layout
 
 \begin_layout Subsection
-Ilość zadań
+
+\change_inserted 228045028 1452772452
+Liczba
+\change_deleted 228045028 1452772451
+Ilość
+\change_unchanged
+ zadań
 \end_layout
 
 \begin_layout Standard
-Celem tego testu jest sprawdzenie jak ilość zadań
+Celem tego testu jest sprawdzenie jak 
+\change_deleted 228045028 1452680514
+ilość
+\change_inserted 228045028 1452680514
+liczba
+\change_unchanged
+ zadań
 \begin_inset space ~
 \end_inset
 
@@ -1095,7 +3010,18 @@ reference "parametr_3.2"
 
 \end_inset
 
-.Zalezność przedstawiono na wykresie 
+.
+
+\change_inserted 228045028 1452680521
+ 
+\change_unchanged
+Zale
+\change_inserted 228045028 1452711956
+ż
+\change_deleted 228045028 1452711956
+z
+\change_unchanged
+ność przedstawiono na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "wykres3_2"
@@ -1104,7 +3030,13 @@ reference "wykres3_2"
 
 .
  Łatwo zauważyć, że wartość funkcji celu jest proporcjonalna do kwadratu
- ilości zadań.
+ 
+\change_deleted 228045028 1452711964
+ilości
+\change_inserted 228045028 1452711965
+liczby
+\change_unchanged
+ zadań.
  Możemy opisać ją następującym wzorem:
 \end_layout
 
@@ -1336,7 +3268,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-zależność funkcji celu od ilości zadań N
+zależność funkcji celu od ilości zadań 
+\change_deleted 228045028 1452680493
+N
+\change_inserted 228045028 1452680493
+
+\begin_inset Formula $N$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -1379,9 +3321,9 @@ reference "wykres_3.3"
 
 .
  Z wykresu możemy odczytać, że wartość funkcji celu jest proporcjonalna
- do maksymalnego czasu gotowości (zalezność liniowa).
- Prowadzą prostą przez punkty pomiarowe dochodzimy do następującego równania
- zalezności:
+ do maksymalnego czasu gotowości (zależność liniowa).
+ Prowadząc prostą przez punkty pomiarowe dochodzimy do następującego równania
+ zależności:
 \end_layout
 
 \begin_layout Standard
@@ -1636,12 +3578,23 @@ zależność funkcji celu od czasu gotowości zadania
 \end_layout
 
 \begin_layout Subsection
-Ilość przerw konserwujących
+
+\change_inserted 228045028 1452772461
+Liczba
+\change_deleted 228045028 1452772459
+Ilość
+\change_unchanged
+ przerw konserwujących
 \end_layout
 
 \begin_layout Standard
-Celem rozdziału jest zbadanie jak ilość przerw konserwujących wpływa na
- wartość funkcji celu.
+Celem rozdziału jest zbadanie jak 
+\change_inserted 228045028 1452772473
+liczba
+\change_deleted 228045028 1452772472
+ilość
+\change_unchanged
+ przerw konserwujących wpływa na wartość funkcji celu.
  Wartości parametrów zostały przedstawione w tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1892,7 +3845,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-zależność funkcji celu od ilości przerw konserwujących
+zależność funkcji celu od 
+\change_deleted 228045028 1452680699
+ilości
+\change_inserted 228045028 1452680700
+liczby
+\change_unchanged
+ przerw konserwujących
 \end_layout
 
 \end_inset
@@ -1918,7 +3877,7 @@ Czas trwania przerw konserwujących
 
 \begin_layout Standard
 Celem rozdziału jest zbadanie jak długość przerw konserwujących wpływa na
- wartość kunkcji celu.
+ wartość funkcji celu.
  Wartości parametrów zostały przedstawione w tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1926,7 +3885,13 @@ reference "param3.5"
 
 \end_inset
 
-, natomiast zalezność na wykresie 
+, natomiast zale
+\change_inserted 228045028 1452712118
+ż
+\change_deleted 228045028 1452712118
+z
+\change_unchanged
+ność na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "wykres3.5"
@@ -1934,18 +3899,25 @@ reference "wykres3.5"
 \end_inset
 
 .
- Możemy tutaj zauważyć pewną ciekawą zalezność: od pewnej długości przerw
- przestają one mnieć znaczenie dla rozwiązania.
+ Możemy tutaj zauważyć pewną ciekawą zależność: od pewnej długości przerw
+ przestają one mieć znaczenie dla rozwiązania.
  Wytłumaczenie jest proste.
  Przerwy konserwujące są ustawiane w ten sposób, aby miały znaczenie dla
  rozwiązanie, jednak gdy są bardzo długie, takie założenie staje się niemożliwe
  (rosną odległości między przerwami, w które mieszczą się zadania).
- W takim wypadku zadania których długość jest dużo krótsza od długości przerw
- uda się uszeregować
+ W takim wypadku zadania
+\change_inserted 228045028 1452772676
+,
+\change_unchanged
+ których długość jest dużo krótsza od długości przerw uda się uszeregować
 \begin_inset space ~
 \end_inset
 
-nim napotkamy na ostatni przerwy (końcowe przerwy przestają mieć znaczenie).
+nim napotkamy na ostatni
+\change_inserted 228045028 1452772686
+e
+\change_unchanged
+ przerwy (końcowe przerwy przestają mieć znaczenie).
 \end_layout
 
 \begin_layout Standard
@@ -2155,11 +4127,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-\align center
+\change_inserted 228045028 1452675777
 \begin_inset Graphics
 	filename wykresy/wykres3_5.png
 	width 70page%
@@ -2167,10 +4136,7 @@ status open
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
+\change_unchanged
 
 \end_layout
 
@@ -2198,1690 +4164,42 @@ name "wykres3.5"
 
 \end_layout
 
-\begin_layout Subsection
-Opis zależności
-\end_layout
-
-\begin_layout Standard
-Celem tego rozdziału jest podsumowanie zależności otrzymanych w rozdziałach
- 3.1 - 3.5, oraz próba wyprowadzenia wspólnej, teoretycznej zalezności dla
- wszystkich testów.
- Uznajmy test 3.1 za podstawowy, od którego zaczynamy.
- Najpierw postaramy się go uogólnić na ilość zadań.
- W teście 3.2 wyznaczyliśmy zależność kwadratową.
- Starając się uogólnić zależność (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3_1"
-
-\end_inset
-
-) musimy pamiętać, że była testowana dla 
-\begin_inset Formula $N=50$
-\end_inset
-
-.
- Funkcja celu przejmie w takim wypadku postać:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-F_{6}=F_{1}*(N/50)^{2}\label{eq:3.6_1}
-\end{equation}
-
-\end_inset
-
-Następnym krokiem będzie ogogólnienie wzoru 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.6_1"
-
-\end_inset
-
- na czas maksymalnej gotowości dla zadania oraz ilość przerw konserwujących.
- Obie te zalezności mają postać liniową, wiec wyznaczenie powiązania nie
- jest trudne, musimy oczywiście uwzględnić, że równanie 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:3.6_1"
-
-\end_inset
-
- było wyznaczane dla 
-\begin_inset Formula $PP=20,\:maxG=100$
-\end_inset
-
-.
- Funkcja celu przyjmnie następującą postać: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-F_{7}=F_{6}+[(PP-20)/20*7760]+[(maxG-100)/100*900]
-\end{equation}
-
-\end_inset
-
-Stałe wykorzystane w powyższem wzorze zostały odczytane z wykresów (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "wykres_3.3"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "wykres3_4"
-
-\end_inset
-
-).
- Wszytkie te rozważania były by poprawne, gdyby testowane parametry nie
- wpływały na siebie nawzajem.
- Tak niestety nie jest, dlatego możemy się spodziewać pewnych różnić między
- wartością wyliczoną ze wzoru, a zwróconą przez program.
- W celu weryfikacji porównamy te wartości i wyznaczymy wzglądną róznicę.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="13">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-lp.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-róż.
- [%]
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-program
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $F_{7}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $F_{6}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $F_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-minZ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-maxZ
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-maxG
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PP
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-N
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $y_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $y_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-135931
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-106296
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-32807
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-51
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-375
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-90
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-90
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-79431
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-31875
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-160255
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-133437
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-48424
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-450
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-81
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-83
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-109650
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-42858
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-184727
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-160726
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-69566
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-17
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-93
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-525
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-76
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-139869
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-53841
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-193871
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-172687
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-90678
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-28
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-114
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-600
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-63
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-69
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-170088
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-64824
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-190230
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-171863
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-111773
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-39
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-135
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-675
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-54
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-62
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-200307
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-75807
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-176309
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-160759
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-132859
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-156
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-750
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-45
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-55
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-230526
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-86790
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-154602
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-141869
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-153938
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-61
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-177
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-825
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-36
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-48
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-260745
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-97773
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-127595
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-117679
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-175013
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-72
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-198
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-900
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-27
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-41
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-290964
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-108756
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-97768
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-90669
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-196085
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-83
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-219
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-975
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-18
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-34
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-321183
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-119739
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-68380
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-63322
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-217155
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-94
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-240
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-1050
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-11
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-27
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-351402
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-130722
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-porównanie wartości zwróconej przez program z wyliczoną na podstawie wzoru.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-PODSUMOWANIE
+P
+\change_deleted 228045028 1452775596
+ODSUMOWANIE
+\change_inserted 228045028 1452775597
+odsumowanie
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 228045028 1452773009
+Po przeprowadzeniu wszystkich badań doszliśmy do wniosku, że nasza implementacja
+ uszeregowania spełnia założenia zamieszczone w zadaniu nr 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ Udało nam się zoptymalizować parametry na podstawie wyspecjalizowanych
+ testów, co poprawiło wartość celu o 
+\begin_inset Formula $3\%$
+\end_inset
+
+.
+ Optymalizacja także skróciła czas znajdowania optymalnego rozwiązania:
+ przed strojeniem 
+\begin_inset Formula $8s$
+\end_inset
+
+, po strojeniu 
+\begin_inset Formula $5s$
+\end_inset
+
+.
+ 
+\change_unchanged
+
 \end_layout
 
 \end_body
