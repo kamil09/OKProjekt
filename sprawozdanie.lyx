@@ -1,24 +1,24 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
 \language polish
-\language_package default
+\language_package babel
 \inputencoding utf8
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,24 +29,15 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -69,6 +60,7 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 193426409 ",,," 
 \author 228045028 "Lewin" 
 \end_header
 
@@ -118,7 +110,13 @@ Niniejsze sprawozdanie dotyczy problemu nr
  stosuje mutacje i krzyżowania przy rozszerzaniu populacji.
  Wartość funkcji celu określana jest jako suma czasów zakończenia operacji.
  Sprawozdanie składa się z czterech rozdziałów: pierwszy rozdział zawiera
- teoreryczny opis działania i implementacji naszego algorytmu.
+ 
+\change_deleted 193426409 1452800764
+teoreryczny
+\change_inserted 193426409 1452800764
+teoretyczny
+\change_unchanged
+ opis działania i implementacji naszego algorytmu.
  W drugim rozdziale znajdują się testy dotyczące strojenia heurystyki, na
  podstawie, których zostaną wybrane najoptymalniejsze ustawienia.
  W trzecim rozdziale znajdują się testy instancji.
@@ -153,12 +151,12 @@ a
  Liczba poszczególnych szeregowań tworzona za pomocą wymienionych przekształceń
  także jest określana przez odpowiednie parametry procentowe, które w sumie
  muszą utworzyć populację końcową 
-\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
+\begin_inset Formula $liczba\, mutacji+liczba\, krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
 \end_inset
 
  (domyślnie liczba poszczególnych operacji jest równa, a rozmiar końcowej
  populacji domyślnie wynosi 
-\begin_inset Formula $200$
+\begin_inset Formula $300$
 \end_inset
 
 ).
@@ -184,7 +182,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Uproszczony schemat algorytmu
@@ -236,13 +234,49 @@ reference "eq:iloscPrzerw"
 \end_layout
 
 \begin_layout Standard
-Zadanie składa się z dwóch podzadań.
- Każde podzadanie zawiera na jakiej maszynie ma ono zostać wykonane; czy
- zostało już dodane do uszeregowania; czas, od którego podzadanie może zacząć
- się wykonywać; które podzadanie jest z nim w parzę oraz czy musi zostać
- wykonane jako pierwsze lub drugie w kolejności.
+Zadanie 
+\change_deleted 193426409 1452800791
+składa
+\change_inserted 193426409 1452800791
+składa
+\change_unchanged
+ się z dwóch podzadań.
+ Każde podzadanie zawiera
+\change_inserted 193426409 1452798828
+:
+\change_unchanged
+ 
+\change_inserted 193426409 1452798841
+nr maszyny na której ma się wykonać
+\change_deleted 193426409 1452798834
+na jakiej maszynie ma ono zostać wykonane
+\change_unchanged
+; 
+\change_inserted 193426409 1452798850
+informacje 
+\change_unchanged
+czy zostało już dodane do uszeregowania; czas, od którego podzadanie może
+ zacząć się wykonywać; które podzadanie jest z nim w parzę
+\change_inserted 193426409 1452798956
+ (referencja do drugiego podzadania)
+\change_unchanged
+ oraz czy musi zostać wykonane jako pierwsze 
+\change_inserted 193426409 1452798970
+czy
+\change_deleted 193426409 1452798969
+lub
+\change_unchanged
+ drugie w kolejności
+\change_inserted 193426409 1452798979
+ (numer operacji)
+\change_unchanged
+.
  Przerwy znajdują się wyłącznie na pierwszej maszynie i ich czas rozpoczęcia
- nie może ulec zmianie.
+ nie może ulec zmianie
+\change_inserted 193426409 1452798501
+ w trakcie działania algorytmu
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -300,11 +334,29 @@ Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
  nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
  Na początku tworzenia rozwiązania dodawane są wszystkie przerwy do pierwszej
  maszyny, gdyż ich czas początkowy nie może ulec zmianie.
- Następnie dla maszyny pierwszej i drugiej wylosowane są podzadania, które
- muszą zostać wykonane jako pierwsze lub podzadanie pierwsze już zostało
- dodane do rozwiązania.
+ Następnie dla maszyny pierwszej i drugiej wylosowane są podzadania
+\change_inserted 193426409 1452798733
+ ze zbioru operacji które muszą się
+\begin_inset space ~
+\end_inset
+
+wykonać jako pierwsze oraz operacji nr 2, dla których wykonała się operacja
+ nr 1.
+\change_deleted 193426409 1452798691
+,
+\change_unchanged
+ 
+\change_deleted 193426409 1452798683
+które muszą zostać wykonane jako pierwsze lub podzadanie pierwsze już zostało
+ dodane do rozwiązania
+\change_unchanged
+.
  W momencie dodawania do uszeregowania sprawdzone zostaje, czy w lukach
- między blokami może zmieścić się podzadanie 
+ między blokami
+\change_inserted 193426409 1452798761
+ (zaczynając od początku uszeregowania)
+\change_unchanged
+ może zmieścić się podzadanie 
 \begin_inset Formula $Ts_{n+1}-Tk_{n}\geq Tt_{k}$
 \end_inset
 
@@ -320,7 +372,11 @@ Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
 
 .
  Jeżeli nie, to sprawdzone zostaje czy podzadanie będzie gotowe w powstałej
- luce i wciąż będzie się mieścić.
+ luce i 
+\change_inserted 193426409 1452798782
+czy 
+\change_unchanged
+wciąż będzie się mieścić.
  Natomiast jeżeli podzadanie ma zostać wykonane jako drugie to musi zostać
  sprawdzone, czy 
 \begin_inset Formula $Tk$
@@ -331,6 +387,13 @@ Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
 \end_inset
 
  dodawanego podzadania.
+
+\change_inserted 193426409 1452798803
+ Jeżeli podzadanie nie mieści się w znalezionej luce między przerwami, sprawdzan
+a zostaje następna luka, a w najgorszym wypadku operacja ta ląduje na końcu
+ obecnego uszeregowania.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -395,8 +458,13 @@ Zmiana
 \change_deleted 228045028 1452784426
  
 \change_unchanged
- uszeregowaniu, której dokonuje pojedyńcza mutacja opera się na przesunięciu
- losowego elementu o 
+ uszeregowaniu, której dokonuje 
+\change_deleted 193426409 1452800871
+pojedyńcza
+\change_inserted 193426409 1452800871
+pojedyncza
+\change_unchanged
+ mutacja opera się na przesunięciu losowego elementu o 
 \begin_inset Formula $L$
 \end_inset
 
@@ -408,8 +476,14 @@ reference "eq:przesuniecieMutacji"
 \end_inset
 
 ) pozycji w lewo.
- Gdy index elementu jest mniejszy od wartości przesunięcia element, jest
- on umieszczany na pierwszym miejscu w uszeregowaniu.
+ Gdy inde
+\change_inserted 193426409 1452800878
+ks
+\change_deleted 193426409 1452800878
+x
+\change_unchanged
+ elementu jest mniejszy od wartości przesunięcia element, jest on umieszczany
+ na pierwszym miejscu w uszeregowaniu.
  Po wykonaniu przesunięcia następuje naprawa uszeregowań na każdej z maszyn,
  która opiera się na sprawdzeniu, czy zadania nie nachodzą na siebie oraz
  są wykonywane w odpowiednim czasie (dla pierwszej operacji jest to czas
@@ -441,13 +515,34 @@ Krzyżowanie jest to metoda, której celem jest modyfikacja istniejących rozwi�
  Jedna połowa uszeregowania pozostaje niezmieniona, natomiast druga trafia
  do listy tymczasowej.
  Na podstawie ułożenia podzadań w innym rozwiązaniu, operacje w liście tymczasow
-ej dodawane są po koleji, aż uszeregowanie będzie całkowicie uzupełnione.
- Podczas krzyżowania, połowa dzielonych rozwiązania pozostawia pierwszą
- połowę nie zmienioną, natomiast reszta drugą połowę.
+ej dodawane są po 
+\change_deleted 193426409 1452800889
+koleji
+\change_inserted 193426409 1452800889
+kolei
+\change_unchanged
+, aż uszeregowanie będzie całkowicie uzupełnione.
+ Podczas 
+\change_inserted 193426409 1452799112
+wykonywania 
+\change_unchanged
+krzyżowania, połowa 
+\change_inserted 193426409 1452799124
+otrzymywanych rozwiązań
+\change_deleted 193426409 1452799136
+dzielonych rozwiązania
+\change_unchanged
+ pozostawia pierwszą połowę nie zmienioną, natomiast reszta drugą połowę.
  Podobnie jak w mutacji, po wykonaniu krzyżowania następuje naprawienie
  uszeregowania.
  Sprawdzone zostaje, czy operacje nie nachodzą na siebie i czy podzadanie
- pierwsze wykoanało się przed rozpoczęciem podzadania drugiego.
+ pierwsze 
+\change_deleted 193426409 1452800899
+wykoanało
+\change_inserted 193426409 1452800899
+wykonało
+\change_unchanged
+ się przed rozpoczęciem podzadania drugiego.
  Krzyżowanie nie korzysta z żadnych dodatkowych parametrów ze względu na
  to, że punkt dzielenia krzyżowania jest tylko po środku całego uszeregowania.
  
@@ -460,13 +555,17 @@ Selekcja
 \begin_layout Standard
 Selekcja końcowej populacji opiera się na turnieju, w którym liczba porównywanyc
 h rozwiązań wynosi 
-\begin_inset Formula $\frac{populacja\:końcowa}{populacja\:początkowa}$
+\begin_inset Formula $\frac{populacja\: końcowa}{populacja\: początkowa}$
 \end_inset
 
 .
  Selekcja wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie
  tyle samo co rozmiar populacji początkowej.
  Taki sposób selekcji ma wadę, gdyż mogą zostać utracone 
+\change_inserted 193426409 1452799190
+najgorsze
+\change_deleted 193426409 1452799188
+
 \begin_inset Quotes pld
 \end_inset
 
@@ -474,6 +573,8 @@ lepsze
 \begin_inset Quotes prd
 \end_inset
 
+
+\change_unchanged
  rozwiązania w momencie, gdy rozwiązania ułożone są rosnąco.
  Zawsze po wykonaniu selekcji, porzucane jest rozwiązanie 
 \begin_inset Quotes pld
@@ -484,9 +585,21 @@ najgorsze
 \end_inset
 
 .
- Zdecydowaliśmy się na turniej ze względu na małą szansę wpadnięcia na początku
- w optymalne rozwiązanie niż w przypadku wzięcia wszystkich najlepszych
- rozwiązań.
+ Zdecydowaliśmy się na 
+\change_inserted 193426409 1452799222
+algorytm 
+\change_unchanged
+turniej
+\change_inserted 193426409 1452799224
+u
+\change_unchanged
+ ze względu na małą szansę wpadnięcia 
+\change_inserted 193426409 1452799248
+heurystyki w optimum lokalne
+\change_deleted 193426409 1452799235
+na początku w optymalne rozwiązanie
+\change_unchanged
+ niż w przypadku wzięcia wszystkich najlepszych rozwiązań.
 \end_layout
 
 \begin_layout Section
@@ -532,6 +645,7 @@ reference "tabelaParametrow"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -541,8 +655,8 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -558,7 +672,13 @@ minZ
 \begin_inset Text
 
 \begin_layout Plain Layout
-minimalny czas trwania poejdyńczej operacji
+minimalny czas trwania 
+\change_deleted 193426409 1452800916
+poejdyńczej
+\change_inserted 193426409 1452800916
+pojedynczej
+\change_unchanged
+ operacji
 \end_layout
 
 \end_inset
@@ -693,7 +813,7 @@ maksymalny czas trwania przerwy konserwującej
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 opis parametrów instancji
@@ -718,6 +838,7 @@ name "tabela 3 start"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -727,8 +848,8 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -784,7 +905,13 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-liczba popualcji początkowej
+liczba 
+\change_deleted 193426409 1452800919
+popualcji
+\change_inserted 193426409 1452800919
+populacji
+\change_unchanged
+ początkowej
 \end_layout
 
 \end_inset
@@ -866,7 +993,7 @@ name "tabelaParametrow"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 opis parametrów wykorzystanych w testach
@@ -884,6 +1011,7 @@ opis parametrów wykorzystanych w testach
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -893,15 +1021,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1079,7 +1207,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 ustawienia generatora instancji dla strojenia
@@ -1100,20 +1228,47 @@ Test wartości funkcji celu od czasu przed strojeniem
 \end_layout
 
 \begin_layout Standard
-Test miał za zadanie sprawdzić, jak optymalizowane są uszeregowania po danym
- czasie.
- Z otrzymanych wyników można wywnioskować, że czas optymalizacja uszeregowań
- stabilizuje się po 
+Test miał za zadanie sprawdzić, jak 
+\change_deleted 193426409 1452799357
+optymalizowane są uszeregowania po danym czasie
+\change_inserted 193426409 1452799378
+zmienia się optymalizowana wartość w funkcji czasu
+\change_unchanged
+.
+ Z otrzymanych wyników można wywnioskować, że czas optymalizacj
+\change_inserted 193426409 1452799397
+i
+\change_deleted 193426409 1452799397
+a
+\change_unchanged
+ uszeregowań stabilizuje się po 
 \begin_inset Formula $8s$
 \end_inset
 
  działania algorytmu.
- Test ten pozwolił wyznaczyć wartość czasu, która będzie wykorzystywana
- w następnych testach, ponieważ większa nie ma wpływu na rozwiązanie.
+ Test ten pozwolił wyznaczyć wartość 
+\change_deleted 193426409 1452799414
+czasu
+\change_inserted 193426409 1452799415
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\change_unchanged
+, która będzie wykorzystywana w następnych testach
+\change_deleted 193426409 1452799427
+, ponieważ większa nie ma wpływu na rozwiązanie.
+
+\change_inserted 193426409 1452800929
+ (jej zwiększenie nie powoduje poprawy rozwiązania).
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1122,14 +1277,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1283,7 +1438,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.1
@@ -1321,7 +1476,7 @@ name "wykres2.1"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wykres dla testu wartości funkcji celu od czasu przed strojeniem
@@ -1345,13 +1500,35 @@ Test siły mutacji
 Celem tego testu było sprawdzenie jak siła mutacji wpływa na szybkość optymalizo
 wania rozwiązania przez algorytm.
  Występuje tutaj bardzo ciekawa zależność.
- Mutacja o dużej sile poczatkowo optymalizowuje rozwiązanie wolniej ze względu
- na dużą liczbę zmian w nim dokonywanych.
+ Mutacja o dużej sile 
+\change_deleted 193426409 1452800933
+poczatkowo
+\change_inserted 193426409 1452800933
+początkowo
+\change_unchanged
+ 
+\change_deleted 193426409 1452800937
+optymalizowuje
+\change_inserted 193426409 1452800937
+optymalizuje
+\change_unchanged
+ rozwiązanie wolniej ze względu na dużą liczbę zmian w nim dokonywanych.
  Po pewnym czasie gdy siła mutacji jest zmniejszana na wykresie widzimy
  większy spadek krzywej.
- Bardzo słaba mutacja ma natomiast tendencję do wpadanie w minimum lokalne
- ze względu na małą liczbę zmian dokonywanych w uszeregowaniu.
- Na podstawie tego testu wyznaczliśmy optymalną siłę mutacji na 
+ Bardzo słaba mutacja ma natomiast tendencję do wpadanie w 
+\change_deleted 193426409 1452799483
+minimum
+\change_inserted 193426409 1452799485
+optimum
+\change_unchanged
+ lokalne ze względu na małą liczbę zmian dokonywanych w uszeregowaniu.
+ Na podstawie tego testu 
+\change_deleted 193426409 1452800949
+wyznaczliśmy
+\change_inserted 193426409 1452800949
+wyznaczyliśmy
+\change_unchanged
+ optymalną siłę mutacji na 
 \begin_inset Formula $0,15$
 \end_inset
 
@@ -1360,6 +1537,7 @@ wania rozwiązania przez algorytm.
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1368,14 +1546,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1529,7 +1707,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.2
@@ -1567,7 +1745,7 @@ name "wykres2.2"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wykres dla testu siły mutacji
@@ -1589,17 +1767,83 @@ Test wielkości populacji początkowej i końcowej
 
 \begin_layout Standard
 Test ten miał za zadanie oszacować jak wartość funkcji celu zależy od wielkości
- popualcji początkowej i końcowej.
+ 
+\change_deleted 193426409 1452800960
+popualcji
+\change_inserted 193426409 1452800960
+populacji
+\change_unchanged
+ początkowej i końcowej.
  Należy tutaj dodać, że jeżeli kończymy program na podstawie czasu, zwiększenie
- wielkości populacji będzie skukować zmiejszeniem iteracji algorytmu.
- Optymalnym rozwiązaniem okazało się populacja początkowa równa 250 oraz
- końcowa 750.
+ wielkości populacji będzie 
+\change_deleted 193426409 1452800962
+skukować
+\change_inserted 193426409 1452800962
+skutkować
+\change_unchanged
+ 
+\change_deleted 193426409 1452800966
+zmiejszeniem
+\change_inserted 193426409 1452800966
+zmniejszeniem
+\change_unchanged
+ iteracji algorytmu.
+ Optymalnym rozwiązaniem okazało się 
+\change_inserted 193426409 1452799524
+wybranie 
+\change_unchanged
+populacj
+\change_inserted 193426409 1452799525
+i
+\change_deleted 193426409 1452799525
+a
+\change_unchanged
+ początkow
+\change_inserted 193426409 1452799531
+ej
+\change_deleted 193426409 1452799527
+a
+\change_unchanged
+ równ
+\change_inserted 193426409 1452799533
+ej
+\change_deleted 193426409 1452799532
+a
+\change_unchanged
+ 250 oraz końcow
+\change_inserted 193426409 1452799537
+ej
+\change_deleted 193426409 1452799536
+a
+\change_unchanged
+ 
+\change_inserted 193426409 1452799539
+równej 
+\change_unchanged
+750.
  Z wykresu możemy także wywnioskować, że najgorsze wyniki otrzymujemy zaczynając
- od małej populacji początkowej lub bardzo dużej populacji końcowej.
+ od małej populacji początkowej
+\change_inserted 193426409 1452799559
+ 
+\begin_inset Formula $(PS=50)$
+\end_inset
+
+
+\change_unchanged
+ lub bardzo dużej populacji końcowej
+\change_inserted 193426409 1452799570
+ 
+\begin_inset Formula $(PE=8PS)$
+\end_inset
+
+
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1608,14 +1852,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1769,7 +2013,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.3
@@ -1807,7 +2051,7 @@ name "wykres2.3"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wykres dla testu wielkości populacji początkowej i końcowej
@@ -1835,15 +2079,30 @@ Test liczby mutacji i krzyżowań
 Test ten miał sprawdzić jaka liczba mutacji i krzyżowania wykazuje najlepsze
  optymalizowanie funkcji celu.
  Należy tu zauważyć, że 
-\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
+\begin_inset Formula $liczba\, mutacji+liczba\, krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
 \end_inset
 
 , z tego powodu zawsze będą wykorzystywane obie metody.
  
+\change_inserted 193426409 1452801913
+Na przedstawionym wykresie widać zależności między testowanymi parametrami.
+ Warto zauważyć, że zastosowanie samej mutacji i krzyżowania przynosi gorsze
+ efekty niż z zastosowaniem ich połączenia (punkty pomiarowe dla 
+\begin_inset Formula $IM=100-IK$
+\end_inset
+
+[%] przyjmują gorsze wartości niż przy zastosowaniu połączenia obu metod).
+ Najoptymalniejszym rozwiązaniem okazało się zastosowanie krzyzowania w
+ ilości 30% oraz mutacji w ilości 10%.
+ Pozostałe 60% stanowi połączenie tych 2 metod.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1852,14 +2111,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2013,7 +2272,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.4
@@ -2037,10 +2296,29 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption Standard
+
+\change_inserted 193426409 1452801980
+\begin_inset Graphics
+	filename wykresy/wykres2_4.png
+	width 70page%
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
-wykres dla testu liczby mutacji i krzyżowań
+\align center
+\begin_inset Caption
+
+\begin_layout Plain Layout
+wykres 
+\change_deleted 193426409 1452802001
+dla testu liczby mutacji i krzyżowań
+\change_inserted 193426409 1452802012
+zależności funkcji celu od liczby mutacji i krzyżowania
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2065,7 +2343,13 @@ Ten test miał wykazać jak bardzo zmiana parametrów wpłynęła na uzyskiwane
 \end_inset
 
 .
- Z wykresu możemy także wyczytać, że algorytm osiągnoł optimum po 
+ Z wykresu możemy także wyczytać, że algorytm 
+\change_deleted 193426409 1452800972
+osiągnoł
+\change_inserted 193426409 1452800972
+osiągnął
+\change_unchanged
+ optimum po 
 \begin_inset Formula $5s$
 \end_inset
 
@@ -2078,6 +2362,7 @@ Ten test miał wykazać jak bardzo zmiana parametrów wpłynęła na uzyskiwane
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -2086,14 +2371,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2247,7 +2532,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.5
@@ -2255,6 +2540,17 @@ tabela użytych parametrów dla testu 2.5
 
 \end_inset
 
+
+\change_inserted 193426409 1452799671
+
+\begin_inset CommandInset label
+LatexCommand label
+name "najlepsze_"
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -2285,7 +2581,7 @@ name "wykres2.5"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Wykres dla testu wartości funkcji celu od czasu po strojeniu
@@ -2308,7 +2604,18 @@ Testy instancji problemu
 \begin_layout Standard
 Rozdział ten jest przeznaczony na testy dotyczące różnych typów instancji.
  Ustawienia algorytmu, które zostaną użyte do przeprowadzenia testów pochodzą
- z poprzedniego rozdziału i są one najbardziej optymalne dla naszego algorytmu.
+ z poprzedniego rozdziału
+\change_inserted 193426409 1452799702
+ (tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "najlepsze_"
+
+\end_inset
+
+)
+\change_unchanged
+ i są one najbardziej optymalne dla naszego algorytmu.
  W dalszej części będziemy używać skrótów opisujących parametry instancji
  przedstawionych w tabeli 
 \begin_inset CommandInset ref
@@ -2348,7 +2655,13 @@ reference "tabela 3.1"
 
 \begin_layout Standard
 \noindent
-Badaną zalezność między funkcją
+Badaną 
+\change_deleted 193426409 1452800977
+zalezność
+\change_inserted 193426409 1452800977
+zależność
+\change_unchanged
+ między funkcją
 \begin_inset space ~
 \end_inset
 
@@ -2365,8 +2678,13 @@ reference "wykres3_11"
 \begin_inset Formula $minZ=maxZ$
 \end_inset
 
- możemy wyznaczyć funkcję opisującą maksymaną wartość funkcji celu w danym
- przedziale wartości.
+ możemy wyznaczyć funkcję opisującą 
+\change_deleted 193426409 1452800981
+maksymaną
+\change_inserted 193426409 1452800981
+maksymalną
+\change_unchanged
+ wartość funkcji celu w danym przedziale wartości.
  Na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2381,7 +2699,7 @@ reference "wykres3_12"
 
 .
  Łatwo także zauważyć, że wartości funkcji celu w przedziale 
-\begin_inset Formula $minZ=<1\,;\,maxZ>$
+\begin_inset Formula $minZ=<1\,;\, maxZ>$
 \end_inset
 
  zmienia się liniowo.
@@ -2420,15 +2738,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2656,7 +2974,7 @@ wartość
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.1
@@ -2700,7 +3018,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wykres zależności funkcji celu od czasu trwania operacji.
@@ -2738,10 +3056,15 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
-funkcje opisujące minimalną i maksymalną wartość funkcji celu w zalezności
+funkcje opisujące minimalną i maksymalną wartość funkcji celu w 
+\change_deleted 193426409 1452800989
+zalezności
+\change_inserted 193426409 1452800989
+zależności
+\change_unchanged
  od 
 \begin_inset Formula $maxZ$
 \end_inset
@@ -2811,6 +3134,7 @@ F_{2}=14,5*N^{2}-129*N+2643\label{eq:3_2}
 
 
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -2820,15 +3144,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3055,7 +3379,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.2
@@ -3096,7 +3420,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 zależność funkcji celu od ilości zadań 
@@ -3128,9 +3452,20 @@ Czas gotowości dla zadania
 \end_layout
 
 \begin_layout Standard
-Celem zadania jest sprawdzenie jak czas gotowości pojedyńczego zadania wpływa
- na wartość funkcji celu całego rozwiązania.
- Parametry instancji przedstawino w tabeli 
+Celem zadania jest sprawdzenie jak czas gotowości 
+\change_deleted 193426409 1452800999
+pojedyńczego
+\change_inserted 193426409 1452800999
+pojedynczego
+\change_unchanged
+ zadania wpływa na wartość funkcji celu całego rozwiązania.
+ Parametry instancji 
+\change_deleted 193426409 1452801016
+przedstawino
+\change_inserted 193426409 1452801016
+przedstawiono
+\change_unchanged
+ w tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "parametr3.3"
@@ -3164,6 +3499,7 @@ F_{3}=9*X+30845
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -3173,15 +3509,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3338,7 +3674,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.3
@@ -3386,7 +3722,7 @@ name "wykres_3.3"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 zależność funkcji celu od czasu gotowości zadania
@@ -3416,7 +3752,13 @@ reference "param3.4"
 
 \end_inset
 
-, natomiast zalezność na wykresie 
+, natomiast 
+\change_deleted 193426409 1452801023
+zalezność
+\change_inserted 193426409 1452801023
+zależność
+\change_unchanged
+ na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "wykres3_4"
@@ -3424,8 +3766,25 @@ reference "wykres3_4"
 \end_inset
 
 .
- Podobnie jak w rodziele 3.3 wystepuje tutaj zalezność liniowa, którą możemy
- opisać wzorem:
+ Podobnie jak w 
+\change_inserted 193426409 1452801047
+rozdziale
+\change_deleted 193426409 1452801039
+rodziele
+\change_unchanged
+ 3.3 
+\change_deleted 193426409 1452801071
+wystepuje
+\change_inserted 193426409 1452801071
+występuje
+\change_unchanged
+ tutaj 
+\change_deleted 193426409 1452801073
+zalezność
+\change_inserted 193426409 1452801073
+zależność
+\change_unchanged
+ liniowa, którą możemy opisać wzorem:
 \end_layout
 
 \begin_layout Standard
@@ -3441,6 +3800,7 @@ F_{4}=388*PP+24682
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -3450,15 +3810,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3685,7 +4045,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.4
@@ -3726,7 +4086,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 zależność funkcji celu od liczby przerw konserwujących
@@ -3771,12 +4131,27 @@ reference "wykres3.5"
 \end_inset
 
 .
- Możemy tutaj zauważyć pewną ciekawą zależność: od pewnej długości przerw
- przestają one mieć znaczenie dla rozwiązania.
+ Możemy tutaj zauważyć pewną ciekawą zależność: 
+\change_deleted 193426409 1452800162
+od pewnej długości przerw przestają one mieć znaczenie dla rozwiązania
+\change_inserted 193426409 1452800227
+duży czas trwania przerw 
+\begin_inset Formula $(minP=\{150,200\})$
+\end_inset
+
+, powoduje, że ich wzrost nie wpływa na zmianę wartości funkcji celu
+\change_unchanged
+.
  Wytłumaczenie jest proste.
  Przerwy konserwujące są ustawiane w ten sposób, aby miały znaczenie dla
- rozwiązanie, jednak gdy są bardzo długie, takie założenie staje się niemożliwe
- (rosną odległości między przerwami, w które mieszczą się zadania).
+ rozwiązanie
+\change_inserted 193426409 1452800280
+ oraz nie nachodziły na siebie,
+\change_deleted 193426409 1452800268
+,
+\change_unchanged
+ jednak gdy są bardzo długie, takie założenie staje się niemożliwe (rosną
+ odległości między przerwami, w które mieszczą się zadania).
  W takim wypadku zadania, których długość jest dużo krótsza od długości
  przerw uda się uszeregować
 \begin_inset space ~
@@ -3787,6 +4162,7 @@ nim napotkamy na ostatnie przerwy (końcowe przerwy przestają mieć znaczenie).
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -3796,15 +4172,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4031,7 +4407,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.5
@@ -4072,7 +4448,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 zale
@@ -4118,8 +4494,17 @@ Po przeprowadzeniu wszystkich badań doszliśmy do wniosku, że nasza implementa
 \end_inset
 
 .
- Optymalizacja także skróciła czas znajdowania optymalnego rozwiązania:
- przed strojeniem 
+ Optymalizacja
+\change_inserted 193426409 1452799955
+ 
+\change_deleted 193426409 1452799953
+ także
+\change_unchanged
+ skróciła 
+\change_inserted 193426409 1452799949
+także 
+\change_unchanged
+czas znajdowania optymalnego rozwiązania: przed strojeniem 
 \begin_inset Formula $8s$
 \end_inset
 
@@ -4128,8 +4513,12 @@ Po przeprowadzeniu wszystkich badań doszliśmy do wniosku, że nasza implementa
 \end_inset
 
 .
- Na podstawie testów dokonanych w rozdziale 2.5 udało nam się dokonać optymalizac
-ji algorytmu (strojenia).
+ 
+\change_deleted 193426409 1452799923
+Na podstawie testów dokonanych w rozdziale 2.5 udało nam się dokonać optymalizacj
+i algorytmu (strojenia).
+
+\change_unchanged
  Poprawa wyników jest zauważalna.
  Zamieszczono ją na wykresie 
 \begin_inset CommandInset ref
@@ -4140,6 +4529,15 @@ reference "wykres2.5"
 
 , w którym porównano testy przed i po strojeniu.
  
+\change_inserted 193426409 1452800046
+Na podstawie testów instancji (rozdział 3) udało nam się
+\begin_inset space ~
+\end_inset
+
+znaleźć zależności między funkcją celu, a poszczególnymi parametrami opisującymi
+ instancję.
+\change_unchanged
+
 \end_layout
 
 \end_body

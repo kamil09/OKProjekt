@@ -130,7 +130,7 @@ public class Main extends Thread{
 	 * Czy zapisać do pliku, nieużywane  w tesowaniu
 	 * Tylko w celu pokazowym.
 	 */
-	public static int zapisDoPliki=1;
+	public static int zapisDoPliki=0;
 	
 	/**
 	 * MAIN
