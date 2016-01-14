@@ -115,7 +115,7 @@ Niniejsze sprawozdanie dotyczy problemu nr
 
 ).
  Do wykonania tego problemu wykorzystany został algorytm genetyczny, który
- wykorzystuje mutacje i krzyżowania przy rozszerzaniu populacji.
+ stosuje mutacje i krzyżowania przy rozszerzaniu populacji.
  Wartość funkcji celu określana jest jako suma czasów zakończenia operacji.
  Sprawozdanie składa się z czterech rozdziałów: pierwszy rozdział zawiera
  teoreryczny opis działania i implementacji naszego algorytmu.
@@ -135,8 +135,13 @@ Schemat algorytmu
 Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
  mutacji i krzyżowaniu.
  W początkowej fazie działania, program generuje instancję problemu na podstawie
- wartości poszczególnych parametrów, która mogą zostać także zdefiniowane
- przez użytkownika.
+ wartości poszczególnych parametrów, któr
+\change_inserted 228045028 1452785025
+e
+\change_deleted 228045028 1452785025
+a
+\change_unchanged
+ mogą zostać także zdefiniowane przez użytkownika.
  Tworzona jest początkowa populacja, której rozmiar jest zdefiniowany na
  początku algorytmu (domyślnie 
 \begin_inset Formula $50$
@@ -145,7 +150,7 @@ Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
 ).
  Następnie populacja zostaje rozszerzona za pomocą mutacji, krzyżowania
  oraz łączonej mutacji z krzyżowaniem.
- liczba poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
+ Liczba poszczególnych szeregowań tworzona za pomocą wymienionych przekształceń
  także jest określana przez odpowiednie parametry procentowe, które w sumie
  muszą utworzyć populację końcową 
 \begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
@@ -496,7 +501,15 @@ W celu poprawy działania algorytmu, przeprowadziliśmy testy, które miały
 \begin_inset Formula $200$
 \end_inset
 
- instancji.
+ instancji
+\change_inserted 228045028 1452784676
+ (jeden punkt pomiarowy to średnia z 
+\begin_inset Formula $200$
+\end_inset
+
+ rozwiązań)
+\change_unchanged
+.
  Testy przeprowadzaliśmy na tych samych ustawieniach generatora instancji,
  które zostały przedstawione w tabeli instancji 
 \begin_inset CommandInset ref
@@ -2504,7 +2517,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784811
 1-400
+\change_inserted 228045028 1452784811
+
+\begin_inset Formula $1-400$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2513,7 +2536,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784814
 1-400
+\change_inserted 228045028 1452784814
+
+\begin_inset Formula $1-400$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2522,7 +2555,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784816
 50
+\change_inserted 228045028 1452784816
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2531,7 +2574,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784818
 100
+\change_inserted 228045028 1452784818
+
+\begin_inset Formula $100$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2540,7 +2593,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784821
 20%
+\change_inserted 228045028 1452784821
+
+\begin_inset Formula $0,2$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2549,7 +2612,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784827
 1
+\change_inserted 228045028 1452784827
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2558,7 +2631,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784829
 50
+\change_inserted 228045028 1452784829
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2834,7 +2917,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784777
 1
+\change_inserted 228045028 1452784777
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2843,7 +2936,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784779
 5
+\change_inserted 228045028 1452784779
+
+\begin_inset Formula $5$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2852,7 +2955,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784782
 20-160
+\change_inserted 228045028 1452784782
+
+\begin_inset Formula $20-160$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2861,7 +2974,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784784
 100
+\change_inserted 228045028 1452784784
+
+\begin_inset Formula $100$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2870,7 +2993,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784786
 20%
+\change_inserted 228045028 1452784786
+
+\begin_inset Formula $0,2$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2879,7 +3012,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784794
 1
+\change_inserted 228045028 1452784794
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2888,7 +3031,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784796
 50
+\change_inserted 228045028 1452784796
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3394,7 +3547,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784720
 1
+\change_inserted 228045028 1452784720
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3403,7 +3566,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784723
 5
+\change_inserted 228045028 1452784723
+
+\begin_inset Formula $5$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3412,7 +3585,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784725
 50
+\change_inserted 228045028 1452784725
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3421,7 +3604,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784728
 100
+\change_inserted 228045028 1452784728
+
+\begin_inset Formula $100$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3430,7 +3623,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784731
 0-90%
+\change_inserted 228045028 1452784731
+
+\begin_inset Formula $0-0,9$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3439,7 +3642,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784739
 1
+\change_inserted 228045028 1452784739
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3448,7 +3661,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784741
 50
+\change_inserted 228045028 1452784741
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3670,7 +3893,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784689
 1
+\change_inserted 228045028 1452784689
+
+\begin_inset Formula $1$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3679,7 +3912,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784691
 5
+\change_inserted 228045028 1452784691
+
+\begin_inset Formula $5$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3688,7 +3931,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784693
 50
+\change_inserted 228045028 1452784693
+
+\begin_inset Formula $50$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3697,7 +3950,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784696
 100
+\change_inserted 228045028 1452784696
+
+\begin_inset Formula $100$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3706,7 +3969,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784700
 20%
+\change_inserted 228045028 1452784700
+
+\begin_inset Formula $0,2$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3715,7 +3988,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784709
 1-200
+\change_inserted 228045028 1452784709
+
+\begin_inset Formula $1-200$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3724,7 +4007,17 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted 228045028 1452784713
 50-300
+\change_inserted 228045028 1452784713
+
+\begin_inset Formula $50-300$
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3782,7 +4075,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-zalezność funkcji celu od długości przerw konserwujących
+zale
+\change_inserted 228045028 1452784682
+ż
+\change_deleted 228045028 1452784682
+z
+\change_unchanged
+ność funkcji celu od długości przerw konserwujących
 \end_layout
 
 \end_inset
