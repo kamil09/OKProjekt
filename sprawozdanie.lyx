@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -75,7 +84,25 @@ Kamil Piotrowski 122491, Michał Lewiński 122505
 \end_layout
 
 \begin_layout Date
-10.01.2015r.
+14.01.2015r.
+\change_inserted 228045028 1452804865
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\change_inserted 228045028 1452804985
+kontakt: kamil.piotrowski@student.cs.put.poznan.pl
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\change_inserted 228045028 1452805002
+michal.lewinski@student.cs.put.poznan.pl
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -151,7 +178,7 @@ a
  Liczba poszczególnych szeregowań tworzona za pomocą wymienionych przekształceń
  także jest określana przez odpowiednie parametry procentowe, które w sumie
  muszą utworzyć populację końcową 
-\begin_inset Formula $liczba\, mutacji+liczba\, krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
+\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
 \end_inset
 
  (domyślnie liczba poszczególnych operacji jest równa, a rozmiar końcowej
@@ -182,7 +209,7 @@ status open
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Uproszczony schemat algorytmu
@@ -336,7 +363,11 @@ Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
  maszyny, gdyż ich czas początkowy nie może ulec zmianie.
  Następnie dla maszyny pierwszej i drugiej wylosowane są podzadania
 \change_inserted 193426409 1452798733
- ze zbioru operacji które muszą się
+ ze zbioru operacji
+\change_inserted 228045028 1452802420
+,
+\change_inserted 193426409 1452798733
+ które muszą się
 \begin_inset space ~
 \end_inset
 
@@ -555,7 +586,7 @@ Selekcja
 \begin_layout Standard
 Selekcja końcowej populacji opiera się na turnieju, w którym liczba porównywanyc
 h rozwiązań wynosi 
-\begin_inset Formula $\frac{populacja\: końcowa}{populacja\: początkowa}$
+\begin_inset Formula $\frac{populacja\:końcowa}{populacja\:początkowa}$
 \end_inset
 
 .
@@ -655,8 +686,8 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -813,7 +844,7 @@ maksymalny czas trwania przerwy konserwującej
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 opis parametrów instancji
@@ -848,8 +879,8 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
@@ -993,7 +1024,7 @@ name "tabelaParametrow"
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 opis parametrów wykorzystanych w testach
@@ -1021,15 +1052,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1207,7 +1238,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 ustawienia generatora instancji dla strojenia
@@ -1277,14 +1308,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1438,7 +1469,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.1
@@ -1476,7 +1507,7 @@ name "wykres2.1"
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres dla testu wartości funkcji celu od czasu przed strojeniem
@@ -1546,14 +1577,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1707,7 +1738,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.2
@@ -1745,7 +1776,7 @@ name "wykres2.2"
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres dla testu siły mutacji
@@ -1852,14 +1883,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2013,7 +2044,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.3
@@ -2051,7 +2082,7 @@ name "wykres2.3"
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres dla testu wielkości populacji początkowej i końcowej
@@ -2079,7 +2110,7 @@ Test liczby mutacji i krzyżowań
 Test ten miał sprawdzić jaka liczba mutacji i krzyżowania wykazuje najlepsze
  optymalizowanie funkcji celu.
  Należy tu zauważyć, że 
-\begin_inset Formula $liczba\, mutacji+liczba\, krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
+\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
 \end_inset
 
 , z tego powodu zawsze będą wykorzystywane obie metody.
@@ -2092,8 +2123,19 @@ Na przedstawionym wykresie widać zależności między testowanymi parametrami.
 \end_inset
 
 [%] przyjmują gorsze wartości niż przy zastosowaniu połączenia obu metod).
- Najoptymalniejszym rozwiązaniem okazało się zastosowanie krzyzowania w
- ilości 30% oraz mutacji w ilości 10%.
+ Najoptymalniejszym rozwiązaniem okazało się zastosowanie krzy
+\change_unchanged
+ż
+\change_inserted 193426409 1452801913
+owania w 
+\change_unchanged
+liczbie
+\change_inserted 193426409 1452801913
+ 30% oraz mutacji w 
+\change_unchanged
+liczbie
+\change_inserted 193426409 1452801913
+ 10%.
  Pozostałe 60% stanowi połączenie tych 2 metod.
  
 \change_unchanged
@@ -2111,14 +2153,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2272,7 +2314,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.4
@@ -2309,7 +2351,7 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres 
@@ -2371,14 +2413,14 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2532,7 +2574,7 @@ wartość
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 tabela użytych parametrów dla testu 2.5
@@ -2581,7 +2623,7 @@ name "wykres2.5"
 \end_inset
 
 
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Wykres dla testu wartości funkcji celu od czasu po strojeniu
@@ -2699,7 +2741,7 @@ reference "wykres3_12"
 
 .
  Łatwo także zauważyć, że wartości funkcji celu w przedziale 
-\begin_inset Formula $minZ=<1\,;\, maxZ>$
+\begin_inset Formula $minZ=<1\,;\,maxZ>$
 \end_inset
 
  zmienia się liniowo.
@@ -2738,15 +2780,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -2974,7 +3016,7 @@ wartość
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.1
@@ -3018,7 +3060,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wykres zależności funkcji celu od czasu trwania operacji.
@@ -3056,7 +3098,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 funkcje opisujące minimalną i maksymalną wartość funkcji celu w 
@@ -3144,15 +3186,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3379,7 +3421,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.2
@@ -3420,7 +3462,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od ilości zadań 
@@ -3509,15 +3551,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -3674,7 +3716,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartość parametrów dla testu 3.3
@@ -3722,7 +3764,7 @@ name "wykres_3.3"
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od czasu gotowości zadania
@@ -3810,15 +3852,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4045,7 +4087,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.4
@@ -4086,7 +4128,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zależność funkcji celu od liczby przerw konserwujących
@@ -4172,15 +4214,15 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -4407,7 +4449,7 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 wartości parametrów dla testu 3.5
@@ -4448,7 +4490,7 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
 zale
