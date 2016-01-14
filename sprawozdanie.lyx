@@ -92,71 +92,31 @@ Wstęp
 
 \begin_layout Standard
 Niniejsze sprawozdanie dotyczy problemu nr 
-\change_deleted 228045028 1452643441
-3
-\change_inserted 228045028 1452643441
-
 \begin_inset Formula $3$
 \end_inset
 
-
-\change_unchanged
  związanego z szeregowaniem zadań (job shop, liczba maszyn 
-\change_deleted 228045028 1452643459
-m=2
-\change_inserted 228045028 1452643459
-
 \begin_inset Formula $m=2$
 \end_inset
 
-
-\change_unchanged
 , operacje typu non-preemptive, dla pierwszej maszyny od 
-\change_deleted 228045028 1452643450
-k=2
-\change_inserted 228045028 1452643450
-
 \begin_inset Formula $k=2$
 \end_inset
 
-
-\change_unchanged
  do 
-\change_deleted 228045028 1452643455
-n/2
-\change_inserted 228045028 1452643455
-
 \begin_inset Formula $n/2$
 \end_inset
 
-
-\change_unchanged
  okresów przestoju o losowym czasie rozpoczęcia i trwania, różne i losowe
  czasy gotowości dla wszystkich zadań, minimalizacja sumy czasów zakończenia
  wszystkich operacji, liczba zadań 
-\change_deleted 228045028 1452643470
-n
-\change_inserted 228045028 1452643470
-
 \begin_inset Formula $n$
 \end_inset
 
-
-\change_unchanged
 ).
  Do wykonania tego problemu wykorzystany został algorytm genetyczny, który
- wykorzystuje mutacje i krzyżowania przy 
-\change_deleted 228045028 1452775988
-tworzeniu nowych
-\change_inserted 228045028 1452775991
-rozszerzaniu
-\change_unchanged
- populacji.
-
-\change_inserted 228045028 1452776028
+ wykorzystuje mutacje i krzyżowania przy rozszerzaniu populacji.
  Wartość funkcji celu określana jest jako suma czasów zakończenia operacji.
-
-\change_unchanged
  Sprawozdanie składa się z czterech rozdziałów: pierwszy rozdział zawiera
  teoreryczny opis działania i implementacji naszego algorytmu.
  W drugim rozdziale znajdują się testy dotyczące strojenia heurystyki, na
@@ -179,51 +139,23 @@ Algorytm genetyczny, który został wykorzystany w badaniach opiera się na
  przez użytkownika.
  Tworzona jest początkowa populacja, której rozmiar jest zdefiniowany na
  początku algorytmu (domyślnie 
-\change_deleted 228045028 1452643480
-50
-\change_inserted 228045028 1452643480
-
 \begin_inset Formula $50$
 \end_inset
 
-
-\change_unchanged
 ).
  Następnie populacja zostaje rozszerzona za pomocą mutacji, krzyżowania
  oraz łączonej mutacji z krzyżowaniem.
- 
-\change_deleted 228045028 1452771423
-Ilość
-\change_inserted 228045028 1452771423
-liczba
-\change_unchanged
- poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
+ liczba poszczególnych szeregowań tworzony za pomocą wymienionych przekształceń
  także jest określana przez odpowiednie parametry procentowe, które w sumie
- muszą utworzyć populację końcową
-\change_inserted 228045028 1452781057
- 
-\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,ewolucji=1$
+ muszą utworzyć populację końcową 
+\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
 \end_inset
 
-
-\change_unchanged
- (domyślnie 
-\change_deleted 228045028 1452771424
-ilość
-\change_inserted 228045028 1452771425
-liczba
-\change_unchanged
- poszczególnych operacji jest równa, a rozmiar końcowej populacji domyślnie
- wynosi 
-\change_deleted 228045028 1452643485
-200
-\change_inserted 228045028 1452643485
-
+ (domyślnie liczba poszczególnych operacji jest równa, a rozmiar końcowej
+ populacji domyślnie wynosi 
 \begin_inset Formula $200$
 \end_inset
 
-
-\change_unchanged
 ).
  Uzyskana w ten sposób populacja poddawana jest selekcji za pomocą turnieju,
  w którym eliminowane są gorsze uszeregowania, tak aby rozmiar zredukowanej
@@ -250,11 +182,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452680111
 Uproszczony schemat algorytmu
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -283,21 +211,13 @@ Generator instancji tworzy losowe rozwiązania tak aby uzyskać początkową
 \end_inset
 
 .
- Liczba przerw wyznaczana jest na podstawie wzoru
-\change_inserted 228045028 1452676151
- 
-\change_unchanged
-(
-\change_inserted 228045028 1452676160
-
+ Liczba przerw wyznaczana jest na podstawie wzoru (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:iloscPrzerw"
 
 \end_inset
 
-
-\change_unchanged
 ), gdzie 
 \begin_inset Formula $n$
 \end_inset
@@ -307,25 +227,17 @@ reference "eq:iloscPrzerw"
 \end_inset
 
  oznacza stosunek ilości przerw do zadań.
-
-\change_inserted 228045028 1452606598
  
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452637191
 Zadanie składa się z dwóch podzadań.
  Każde podzadanie zawiera na jakiej maszynie ma ono zostać wykonane; czy
  zostało już dodane do uszeregowania; czas, od którego podzadanie może zacząć
  się wykonywać; które podzadanie jest z nim w parzę oraz czy musi zostać
  wykonane jako pierwsze lub drugie w kolejności.
  Przerwy znajdują się wyłącznie na pierwszej maszynie i ich czas rozpoczęcia
- nie może
-\change_unchanged
- ulec
-\change_inserted 228045028 1452637197
- zmianie.
+ nie może ulec zmianie.
 \end_layout
 
 \begin_layout Standard
@@ -365,13 +277,8 @@ Generator losowego rozwiązania tworzy rozwiązanie na podstawie listy zadań
 \end_inset
 
 .
- Każdy poszczególny blok może być zadaniem lub przerwą.
-
-\change_deleted 228045028 1452605073
- 
-\change_unchanged
-Każde uszeregowanie rozpoczyna się od bloku pomocniczego, którego czasy
- 
+ Każdy poszczególny blok może być zadaniem lub przerwą.Każde uszeregowanie
+ rozpoczyna się od bloku pomocniczego, którego czasy 
 \begin_inset Formula $Ts$
 \end_inset
 
@@ -383,15 +290,9 @@ Każde uszeregowanie rozpoczyna się od bloku pomocniczego, którego czasy
 \begin_inset Formula $Tt$
 \end_inset
 
- wynosi 0
-\change_inserted 228045028 1452606482
-.
+ wynosi 0.
  Ten początkowy blok ma pomóc przy dodawaniu kolejnych przerw i zadań, gdyż
- 
-\change_deleted 228045028 1452604655
-,
-\change_inserted 228045028 1452640646
-nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
+ nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
  Na początku tworzenia rozwiązania dodawane są wszystkie przerwy do pierwszej
  maszyny, gdyż ich czas początkowy nie może ulec zmianie.
  Następnie dla maszyny pierwszej i drugiej wylosowane są podzadania, które
@@ -425,8 +326,6 @@ nie zależnie od miejsca, mechanizm dodawania bloku będzie taki sam.
 \end_inset
 
  dodawanego podzadania.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -434,15 +333,8 @@ Mutacja
 \end_layout
 
 \begin_layout Standard
-Mutacja jest metodą
-\change_inserted 228045028 1452640702
-,
-\change_unchanged
- której celem jest dokonanie pewn
-\change_deleted 228045028 1452640692
-i
-\change_unchanged
-ej losowej zmiany w uszeregowaniu.
+Mutacja jest metodą, której celem jest dokonanie pewnej losowej zmiany w
+ uszeregowaniu.
  Kluczową cechą
 \begin_inset space ~
 \end_inset
@@ -452,12 +344,9 @@ mutacji jest jej siła
 \end_inset
 
 , która determinuje jak bardzo rozwiązanie jest modyfikowane.
- Pełna mutacja
-\change_inserted 228045028 1452641285
-,
-\change_unchanged
- w której z rozwiązania macierzystego otrzymujemy potomka opiera się na
- kilku pojedynczych mutacjach wykonywanych na każdej maszynie w ilości 
+ Pełna mutacja, w której z rozwiązania macierzystego otrzymujemy potomka
+ opiera się na kilku pojedynczych mutacjach wykonywanych na każdej maszynie
+ w ilości 
 \begin_inset Formula $K$
 \end_inset
 
@@ -470,15 +359,9 @@ reference "eq:iloscMutacji"
 
 ).
  Siła mutacji ulega redukcji co 
-\change_deleted 228045028 1452643499
-1
-\change_inserted 228045028 1452643499
-
 \begin_inset Formula $1$
 \end_inset
 
-
-\change_unchanged
  sekundę działania algorytmu 
 \begin_inset Formula $SM=SM/1,5$
 \end_inset
@@ -503,16 +386,12 @@ L=(-1)*\left[\left\lceil \frac{N*SM}{2}\right\rceil +1\right]\label{eq:przesunie
 
 \end_inset
 
-Zmiana 
-\change_deleted 228045028 1452641338
-u
+Zmiana
+\change_deleted 228045028 1452784426
+ 
 \change_unchanged
- uszeregowaniu
-\change_inserted 228045028 1452641331
-,
-\change_unchanged
- której dokonuje pojedyńcza mutacja opera się na przesunięciu losowego elementu
- o 
+ uszeregowaniu, której dokonuje pojedyńcza mutacja opera się na przesunięciu
+ losowego elementu o 
 \begin_inset Formula $L$
 \end_inset
 
@@ -524,87 +403,32 @@ reference "eq:przesuniecieMutacji"
 \end_inset
 
 ) pozycji w lewo.
- Gdy index elementu jest mniejszy od wartości przesunięcia element
-\change_inserted 228045028 1452641399
-,
-\change_unchanged
- jest
-\change_inserted 228045028 1452641405
- on
-\change_unchanged
- umieszczany na pierwszym miejscu w uszeregowaniu.
+ Gdy index elementu jest mniejszy od wartości przesunięcia element, jest
+ on umieszczany na pierwszym miejscu w uszeregowaniu.
  Po wykonaniu przesunięcia następuje naprawa uszeregowań na każdej z maszyn,
  która opiera się na sprawdzeniu, czy zadania nie nachodzą na siebie oraz
- są wykonywane w odpowiednim czasie (
-\change_inserted 228045028 1452641460
-dla pierwszej operacji jest to 
-\change_unchanged
-czas gotowości 
-\change_deleted 228045028 1452641464
-lub
-\change_inserted 228045028 1452641466
-natomiast
-\change_unchanged
- dla operacji 
-\change_deleted 228045028 1452641470
-nr 2
-\change_inserted 228045028 1452641472
-drugiej
-\change_unchanged
- 
-\change_deleted 228045028 1452641489
-czas zakończenia
-\change_inserted 228045028 1452677774
-czas 
+ są wykonywane w odpowiednim czasie (dla pierwszej operacji jest to czas
+ gotowości natomiast dla operacji drugiej czas 
 \begin_inset Formula $Tk$
 \end_inset
 
-
-\change_unchanged
- operacji 
-\change_deleted 228045028 1452641478
-nr 1
-\change_inserted 228045028 1452641479
-pierwszej
-\change_unchanged
-).
- Naprawa op
-\change_inserted 228045028 1452641519
-i
-\change_unchanged
-era się
+ operacji pierwszej).
+ Naprawa opiera się
 \begin_inset space ~
 \end_inset
 
 głównie na przesunięciu problematycznych operacji w prawo.
-
-\change_inserted 228045028 1452641954
  Gdy przesuwana operacja nachodzi na przerwę konserwującą to miejsce operacji
  zostaje zamienione z przerwą i algorytm naprawy jest kontynuowany.
  Algorytm trwa tak długo aż wszystkie operacje znajdą się w odpowiednich
  miejscach.
-
-\change_deleted 228045028 1452641817
- Gdy wymagane jest przesunięcie danej operacji, które jest jednak niemożliwe
- ze względu na przerwę
-\begin_inset space ~
-\end_inset
-
-konserwującą znajdującą się na nią następuje zamiana przerwy z daną operacją
- i kontunuacja algorytmu naprawy.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
 Krzyżowanie
-\change_inserted 228045028 1452675416
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452782592
 Krzyżowanie jest to metoda, której celem jest modyfikacja istniejących rozwiązań
  na podstawie innych uszeregowań.
  W pierwszej fazie, maszyny są dzielone na dwie równe połowy na podstawie
@@ -626,31 +450,17 @@ ej dodawane są po koleji, aż uszeregowanie będzie całkowicie uzupełnione.
 
 \begin_layout Subsection
 Selekcja
-\change_inserted 228045028 1452641982
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452643570
 Selekcja końcowej populacji opiera się na turnieju, w którym liczba porównywanyc
 h rozwiązań wynosi 
-\change_unchanged
-
 \begin_inset Formula $\frac{populacja\:końcowa}{populacja\:początkowa}$
 \end_inset
 
-
-\change_inserted 228045028 1452776198
 .
-\change_deleted 228045028 1452776197
-.
-
-\change_inserted 228045028 1452776205
- Selekcja
-\change_unchanged
- wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie tyle
- samo co rozmiar populacji początkowej.
+ Selekcja wykonywana jest tak długo aż rozmiar zredukowanej populacji wyniesie
+ tyle samo co rozmiar populacji początkowej.
  Taki sposób selekcji ma wadę, gdyż mogą zostać utracone 
 \begin_inset Quotes pld
 \end_inset
@@ -669,8 +479,6 @@ najgorsze
 \end_inset
 
 .
-
-\change_inserted 228045028 1452775811
  Zdecydowaliśmy się na turniej ze względu na małą szansę wpadnięcia na początku
  w optymalne rozwiązanie niż w przypadku wzięcia wszystkich najlepszych
  rozwiązań.
@@ -678,13 +486,9 @@ najgorsze
 
 \begin_layout Section
 Testy algorytmu
-\change_inserted 228045028 1452776691
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781244
 W celu poprawy działania algorytmu, przeprowadziliśmy testy, które miały
  umożliwić nam znalezienie odpowiednich wartości parametrów.
  Aby zwiększyć prawidłowość otrzymanych wyników, wartości zostały obliczone
@@ -714,8 +518,6 @@ reference "tabelaParametrow"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452778557
 \begin_inset Float table
 wide false
 sideways false
@@ -724,8 +526,6 @@ status open
 \begin_layout Plain Layout
 \paragraph_spacing onehalf
 \align center
-
-\change_inserted 228045028 1452778557
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
 <features rotate="0" tabularvalignment="middle">
@@ -736,8 +536,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 minZ
 \end_layout
 
@@ -747,8 +545,6 @@ minZ
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 minimalny czas trwania poejdyńczej operacji
 \end_layout
 
@@ -760,8 +556,6 @@ minimalny czas trwania poejdyńczej operacji
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maxZ
 \end_layout
 
@@ -771,8 +565,6 @@ maxZ
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maksymalny czas trwania pojenyńczej operacji
 \end_layout
 
@@ -784,8 +576,6 @@ maksymalny czas trwania pojenyńczej operacji
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 N
 \end_layout
 
@@ -795,8 +585,6 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 liczba zadań
 \end_layout
 
@@ -808,8 +596,6 @@ liczba zadań
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maxG
 \end_layout
 
@@ -819,8 +605,6 @@ maxG
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maksymalny czas gotowości dla zadania
 \end_layout
 
@@ -832,8 +616,6 @@ maksymalny czas gotowości dla zadania
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 PP
 \end_layout
 
@@ -843,8 +625,6 @@ PP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 liczba przerw konserwujących [(% z N)+2]
 \end_layout
 
@@ -856,8 +636,6 @@ liczba przerw konserwujących [(% z N)+2]
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 minP
 \end_layout
 
@@ -867,8 +645,6 @@ minP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 minimalny czas trwania przerwy konserwującej
 \end_layout
 
@@ -880,8 +656,6 @@ minimalny czas trwania przerwy konserwującej
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maxP
 \end_layout
 
@@ -891,8 +665,6 @@ maxP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778557
 maksymalny czas trwania przerwy konserwującej
 \end_layout
 
@@ -908,13 +680,9 @@ maksymalny czas trwania przerwy konserwującej
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-
-\change_inserted 228045028 1452778590
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778610
 opis parametrów instancji
 \end_layout
 
@@ -927,8 +695,6 @@ name "tabela 3 start"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -1080,8 +846,6 @@ liczba krzyżowania
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-
-\change_inserted 228045028 1452778238
 \begin_inset CommandInset label
 LatexCommand label
 name "tabelaParametrow"
@@ -1089,18 +853,10 @@ name "tabelaParametrow"
 \end_inset
 
 
-\change_unchanged
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778522
-o
-\change_deleted 228045028 1452778521
-O
-\change_unchanged
-pis parametrów wykorzystanych w testach
+opis parametrów wykorzystanych w testach
 \end_layout
 
 \end_inset
@@ -1110,14 +866,10 @@ pis parametrów wykorzystanych w testach
 
 \end_inset
 
-
-\change_inserted 228045028 1452778651
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452778651
 \begin_inset Float table
 wide false
 sideways false
@@ -1126,8 +878,6 @@ status open
 \begin_layout Plain Layout
 \paragraph_spacing onehalf
 \align center
-
-\change_inserted 228045028 1452778651
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
 <features rotate="0" tabularvalignment="middle">
@@ -1144,8 +894,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 parametr
 \end_layout
 
@@ -1155,8 +903,6 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 minZ
 \end_layout
 
@@ -1166,8 +912,6 @@ minZ
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 maxZ
 \end_layout
 
@@ -1177,8 +921,6 @@ maxZ
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 N
 \end_layout
 
@@ -1188,8 +930,6 @@ N
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 maxG
 \end_layout
 
@@ -1199,8 +939,6 @@ maxG
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 PP
 \end_layout
 
@@ -1210,8 +948,6 @@ PP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 minP
 \end_layout
 
@@ -1221,8 +957,6 @@ minP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 maxP
 \end_layout
 
@@ -1234,8 +968,6 @@ maxP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 wartość
 \end_layout
 
@@ -1245,8 +977,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779094
 \begin_inset Formula $1$
 \end_inset
 
@@ -1259,8 +989,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779097
 \begin_inset Formula $50$
 \end_inset
 
@@ -1273,8 +1001,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779099
 \begin_inset Formula $50$
 \end_inset
 
@@ -1287,8 +1013,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779101
 \begin_inset Formula $100$
 \end_inset
 
@@ -1301,8 +1025,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779107
 \begin_inset Formula $0,2$
 \end_inset
 
@@ -1315,8 +1037,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779109
 \begin_inset Formula $1$
 \end_inset
 
@@ -1329,8 +1049,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779111
 \begin_inset Formula $50$
 \end_inset
 
@@ -1348,13 +1066,9 @@ wartość
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778651
 ustawienia generatora instancji dla strojenia
 \end_layout
 
@@ -1366,19 +1080,13 @@ ustawienia generatora instancji dla strojenia
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452781253
 Test wartości funkcji celu od czasu przed strojeniem
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452782909
 Test miał za zadanie sprawdzić, jak optymalizowane są uszeregowania po danym
  czasie.
  Z otrzymanych wyników można wywnioskować, że czas optymalizacja uszeregowań
@@ -1392,8 +1100,6 @@ Test miał za zadanie sprawdzić, jak optymalizowane są uszeregowania po danym
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452777847
 \begin_inset Float table
 wide false
 sideways false
@@ -1401,8 +1107,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452778771
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
 <features rotate="0" tabularvalignment="middle">
@@ -1418,11 +1122,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778782
 parametr
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1431,11 +1131,7 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778803
 SM
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1444,11 +1140,7 @@ SM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778814
 PS
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1457,11 +1149,7 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778817
 PE
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1470,11 +1158,7 @@ PE
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778824
 IM
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1483,11 +1167,7 @@ IM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778826
 IK
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1496,8 +1176,6 @@ IK
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778827
 T
 \end_layout
 
@@ -1509,11 +1187,7 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778785
 wartość
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1522,14 +1196,10 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779202
 \begin_inset Formula $0,5$
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1538,14 +1208,10 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779205
 \begin_inset Formula $50$
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1554,13 +1220,21 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779208
 \begin_inset Formula $300$
 \end_inset
 
 
-\change_unchanged
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0,33$
+\end_inset
+
 
 \end_layout
 
@@ -1570,29 +1244,9 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779210
 \begin_inset Formula $0,33$
 \end_inset
 
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted 228045028 1452779213
-\begin_inset Formula $0,33$
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -1602,8 +1256,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778855
 \begin_inset Formula $0-20s$
 \end_inset
 
@@ -1621,17 +1273,11 @@ wartość
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452778722
 tabela użytych parametrów dla testu 2.1
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -1641,8 +1287,6 @@ tabela użytych parametrów dla testu 2.1
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781660
 \begin_inset Float figure
 wide false
 sideways false
@@ -1650,8 +1294,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452781715
 \begin_inset Graphics
 	filename wykresy/wykres2_1.png
 	width 70page%
@@ -1659,20 +1301,21 @@ status open
 \end_inset
 
 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\change_inserted 228045028 1452781878
-wykres dla testu wartości funkcji celu od czasu przed strojeniem
-\change_unchanged
-
-\end_layout
+\begin_inset CommandInset label
+LatexCommand label
+name "wykres2.1"
 
 \end_inset
 
 
-\change_unchanged
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+wykres dla testu wartości funkcji celu od czasu przed strojeniem
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1682,14 +1325,10 @@ wykres dla testu wartości funkcji celu od czasu przed strojeniem
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452782215
 Test siły mutacji
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452783070
 Celem tego testu było sprawdzenie jak siła mutacji wpływa na szybkość optymalizo
 wania rozwiązania przez algorytm.
  Występuje tutaj bardzo ciekawa zależność.
@@ -1707,8 +1346,6 @@ wania rozwiązania przez algorytm.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452779255
 \begin_inset Float table
 wide false
 sideways false
@@ -1716,8 +1353,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452779255
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
 <features rotate="0" tabularvalignment="middle">
@@ -1733,8 +1368,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 parametr
 \end_layout
 
@@ -1744,8 +1377,6 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 SM
 \end_layout
 
@@ -1755,8 +1386,6 @@ SM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 PS
 \end_layout
 
@@ -1766,8 +1395,6 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 PE
 \end_layout
 
@@ -1777,8 +1404,6 @@ PE
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 IM
 \end_layout
 
@@ -1788,8 +1413,6 @@ IM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 IK
 \end_layout
 
@@ -1799,8 +1422,6 @@ IK
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 T
 \end_layout
 
@@ -1812,8 +1433,6 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 wartość
 \end_layout
 
@@ -1823,8 +1442,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $0,1-0,5$
 \end_inset
 
@@ -1837,8 +1454,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $50$
 \end_inset
 
@@ -1851,8 +1466,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $300$
 \end_inset
 
@@ -1865,8 +1478,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $0,33$
 \end_inset
 
@@ -1879,8 +1490,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $0,33$
 \end_inset
 
@@ -1893,8 +1502,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779255
 \begin_inset Formula $0-10s$
 \end_inset
 
@@ -1912,8 +1519,6 @@ wartość
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452780924
 tabela użytych parametrów dla testu 2.2
 \end_layout
 
@@ -1928,8 +1533,6 @@ tabela użytych parametrów dla testu 2.2
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781748
 \begin_inset Float figure
 wide false
 sideways false
@@ -1937,8 +1540,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452781781
 \begin_inset Graphics
 	filename wykresy/wykres2_2.png
 	width 70page%
@@ -1946,11 +1547,16 @@ status open
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "wykres2.2"
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452781870
 wykres dla testu siły mutacji
 \end_layout
 
@@ -1965,14 +1571,10 @@ wykres dla testu siły mutacji
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452783077
 Test wielkości populacji początkowej i końcowej
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452783247
 Test ten miał za zadanie oszacować jak wartość funkcji celu zależy od wielkości
  popualcji początkowej i końcowej.
  Należy tutaj dodać, że jeżeli kończymy program na podstawie czasu, zwiększenie
@@ -1984,8 +1586,6 @@ Test ten miał za zadanie oszacować jak wartość funkcji celu zależy od wielk
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452779258
 \begin_inset Float table
 wide false
 sideways false
@@ -1993,8 +1593,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452779258
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
 <features rotate="0" tabularvalignment="middle">
@@ -2010,8 +1608,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 parametr
 \end_layout
 
@@ -2021,8 +1617,6 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 SM
 \end_layout
 
@@ -2032,8 +1626,6 @@ SM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 PS
 \end_layout
 
@@ -2043,8 +1635,6 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 PE
 \end_layout
 
@@ -2054,8 +1644,6 @@ PE
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 IM
 \end_layout
 
@@ -2065,8 +1653,6 @@ IM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 IK
 \end_layout
 
@@ -2076,8 +1662,6 @@ IK
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 T
 \end_layout
 
@@ -2089,8 +1673,6 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 wartość
 \end_layout
 
@@ -2100,8 +1682,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 \begin_inset Formula $0,15$
 \end_inset
 
@@ -2114,8 +1694,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779319
 \begin_inset Formula $50-300$
 \end_inset
 
@@ -2128,8 +1706,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 \begin_inset Formula $[3-8]*PS$
 \end_inset
 
@@ -2142,8 +1718,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 \begin_inset Formula $0,33$
 \end_inset
 
@@ -2156,8 +1730,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 \begin_inset Formula $0,33$
 \end_inset
 
@@ -2170,8 +1742,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779258
 \begin_inset Formula $8s$
 \end_inset
 
@@ -2189,8 +1759,6 @@ wartość
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452780926
 tabela użytych parametrów dla testu 2.3
 \end_layout
 
@@ -2205,8 +1773,6 @@ tabela użytych parametrów dla testu 2.3
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781789
 \begin_inset Float figure
 wide false
 sideways false
@@ -2214,8 +1780,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452781827
 \begin_inset Graphics
 	filename wykresy/wykres2_3.png
 	width 70page%
@@ -2223,11 +1787,16 @@ status open
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "wykres2.3"
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452781866
 wykres dla testu wielkości populacji początkowej i końcowej
 \end_layout
 
@@ -2242,14 +1811,25 @@ wykres dla testu wielkości populacji początkowej i końcowej
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452783290
 Test liczby mutacji i krzyżowań
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 228045028 1452779260
+\change_deleted 228045028 1452784426
+ 
+\change_unchanged
+Test ten miał sprawdzić jaka liczba mutacji i krzyżowania wykazuje najlepsze
+ optymalizowanie funkcji celu.
+ Należy tu zauważyć, że 
+\begin_inset Formula $liczba\,mutacji+liczba\,krzyżowań+liczba\,łączonych\,(mutacja+krzyżowanie)=1$
+\end_inset
+
+, z tego powodu zawsze będą wykorzystywane obie metody.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -2257,8 +1837,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452779260
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
 <features rotate="0" tabularvalignment="middle">
@@ -2274,8 +1852,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 parametr
 \end_layout
 
@@ -2285,8 +1861,6 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 SM
 \end_layout
 
@@ -2296,8 +1870,6 @@ SM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 PS
 \end_layout
 
@@ -2307,8 +1879,6 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 PE
 \end_layout
 
@@ -2318,8 +1888,6 @@ PE
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 IM
 \end_layout
 
@@ -2329,8 +1897,6 @@ IM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 IK
 \end_layout
 
@@ -2340,8 +1906,6 @@ IK
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 T
 \end_layout
 
@@ -2353,8 +1917,6 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 wartość
 \end_layout
 
@@ -2364,8 +1926,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 \begin_inset Formula $0,15$
 \end_inset
 
@@ -2378,8 +1938,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 \begin_inset Formula $250$
 \end_inset
 
@@ -2392,8 +1950,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 \begin_inset Formula $750$
 \end_inset
 
@@ -2406,9 +1962,7 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
-\begin_inset Formula $0-[100-IK]$
+\begin_inset Formula $0-[90-IK]$
 \end_inset
 
 
@@ -2420,8 +1974,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779401
 \begin_inset Formula $0-0,9$
 \end_inset
 
@@ -2434,8 +1986,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779260
 \begin_inset Formula $8s$
 \end_inset
 
@@ -2453,8 +2003,6 @@ wartość
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452780930
 tabela użytych parametrów dla testu 2.4
 \end_layout
 
@@ -2469,8 +2017,6 @@ tabela użytych parametrów dla testu 2.4
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781842
 \begin_inset Float figure
 wide false
 sideways false
@@ -2478,13 +2024,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452781842
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452781861
 wykres dla testu liczby mutacji i krzyżowań
 \end_layout
 
@@ -2499,14 +2041,10 @@ wykres dla testu liczby mutacji i krzyżowań
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452783298
 Test wartości funkcji celu od czasu po strojeniu
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452783536
 Ten test miał wykazać jak bardzo zmiana parametrów wpłynęła na uzyskiwane
  wyniki z początkowego testu.
  Na wykresie widać, że poprawa wartości funkcji celu wyniosła aż 
@@ -2526,8 +2064,6 @@ Ten test miał wykazać jak bardzo zmiana parametrów wpłynęła na uzyskiwane
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452779265
 \begin_inset Float table
 wide false
 sideways false
@@ -2535,8 +2071,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452779265
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="7">
 <features rotate="0" tabularvalignment="middle">
@@ -2552,8 +2086,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 parametr
 \end_layout
 
@@ -2563,8 +2095,6 @@ parametr
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 SM
 \end_layout
 
@@ -2574,8 +2104,6 @@ SM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 PS
 \end_layout
 
@@ -2585,8 +2113,6 @@ PS
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 PE
 \end_layout
 
@@ -2596,8 +2122,6 @@ PE
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 IM
 \end_layout
 
@@ -2607,8 +2131,6 @@ IM
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 IK
 \end_layout
 
@@ -2618,8 +2140,6 @@ IK
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 T
 \end_layout
 
@@ -2631,8 +2151,6 @@ T
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 wartość
 \end_layout
 
@@ -2642,8 +2160,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $0,15$
 \end_inset
 
@@ -2656,8 +2172,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $250$
 \end_inset
 
@@ -2670,8 +2184,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $750$
 \end_inset
 
@@ -2684,8 +2196,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $0,1$
 \end_inset
 
@@ -2698,8 +2208,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $0,3$
 \end_inset
 
@@ -2712,8 +2220,6 @@ wartość
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452779265
 \begin_inset Formula $0-20s$
 \end_inset
 
@@ -2731,8 +2237,6 @@ wartość
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452780933
 tabela użytych parametrów dla testu 2.5
 \end_layout
 
@@ -2744,13 +2248,9 @@ tabela użytych parametrów dla testu 2.5
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452781914
 \begin_inset Float figure
 wide false
 sideways false
@@ -2758,8 +2258,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452781951
 \begin_inset Graphics
 	filename wykresy/wykres2_5.png
 	width 70page%
@@ -2767,11 +2265,16 @@ status open
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "wykres2.5"
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 228045028 1452781932
 Wykres dla testu wartości funkcji celu od czasu po strojeniu
 \end_layout
 
@@ -2791,12 +2294,8 @@ Testy instancji problemu
 
 \begin_layout Standard
 Rozdział ten jest przeznaczony na testy dotyczące różnych typów instancji.
- Ustawienia algorytmu
-\change_inserted 228045028 1452679922
-,
-\change_unchanged
- które zostaną użyte do przeprowadzenia testów pochodzą z poprzedniego rozdziału
- i są one najbardziej optymalne dla naszego algorytmu.
+ Ustawienia algorytmu, które zostaną użyte do przeprowadzenia testów pochodzą
+ z poprzedniego rozdziału i są one najbardziej optymalne dla naszego algorytmu.
  W dalszej części będziemy używać skrótów opisujących parametry instancji
  przedstawionych w tabeli 
 \begin_inset CommandInset ref
@@ -2815,30 +2314,14 @@ Czas trwania operacji
 \begin_layout Standard
 Celem testu jest wyznaczenie zależności funkcji celu od długości trwania
  operacji.
- Długość ta opisywana jest przez dwie
-\change_deleted 228045028 1452680291
-2
-\change_unchanged
- wartości: 
-\change_deleted 228045028 1452680288
-minZ
-\change_inserted 228045028 1452680288
-
+ Długość ta opisywana jest przez dwie wartości: 
 \begin_inset Formula $minZ$
 \end_inset
 
-
-\change_unchanged
  oraz 
-\change_deleted 228045028 1452680284
-maxZ
-\change_inserted 228045028 1452680284
-
 \begin_inset Formula $maxZ$
 \end_inset
 
-
-\change_unchanged
 .
  Wszystkie parametry instancji zostały przedstawione w tabeli 
 \begin_inset CommandInset ref
@@ -2865,11 +2348,7 @@ reference "wykres3_11"
 
 .
  Możemy zauważyć, że występuje tutaj zależność liniowa.
- Prowadząc prostą przez punkty
-\change_inserted 228045028 1452680326
-,
-\change_unchanged
- dla których 
+ Prowadząc prostą przez punkty, dla których 
 \begin_inset Formula $minZ=maxZ$
 \end_inset
 
@@ -2884,25 +2363,15 @@ reference "wykres3_12"
 
  przedstawiono funkcje liniowe opisujące minimalną i maksymalną wartość
  funkcji celu w zależności od parametru 
-\change_deleted 228045028 1452680354
-maxZ
-\change_inserted 228045028 1452680354
-
 \begin_inset Formula $maxZ$
 \end_inset
 
-
-\change_unchanged
 .
  Łatwo także zauważyć, że wartości funkcji celu w przedziale 
 \begin_inset Formula $minZ=<1\,;\,maxZ>$
 \end_inset
 
-
-\change_inserted 228045028 1452680386
- 
-\change_unchanged
-zmienia się liniowo.
+ zmienia się liniowo.
  Na podstawie tych obserwacji jesteśmy w stanie wyznaczyć wzór opisujący
  badaną zależność:
 \begin_inset Formula 
@@ -3191,15 +2660,9 @@ status open
 \begin_layout Plain Layout
 funkcje opisujące minimalną i maksymalną wartość funkcji celu w zalezności
  od 
-\change_deleted 228045028 1452680507
-maxZ
-\change_inserted 228045028 1452680507
-
 \begin_inset Formula $maxZ$
 \end_inset
 
-
-\change_unchanged
 .
 \end_layout
 
@@ -3221,23 +2684,11 @@ name "wykres3_12"
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452772452
-Liczba
-\change_deleted 228045028 1452772451
-Ilość
-\change_unchanged
- zadań
+Liczba zadań
 \end_layout
 
 \begin_layout Standard
-Celem tego testu jest sprawdzenie jak 
-\change_deleted 228045028 1452680514
-ilość
-\change_inserted 228045028 1452680514
-liczba
-\change_unchanged
- zadań
+Celem tego testu jest sprawdzenie jak liczba zadań
 \begin_inset space ~
 \end_inset
 
@@ -3254,17 +2705,7 @@ reference "parametr_3.2"
 \end_inset
 
 .
-
-\change_inserted 228045028 1452680521
- 
-\change_unchanged
-Zale
-\change_inserted 228045028 1452711956
-ż
-\change_deleted 228045028 1452711956
-z
-\change_unchanged
-ność przedstawiono na wykresie 
+ Zależność przedstawiono na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "wykres3_2"
@@ -3273,13 +2714,7 @@ reference "wykres3_2"
 
 .
  Łatwo zauważyć, że wartość funkcji celu jest proporcjonalna do kwadratu
- 
-\change_deleted 228045028 1452711964
-ilości
-\change_inserted 228045028 1452711965
-liczby
-\change_unchanged
- zadań.
+ liczby zadań.
  Możemy opisać ją następującym wzorem:
 \end_layout
 
@@ -3512,15 +2947,9 @@ status open
 
 \begin_layout Plain Layout
 zależność funkcji celu od ilości zadań 
-\change_deleted 228045028 1452680493
-N
-\change_inserted 228045028 1452680493
-
 \begin_inset Formula $N$
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3821,23 +3250,12 @@ zależność funkcji celu od czasu gotowości zadania
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 228045028 1452772461
-Liczba
-\change_deleted 228045028 1452772459
-Ilość
-\change_unchanged
- przerw konserwujących
+Liczba przerw konserwujących
 \end_layout
 
 \begin_layout Standard
-Celem rozdziału jest zbadanie jak 
-\change_inserted 228045028 1452772473
-liczba
-\change_deleted 228045028 1452772472
-ilość
-\change_unchanged
- przerw konserwujących wpływa na wartość funkcji celu.
+Celem rozdziału jest zbadanie jak liczba przerw konserwujących wpływa na
+ wartość funkcji celu.
  Wartości parametrów zostały przedstawione w tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4088,13 +3506,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-zależność funkcji celu od 
-\change_deleted 228045028 1452680699
-ilości
-\change_inserted 228045028 1452680700
-liczby
-\change_unchanged
- przerw konserwujących
+zależność funkcji celu od liczby przerw konserwujących
 \end_layout
 
 \end_inset
@@ -4128,13 +3540,7 @@ reference "param3.5"
 
 \end_inset
 
-, natomiast zale
-\change_inserted 228045028 1452712118
-ż
-\change_deleted 228045028 1452712118
-z
-\change_unchanged
-ność na wykresie 
+, natomiast zależność na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "wykres3.5"
@@ -4148,19 +3554,12 @@ reference "wykres3.5"
  Przerwy konserwujące są ustawiane w ten sposób, aby miały znaczenie dla
  rozwiązanie, jednak gdy są bardzo długie, takie założenie staje się niemożliwe
  (rosną odległości między przerwami, w które mieszczą się zadania).
- W takim wypadku zadania
-\change_inserted 228045028 1452772676
-,
-\change_unchanged
- których długość jest dużo krótsza od długości przerw uda się uszeregować
+ W takim wypadku zadania, których długość jest dużo krótsza od długości
+ przerw uda się uszeregować
 \begin_inset space ~
 \end_inset
 
-nim napotkamy na ostatni
-\change_inserted 228045028 1452772686
-e
-\change_unchanged
- przerwy (końcowe przerwy przestają mieć znaczenie).
+nim napotkamy na ostatnie przerwy (końcowe przerwy przestają mieć znaczenie).
 \end_layout
 
 \begin_layout Standard
@@ -4370,16 +3769,12 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 228045028 1452675777
 \begin_inset Graphics
 	filename wykresy/wykres3_5.png
 	width 70page%
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -4408,16 +3803,10 @@ name "wykres3.5"
 \end_layout
 
 \begin_layout Section
-P
-\change_deleted 228045028 1452775596
-ODSUMOWANIE
-\change_inserted 228045028 1452775597
-odsumowanie
+Podsumowanie
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 228045028 1452773009
 Po przeprowadzeniu wszystkich badań doszliśmy do wniosku, że nasza implementacja
  uszeregowania spełnia założenia zamieszczone w zadaniu nr 
 \begin_inset Formula $3$
@@ -4440,9 +3829,18 @@ Po przeprowadzeniu wszystkich badań doszliśmy do wniosku, że nasza implementa
 \end_inset
 
 .
- 
-\change_unchanged
+ Na podstawie testów dokonanych w rozdziale 2.5 udało nam się dokonać optymalizac
+ji algorytmu (strojenia).
+ Poprawa wyników jest zauważalna.
+ Zamieszczono ją na wykresie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "wykres2.5"
 
+\end_inset
+
+, w którym porównano testy przed i po strojeniu.
+ 
 \end_layout
 
 \end_body
