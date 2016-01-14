@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import java.io.PrintWriter;
 /**
  * Problem 3
 	Job shop, liczba maszyn m=2, operacje typu non-preemptive, 
@@ -126,6 +126,11 @@ public class Main extends Thread{
 	 * 1 - wypisuje całe rozwiązanie
 	 */
 	public static int wyjscie=0;
+	/**
+	 * Czy zapisać do pliku, nieużywane  w tesowaniu
+	 * Tylko w celu pokazowym.
+	 */
+	public static int zapisDoPliki=0;
 	
 	/**
 	 * MAIN
@@ -146,9 +151,15 @@ public class Main extends Thread{
 				//if( par[0] != null )
 				//	Main.numerWczytanejInstancji=par[0];
 			}
+			
 			Algorytm algorytm=new Algorytm();
 			//System.out.println("START");
 			algorytm.run();
+			if(zapisDoPliki == 1){
+				PrintWriter instOut = new PrintWriter("przyklad.in");
+				instancja.wypiszInstanje(instOut);
+				instOut.close();
+			}
 		}
 		else{
 			instancja=new Instancja();

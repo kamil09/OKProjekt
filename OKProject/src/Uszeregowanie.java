@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -639,5 +640,83 @@ public class Uszeregowanie implements Serializable{
 				System.out.println("");
 			}
 		}
+	}
+	
+	
+	void wypiszUserzegowanie(PrintWriter file){
+		int idle_1=0; int idle_1_SUM=0;
+		int idle_2=0; int idle_2_SUM=0;
+		int maint_1=0; int maint_1_SUM=0;
+		int maint_2=0; int maint_2_SUM=0;
+		int liczbaZadan=0;
+		
+		file.println("**** "+Main.numerWczytanejInstancji+" ****");
+		file.println(this.sumaCzasow+","+Main.pierwszeRozwiazanie+";");
+		
+		file.print("M1: ");
+		for(int i =0 ;i< this.maszyna_1.size()-1 ; i++ ){
+			if(maszyna_1.get(i) instanceof Przerwa){
+				wypiszPrzerwe((Przerwa)this.maszyna_1.get(i),file);
+				maint_1++;
+				maint_1_SUM+=this.maszyna_1.get(i).czasTrwania;
+			}
+			if(maszyna_1.get(i) instanceof Podzadanie){
+				wypiszOperacje( (Podzadanie)this.maszyna_1.get(i),file);
+				liczbaZadan++;
+			}
+			
+			if(this.maszyna_1.get(i+1).czasStartu!=this.maszyna_1.get(i).czasKonca){
+				idle_1++;
+				idle_1_SUM+=this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca;
+				file.print("idle"+idle_1+"_"+"M1,"+this.maszyna_1.get(i).czasKonca+","+(this.maszyna_1.get(i+1).czasStartu-this.maszyna_1.get(i).czasKonca)+";\t");
+			}
+			if(liczbaZadan>=Main.iloscZadan) break;
+		}
+		//System.out.print(this.maszyna_1.get(this.maszyna_1.size()-1).czasTrwania);
+		if(this.maszyna_1.get(this.maszyna_1.size()-1) instanceof Podzadanie)
+			wypiszOperacje((Podzadanie)this.maszyna_1.get(this.maszyna_1.size()-1),file);
+		file.println(" ");
+		liczbaZadan=0;
+		file.print("M2: ");
+		for(int i =0 ;i< this.maszyna_2.size()-1 ; i++ ){
+			if(maszyna_2.get(i) instanceof Przerwa){
+				wypiszPrzerwe((Przerwa)this.maszyna_2.get(i),file);
+				maint_2++;
+				maint_2_SUM+=this.maszyna_2.get(i).czasTrwania;
+			}
+			if(maszyna_2.get(i) instanceof Podzadanie)
+				wypiszOperacje((Podzadanie)this.maszyna_2.get(i),file);
+			if(this.maszyna_2.get(i+1).czasStartu!=this.maszyna_2.get(i).czasKonca){
+				idle_2++;
+				idle_2_SUM+=this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca;
+				file.print("idle"+idle_2+"_"+"M2,"+this.maszyna_2.get(i).czasKonca+","+(this.maszyna_2.get(i+1).czasStartu-this.maszyna_2.get(i).czasKonca)+";\t");
+				liczbaZadan++;
+			}
+			if(liczbaZadan>=Main.iloscZadan) break;
+		}
+		if(this.maszyna_2.get(this.maszyna_2.size()-1) instanceof Podzadanie)
+			wypiszOperacje((Podzadanie)this.maszyna_2.get(this.maszyna_2.size()-1),file);
+		
+		file.println(" ");
+		//WYPISYWANIE PRZERW KONSERWUJĄCYCH
+		file.println(maint_1+","+maint_1_SUM+"; ");
+		file.println(maint_2+","+maint_2_SUM+"; ");
+		//WYPISYWANIE PRZERW IDLE
+		file.println(idle_1+","+idle_1_SUM+"; ");
+		file.println(idle_2+","+idle_2_SUM+"; ");
+		file.println("");
+	}
+	
+	void wypiszPrzerwe(Przerwa p, PrintWriter file){
+		file.print("maint" 
+				+p.id+"_M1,"
+				+p.czasStartu+","
+				+p.czasTrwania+";\t");
+	}
+	void wypiszOperacje(Podzadanie p, PrintWriter file){
+		file.print("o"+p.numerOperacji+"_" 
+				+p.id+","
+				+p.czasStartu+","
+				+p.czasTrwania+";\t");
 	}
 }

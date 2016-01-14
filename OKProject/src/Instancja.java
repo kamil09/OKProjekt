@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,6 +61,19 @@ public class Instancja implements Serializable{
 			Przerwa p = listaPrzerw.get(i);
 			System.out.println(p.id+"; 1; "+p.czasTrwania+"; "+p.czasStartu);
 		}
-		
 	}
+	public void wypiszInstanje(PrintWriter file){
+		file.println("**** "+Main.numerWczytanejInstancji+" ****");
+		file.println(listaZadan.size());
+		for (int i=0;i< listaZadan.size(); i++){
+			Zadanie z = listaZadan.get(i);
+			file.println(z.op1.czasTrwania+"; "+z.op2.czasTrwania+"; "+ (z.op1.maszyna+1) +"; "+(z.op2.maszyna+1)+"; "+ z.op1.czasGotowosci);
+		}
+		file.println(listaPrzerw.size());
+		for (int i=0; i < listaPrzerw.size() ; i++ ){
+			Przerwa p = listaPrzerw.get(i);
+			file.println(p.id+"; 1; "+p.czasTrwania+"; "+p.czasStartu);
+		}
+	}
+	
 }

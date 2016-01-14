@@ -1,4 +1,6 @@
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,8 +25,9 @@ public class Algorytm{
 	
 	/**
 	 * Cała metoda algorytmu
+	 * @throws FileNotFoundException 
 	 */
-	public void run(){
+	public void run() throws FileNotFoundException{
 		final long startTime = System.currentTimeMillis();
 		Random gen = new Random();
 		
@@ -80,6 +83,11 @@ public class Algorytm{
 			wybierzNajlepsze().wypiszUserzegowanie();
 		if(Main.wyjscie == 0)
 			System.out.print(wybierzNajlepsze().sumaCzasow);
+		if(Main.zapisDoPliki == 1){
+			PrintWriter outOut = new PrintWriter("przyklad.out");
+			wybierzNajlepsze().wypiszUserzegowanie(outOut);
+			outOut.close();
+		}
 		
 	}
 	
