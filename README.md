@@ -45,3 +45,6 @@ Program w trybie TR0 generuje instancje w formie binarnej do pliku oraz w formie
 
 W celu ułatwienia prezentacji programu na zajęciach dodaliśmy możliwość zapisu do pliku instancji i całego rozwiązania bez użycia konsoli. 
 W tym celu nalezy zmienić wartość zmiennej "zapisDoPliki" (Main programu) na wartość 1. Zostaną utworzone pliki przykład.in (instancja) oraz przyklad.out (wynik);
+
+PRZYKŁADY:
+W folderze IN_OUT znajduje się 1000 przykładowo wygenerowanych instancji (numer.in) wraz z rozwiązaniami (nimer.out). Pliki o najmniejszych numerach są najwygodniejsze do analizy, ponieważ wraz ze wzrostem numeru rośnie ilość zadań, czas ich trwania, gotowości oraz ilość przerw.
